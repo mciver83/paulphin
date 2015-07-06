@@ -1,0 +1,26 @@
+<main class="admin">
+
+	<h2>product list</h2>
+	<div class="flex-row" ng-repeat="product in products">
+		<div><p>id:</p><input readonly="true" ng-model="product._id"/></div>
+		<div><p>title:</p><input type="text" ng-model="product.title"></input></div>
+		<div><p>image:</p><img class="image-thumbnail" ng-src="{{product.image}}"/></div>
+		<div><p>description:</p><input ng-model="product.description"></input> </div>
+		<div><p>price:</p><input id="number" type="number" ng-model="product.price"></input> </div>
+		<div><button ng-click="updateProduct(product._id, product.title, product.description, product.price)">update</button>
+		<button ng-click="removeProduct(product._id)">delete</button></div>
+	</div>
+
+	<br/>
+	<br/>
+
+	<h2> new product </h2>
+	<div class="flex-column" ng-show="true">
+		<input type="text" ng-model="newProduct" placeholder="title"></input>
+		<input class="input-number" type="number" ng-model="productPrice" placeholder="price"></input>
+		<input type="text" ng-model="productImage" placeholder="image url"/>
+		<textarea ng-model="productDescription" placeholder="decription: max 100 char"></textarea>
+		<button ng-click="addProduct(newProduct, productPrice, productImage, productDescription)">submit</button>
+	</div>
+	
+</main>

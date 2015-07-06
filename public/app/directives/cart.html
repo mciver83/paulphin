@@ -1,0 +1,31 @@
+<div class="pop-up-back"  ng-show="show">
+	<div class="pop-up flex-column space-between">
+		<i id="closeCart" class="fa fa-times-circle-o fa-2x" ng-click="showCart()"></i>
+		<header>
+			<h3>cart items</h3>
+		</header>
+		<div id="cartItem"class="flex-row align-start space-around " ng-repeat="item in cart">
+			<div>
+				<p>item:</p>
+				<img class="image-thumbnail" ng-src="{{item.product.image}}"/>
+			</div>
+			<div>
+				<p>quantity:</p>
+				<input id="quantity" class="input-number" type=number ng-model="item.quantity" ng-change="updateItem(customer._id, item._id, item.quantity)">
+			</div>
+			<div>
+				<p>item total:</p>
+				<p>${{item.total}}</p>
+			</div>
+			<div>
+				<i class="fa fa-times" ng-click="removeItem(customer._id, item._id)"></i>
+			</div>
+		</div>
+		
+		<div class="flex-row">
+			<strong class="item">Total cost: ${{total}}</strong>
+			<button class="item" ng-click="checkout()">place order</button>
+			<button class="item" ng-click="backToStore()">continue shopping</button>
+		</div>
+	</div>
+</div>

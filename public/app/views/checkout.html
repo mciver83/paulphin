@@ -1,0 +1,32 @@
+<h1>checkout page</h1>
+
+
+	<div class="width50">
+		<h1>cart items</h1>
+		<div class="flex-column">
+			<div class="flex-row space-between" ng-repeat="item in cart">
+				<div><p>title:</p> <h3>{{item.product.title}}</h3></div>
+				<div>quatity: <input id="quantity" class="input-number" type=number ng-model="item.quantity" ng-change="updateItem(customer._id, item._id, item.quantity)"></div>
+				<div><p>price:</p>${{item.total}}</div>
+				<div><i class="fa fa-times" ng-click="removeItem(customer._id, item._id)"></i></div>
+			</div>
+			<div class="border--red"> <strong>Total cost: ${{total}}</strong></div>
+			<button ng-click="backToShop()">continue shopping</button>
+		</div>
+	</div>
+
+<div class="flex-column width50">
+	<h1>contact information:</h1>
+	<input type="text" ng-model="customer.name" placeholder="name" required>
+	<input type="text" ng-model="customer.email" placeholder="email" required>
+	<input type="text" ng-model="customer.phone" placeholder="phone (optional)" required>
+	<h1>ship order to:</h1>
+	<input type="text" ng-model="customer.address[0].name" placeholder="name (if different than above)">
+	<input type="text" ng-model="customer.address[0].address" placeholder="address" required>
+	<input type="text" ng-model="customer.address[0].address2" placeholder="address 2">
+	<input type="text" ng-model="customer.address[0].city" placeholder="city" required>
+	<input type="text" ng-model="customer.address[0].state" placeholder="state" required>
+	<input type="number" ng-model="customer.address[0].zip" placeholder="zip" required>
+	<button ng-click="submitShippingInfo(customer.name, customer.email, customer.phone, customer.address[0].name, customer.address[0].address, customer.address[0].address2, customer.address[0].city, customer.address[0].state, customer.address[0].zip)">submit and place order</button>
+</div>
+

@@ -1,0 +1,19 @@
+<div id="login" class="pop-up flex-row space-between" ng-show="showLogin">
+	<div class="flex-column">
+		<h1>sign in</h1>
+		<input type="text" placeholder="email">
+		<input type="password" placeholder="passowrd">
+		<button>sign in</button>
+		<a href="">not a member? click here to register</a>
+	</div>
+	<div class="flex-column">
+		<p>sign in with:</p>
+		<button>facebook</button>
+		<button>google+</button>
+	</div>
+	<div class="flex-column">
+		<p>not a member and don't care to be?</p>
+		<h2>continue as guest</h2>
+		<button ng-click="createTempCustomer()">continue</button>
+	</div>
+</div>

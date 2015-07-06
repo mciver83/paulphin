@@ -1,0 +1,20 @@
+<main class="admin">
+
+	<h2>orders list</h2>
+	<div class="flex-row space-between" ng-repeat="order in orders">
+		<div><p>id:</p> {{order._id}}</div>
+		<div><p>customer:</p>{{order.customer.name}}</div>
+		<div><p>ship to:</p>
+			<div class="flex-column">
+				<p>{{order.address.name}}</p>
+				<p>{{order.address.address}} {{order.address.address2}}</p>
+				<p>{{order.address.city}}, {{order.address.state}} {{order.address.zip}}</p>
+			</div>
+		</div>
+		<div><p>payment:</p><select ng-options="option for option in paymentStatusOptions" ng-model="order.payment.status"></select> </div>
+		<div><p>status:</p><select ng-options="option for option in orderStatusOptions" ng-model="order.status"></select> </div>
+		<div><button ng-click="updateOrder(order._id, order.payment.status, order.status)">update</button>
+		</div>
+	</div>
+	
+</main>
