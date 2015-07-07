@@ -143,7 +143,7 @@ app.directive('cart', function(){
 			}
 
 			$scope.checkout = function(){
-				$location.path('/checkout/' + customer._id);
+				$location.path('/checkout/' + $scope.customer._id);
 			}
 
 			$scope.showCart = function(){

@@ -10,7 +10,7 @@ var OrderSchema = new mongoose.Schema({
 		price: { type: Number, min: 1, max: 100000, required: true },
 		quantity: { type: Number, required: true, min: 1, max: 99 }
 	}],
-	totalCost: {type: Number, required: true },
+	total: {type: Number, required: true },
 	address: address,
 	payment: {
 		status: { type: String, enum: ['waiting', 'processing', 'paid'], default: 'waiting' },

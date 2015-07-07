@@ -258,5 +258,8 @@ app.controller('checkoutCtrl', function($scope, $location, customer, customerSer
 app.controller('paymentCtrl', function($scope, order){
 	console.log(order);
 	$scope.order = order;
+	if(!$scope.order.address.name){
+		$scope.order.address.name = $scope.order.customer.name
+	}
 })
 

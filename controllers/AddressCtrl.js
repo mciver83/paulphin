@@ -3,6 +3,7 @@ var Customer = require('../models/CustomerModel.js');
 module.exports = {
 
 	create: function(req, res){
+
 		Customer.findByIdAndUpdate(req.params.customerId, 
 			{ $push: { 'address': req.body }},
 			{ safe: true, upsert: true},
@@ -14,6 +15,17 @@ module.exports = {
 				}
 			}
 		)
+		// Customer.findByIdAndUpdate(req.params.customerId, 
+		// 	{ $push: { 'address': req.body }},
+		// 	{ safe: true, upsert: true},
+		// 	function(err, data){
+		// 		if(err){
+		// 			return res.status(500).send(err)
+		// 		} else {
+		// 			return res.send(data)
+		// 		}
+		// 	}
+		// )
 	},
 
 	update: function(req, res){
