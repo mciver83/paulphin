@@ -10,6 +10,9 @@ var express = require('express'),
 	CartCtrl = require('./controllers/CartCtrl'),
 	AddressCtrl = require('./controllers/AddressCtrl'),
 	OrderCtrl = require('./controllers/OrderCtrl');
+var stripe = require("stripe")(
+  "sk_test_hmNf5aQpZ0J4Lana3HtHlJDR"
+);
 
 mongoose.connect(mongoUri);
 mongoose.connection.once('open', function(){
