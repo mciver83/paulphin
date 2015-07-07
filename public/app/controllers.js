@@ -261,5 +261,26 @@ app.controller('paymentCtrl', function($scope, order){
 	if(!$scope.order.address.name){
 		$scope.order.address.name = $scope.order.customer.name
 	}
+
+	var handler = StripeCheckout.configure({
+	    key: 'sk_test_hmNf5aQpZ0J4Lana3HtHlJDR',
+	    image: '/attachments/logo_resized.png',
+	    token: function(token) {
+	      // Use the token to create the charge with a server-side script.
+	      // You can access the token ID with `token.id`
+	      shoppingService.submitStripe(token).then(function(data){
+	      	console.log(data);
+	      	alert('Your payment has been received!\nYou will now be redirected to your receipt page.');
+	      	$location.path('/orders/' + $scope.order._id)
+	      })
+	    }
+	});
+	$scope.pay = function(){
+		handler.open({
+	      name: 'Naveh',
+	      description: 'Skin Care Products',
+	      amount: $scope.order.totalCost * 100
+	    });
+	}
 })
 

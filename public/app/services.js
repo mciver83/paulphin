@@ -138,7 +138,7 @@ app.service('cartService', function($http, $q){
 	}
 })
 
-app.service('orderService', function($http, $q){
+app.service('orderService', function($http, $q, $routParams){
 
 	this.placeOrder = function(order){
 		return $http({
@@ -170,6 +170,14 @@ app.service('orderService', function($http, $q){
 				'payment.status': paymentStatus,
 				status: orderStatus
 			}
+		})
+	}
+
+	this.submitStripe = function(token){
+		return $http({
+			method: 'POST',
+			url: '/api/orders/' + $routeParams.id + '/payment',
+			data: token
 		})
 	}
 })

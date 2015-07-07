@@ -9,7 +9,9 @@ var express = require('express'),
 	CustomerCtrl = require('./controllers/CustomerCtrl'),
 	CartCtrl = require('./controllers/CartCtrl'),
 	AddressCtrl = require('./controllers/AddressCtrl'),
+	EmailCtrl = require('./contorllers/EmailCtrl'),
 	OrderCtrl = require('./controllers/OrderCtrl');
+	PaymentCtrl = require('controllers/PaymentCtrl')
 var stripe = require("stripe")(
   "sk_test_hmNf5aQpZ0J4Lana3HtHlJDR"
 );
@@ -61,6 +63,12 @@ app.post('/api/orders', OrderCtrl.create);
 app.get('/api/orders', OrderCtrl.get);
 
 app.put('/api/orders', OrderCtrl.update);
+
+//payment with stripe
+app.post('/api/orders/:id/payment', PaymentCtrl.submitStripe);
+
+//emails
+app.post('/api/email/send', EmailCtrl.sendEmail);
 	
 
 

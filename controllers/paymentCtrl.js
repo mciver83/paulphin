@@ -1,7 +1,7 @@
 var stripe = require('stripe')(
 	'sk_test_hmNf5aQpZ0J4Lana3HtHlJDR'
 	),
-	// messageController = require('./message-controller'),
+	EmailCtrl = require('./controllers/EmailCtrl.js'),
 	Order = require('../models/OrderModel.js');
 
 module.exports.submitStripe = function(req, res){
@@ -22,7 +22,7 @@ module.exports.submitStripe = function(req, res){
 		  		if(err){
 		  			res.send(err)
 		  		}
-		  	// messageController.sendReceipt(saveData);
+		  	EmailCtrl.sendReceipt(saveData);
 		  	res.send(saveData);
 		  	})
 		});
