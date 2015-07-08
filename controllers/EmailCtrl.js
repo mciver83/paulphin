@@ -1,4 +1,4 @@
-var emailService = require('../services/EmailService');
+var EmailService = require('../services/EmailService');
 
 
 
@@ -14,7 +14,8 @@ module.exports.sendReceipt = function(data){
 			"from_email":"hello@paulphin.com",
 			"from_name":"Paul",
 			"to":[{
-				"email": data.customer.email[0],
+				// "email": data.customer.email[0],
+				"email": "markmciver83@gmail.com",
 				"name": data.customer.name,
 				"type":"to"
 		}]

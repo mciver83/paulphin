@@ -2,20 +2,19 @@ var app = angular.module('ecommerce');
 
 
 // admin and add, update and delete products
-
-
 app.controller('adminCtrl', function($scope, authService){
 	
-	$scope.auth = function(email, password){
-		authService.auth(email, password).then(function(response){
-			console.log(response)
-		})
-	}
+	
 })
-app.controller('productsCtrl', function($scope, productService, customerService, cartService, products){
+
+
+
+
+app.controller('adminCtrl', function($scope, adminService, customerService, cartService, products){
+	
 
 	$scope.getProducts = function(){
-		productService.getProducts().then(function(response){
+		adminService.getProducts().then(function(response){
 			$scope.products = response.data;
 		})
 	}
@@ -23,7 +22,7 @@ app.controller('productsCtrl', function($scope, productService, customerService,
 	$scope.products = products;
 
 	$scope.addProduct = function(title, price, image, description){
-		productService.addProduct(title, price, image, description).then(function(response){
+		adminService.addProduct(title, price, image, description).then(function(response){
 			$scope.newProduct = '';
 			$scope.productPrice = '';
 			$scope.productDescription = '';
@@ -33,7 +32,7 @@ app.controller('productsCtrl', function($scope, productService, customerService,
 
 	$scope.updateProduct = function(id, title, description, price){
 		if(confirm("Are you sure you want to update this products info?")){
-			productService.updateProduct(id, title, description, price).then(function(response){
+			adminService.updateProduct(id, title, description, price).then(function(response){
 				alert('This product has been updated.')
 				$scope.getProducts();
 			})
@@ -42,7 +41,7 @@ app.controller('productsCtrl', function($scope, productService, customerService,
 
 	$scope.removeProduct = function(id){
 		if(confirm("Are you sure you want to delete this product?")){
-			productService.removeProduct(id).then(function(response){
+			adminService.removeProduct(id).then(function(response){
 				$scope.getProducts();
 			})
 		}
@@ -53,8 +52,8 @@ app.controller('productsCtrl', function($scope, productService, customerService,
 
 
 
-//orders
-app.controller('orderCtrl', function($scope, orders, orderService){
+//admin orders
+app.controller('orderCtrl', function($scope, orders, adminService){
 	$scope.orders = orders;
 
 	$scope.paymentStatusOptions = ['waiting', 'processing', 'paid'];
@@ -62,7 +61,7 @@ app.controller('orderCtrl', function($scope, orders, orderService){
 
 	$scope.updateOrder = function(orderId, paymentStatus, orderStatus){
 
-		orderService.updateOrder(orderId, paymentStatus, orderStatus).then(function(response){
+		adminService.updateOrder(orderId, paymentStatus, orderStatus).then(function(response){
 			alert('order updated');
 		})
 	}
@@ -274,25 +273,27 @@ app.controller('paymentCtrl', function($scope, order){
 		$scope.order.address.name = $scope.order.customer.name
 	}
 
-	// var handler = StripeCheckout.configure({
-	//     key: 'sk_test_hmNf5aQpZ0J4Lana3HtHlJDR',
-	//     image: '/attachments/logo_resized.png',
-	//     token: function(token) {
-	//       // Use the token to create the charge with a server-side script.
-	//       // You can access the token ID with `token.id`
-	//       shoppingService.submitStripe(token).then(function(data){
-	//       	console.log(data);
-	//       	alert('Your payment has been received!\nYou will now be redirected to your receipt page.');
-	//       	$location.path('/orders/' + $scope.order._id)
-	//       })
-	//     }
-	// });
-	$scope.pay = function(){
-		handler.open({
-	      name: 'Naveh',
-	      description: 'Skin Care Products',
-	      amount: $scope.order.total * 100
-	    });
-	}
+	$scope.chargeLocation = '/charge/' + $scope.order._id;
+
+	
+
+	// Stripe Response Handler
+  //   $scope.stripeCallback = function (result) {
+  //       console.log(result);
+  //     	if (result.error) {
+  //       	window.alert('it failed! error: ' + result.error.message);
+  //     	} else {
+  //     		$http({
+  //     			method: 'POST',
+  //     			url: 'http://localhost:9003/api/charge/' + $scope.order._id
+  //     		}).then(function(response){
+  //     			console.log(response)
+  //     		}), function(error){
+  //     			console.log(error)
+  //     		}
+
+
+  // 		}
+ 	// };
 })
 

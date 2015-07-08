@@ -18,9 +18,26 @@
 	<p>{{order.address.address}} {{order.address.address2}}</p>
 	<p>{{order.address.city}}, {{order.address.state}} {{order.address.zip}}</p>
 	<br>
-	Total price: ${{order.totalCost}}
+	Total price: ${{order.total}}
 	<br>
-	<button class="center" ng-click='pay()'>Pay with Stripe</button><br>
-	For your safety, <em>we do not receive your card information on our servers.</em>  Your payment is safely processed with Stripe.  
+	<h2>pay with stripe</h2>
+	For your safety, <em>we do not receive your card information on our servers.</em>  Your payment is safely processed with Stripe. 
+
+	<form action="{{chargeLocation}}" method="POST">
+	  	<script
+	    	src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+	    	data-key="pk_test_t9lgCJMAv93eanyZZBqWM3SX"
+	    	data-amount= $scope.order.total * 100,
+	    	data-name="Paulphin">
+	  	</script>
+	</form>
+	<!-- <form class="flex-column" stripe-form="stripeCallback" name="checkoutForm">
+        <input ng-model="number" placeholder="Card Number" payments-format="card" payments-validate="card" name="card" />
+        <input ng-model="expiry" placeholder="Expiration" payments-format="expiry" payments-validate="expiry" name="expiry" />
+        <input ng-model="cvc" placeholder="CVC" payments-format="cvc" payments-validate="cvc" name="cvc" />
+        <button type="submit">Submit</button>
+        <div ng-if="checkoutForm.card.$invalid"> Error: invalid card number! </div>
+     </form> -->
+	
 </div>
 </main>

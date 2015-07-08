@@ -18,27 +18,12 @@ app.service('instagramService', function($http, $q){
 
 
 
-app.service('authService', function($http){
-
-	this.auth = function(email, password){
-		return $http({
-			method: 'GET',
-			url: 'http://localhost:9003/api/admin/auth?email=' + email + '&password=' + password
-		})
-	}
-})
-
-
-
-
-
-app.service('productService', function($http, $q){
-
+app.service('adminService', function($http){
 
 	this.addProduct = function(title, price, image, description){
 		return $http({
 			method: 'POST',
-			url: 'http://localhost:9003/api/products',
+			url: 'http://localhost:9003/admin/products',
 			data: {
 				title: title,
 				price: price,
@@ -51,14 +36,14 @@ app.service('productService', function($http, $q){
 	this.getProducts = function(){
 		return $http({
 			method: 'GET',
-			url: 'http://localhost:9003/api/products'
+			url: 'http://localhost:9003/admin/products'
 		})
 	}
 
 	this.updateProduct = function(id, title, description, price){
 		return $http({
 			method: 'PUT',
-			url: 'http://localhost:9003/api/products?id=' + id,
+			url: 'http://localhost:9003/admin/products?id=' + id,
 			data: {
 
 				title: title,
@@ -71,9 +56,76 @@ app.service('productService', function($http, $q){
 	this.removeProduct = function(id){
 		return $http({
 			method: 'DELETE',
-			url:'http://localhost:9003/api/products?id=' + id
+			url:'http://localhost:9003/admin/products?id=' + id
 		})
 	}
+
+	this.getOrders = function(){
+		return $http({
+			method: 'GET',
+			url: 'http://localhost:9003/admin/orders'
+		})
+	}
+
+	this.updateOrder = function(id, paymentStatus, orderStatus){
+		return $http({
+			method: 'PUT',
+			url: 'http://localhost:9003/admin/orders/?_id=' + id,
+			data: {
+				'payment.status': paymentStatus,
+				status: orderStatus
+			}
+		})
+	}
+	
+})
+
+
+
+
+
+app.service('productService', function($http, $q){
+
+
+	// this.addProduct = function(title, price, image, description){
+	// 	return $http({
+	// 		method: 'POST',
+	// 		url: 'http://localhost:9003/api/products',
+	// 		data: {
+	// 			title: title,
+	// 			price: price,
+	// 			image: image,
+	// 			description: description,
+	// 		}
+	// 	})
+	// }
+
+	this.getProducts = function(){
+		return $http({
+			method: 'GET',
+			url: 'http://localhost:9003/api/products'
+		})
+	}
+
+	// this.updateProduct = function(id, title, description, price){
+	// 	return $http({
+	// 		method: 'PUT',
+	// 		url: 'http://localhost:9003/api/products?id=' + id,
+	// 		data: {
+
+	// 			title: title,
+	// 			description: description,
+	// 			price: price
+	// 		}
+	// 	})
+	// }
+
+	// this.removeProduct = function(id){
+	// 	return $http({
+	// 		method: 'DELETE',
+	// 		url:'http://localhost:9003/api/products?id=' + id
+	// 	})
+	// }
 })
 
 app.service('customerService', function($http, $q){

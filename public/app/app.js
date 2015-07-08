@@ -1,3 +1,4 @@
+
 var app = angular.module('ecommerce', ['ngRoute'])
 
 app.config(function($routeProvider){
@@ -92,16 +93,12 @@ app.config(function($routeProvider){
 			}
 		}
 	})
-	.when('/admin', {
-		templateUrl: 'app/views/admin.html',
-		controller: 'adminCtrl'
-	})
 	.when('/admin/products', {
 		templateUrl: 'app/views/products.html',
-		controller: 'productsCtrl',
+		controller: 'adminCtrl',
 		resolve: {
-			products: function(productService){
-				return productService.getProducts().then(function(response){
+			products: function(adminService){
+				return adminService.getProducts().then(function(response){
 					return response.data;
 				})
 			}
@@ -111,8 +108,8 @@ app.config(function($routeProvider){
 		templateUrl: 'app/views/orders.html',
 		controller: 'orderCtrl',
 		resolve: {
-			orders: function(orderService){
-				return orderService.getOrders().then(function(response){
+			orders: function(adminService){
+				return adminService.getOrders().then(function(response){
 					return response.data;
 				})
 			}

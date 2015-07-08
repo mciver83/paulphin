@@ -236,6 +236,7 @@ button {
 	margin: 5px;
 	font-size: 16px;
 	padding: 5px;
+	width: 75px;
 }
 
 .input-number {

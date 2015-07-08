@@ -54,14 +54,23 @@ require('./admin/routes.js')(app, passport); // load our routes and pass in our 
 
 
 
-// products
-app.post('/api/products', ProductCtrl.create);
-
+// store products
 app.get('/api/products', ProductCtrl.get);
 
-app.put('/api/products', ProductCtrl.update);
 
-app.delete('/api/products', ProductCtrl.delete);
+
+//admin 
+app.post('/admin/products', isAdmin, ProductCtrl.create);
+
+app.get('/admin/products', isAdmin, ProductCtrl.get);
+
+app.put('/admin/products', isAdmin, ProductCtrl.update);
+
+app.delete('/admin/products', isAdmin, ProductCtrl.delete);
+
+app.get('/admin/orders', isAdmin, OrderCtrl.get);
+
+app.put('/admin/orders', isAdmin, OrderCtrl.update);
 
 //customer
 //add a cron job to delete all guests ofter 24 hours
@@ -95,7 +104,7 @@ app.get('/api/orders', OrderCtrl.get);
 app.put('/api/orders', OrderCtrl.update);
 
 //payment with stripe
-app.post('/api/orders/:id/payment', PaymentCtrl.submitStripe);
+app.post('/charge/:orderId', PaymentCtrl.submitStripe);
 
 //emails
 app.post('/api/email/send', EmailCtrl.sendEmail);
@@ -104,4 +113,24 @@ app.post('/api/email/send', EmailCtrl.sendEmail);
 
 app.listen(port, function(){
 	console.log('listening on ' + port)
-})	
+})
+
+function isLoggedIn(req, res, next) {
+
+    // if user is authenticated in the session, carry on 
+    if (req.isAuthenticated()){
+        return next();
+    }
+
+    // if they aren't redirect them to the home page
+    res.redirect('/admin/login');
+}
+
+function isAdmin(req, res, next) {
+	console.log(111111, req.user)
+    if(req.user && req.user.admin){
+        next();
+    } else {
+        res.status(403).send('you isnt an admin')
+    }
+}	

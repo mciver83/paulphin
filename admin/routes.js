@@ -1,3 +1,4 @@
+
 module.exports = function(app, passport) {
 
     // =====================================
@@ -19,7 +20,7 @@ module.exports = function(app, passport) {
 
     // process the login form
     app.post('/admin/login', passport.authenticate('local', {
-        successRedirect: '/admin/main', // redirect to the secure profile section
+        successRedirect: '/#/admin/products', // redirect to the secure profile section
         failureRedirect: '/admin/login', // redirect back to the signup page if there is an error
         failureFlash : true // allow flash messages
     }));
@@ -32,17 +33,17 @@ module.exports = function(app, passport) {
     // we will want this protected so you have to be logged in to visit
     // we will use route middleware to verify this (the isLoggedIn function)
     app.get('/admin/main', isLoggedIn, function(req, res) {
-        res.render('admin-main.ejs', {
-            user : req.user // get the user out of session and pass to template
-        });
+        res.send('authorized')
     });
+
+    
 
     // =====================================
     // LOGOUT ==============================
     // =====================================
     app.get('/logout', function(req, res) {
         req.logout();
-        res.redirect('/');
+        res.redirect('/admin');
     });
 };
 
@@ -55,5 +56,5 @@ function isLoggedIn(req, res, next) {
     }
 
     // if they aren't redirect them to the home page
-    res.redirect('/');
+    res.redirect('/admin/login');
 }
