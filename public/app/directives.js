@@ -12,7 +12,7 @@ app.directive('mainHeader', function(){
 				element.find('#cart').show();
 			}
 		},
-		controller: function($scope, $location){
+		controller: function($scope, $location, customerService){
 			$scope.toPath = function(location){
 				if($scope.customer){
 					$location.path('/' + location + '/' + $scope.customer._id)
@@ -20,7 +20,25 @@ app.directive('mainHeader', function(){
 					$location.path('/' + location + '/')
 				}
 			}
-		}
+			$scope.toStore = function(){
+				if($scope.customer){
+					$location.path('/shop/' + $scope.customer._id)
+				} else {
+					($scope.createTempCustomer = function(){
+						// var customer = "Paul Johnson"
+						var customer = 'guest' + Math.floor(Math.random() * 100000);
+						customerService.createTempCustomer(customer).then(function(response){
+							customerService.getCustomer('name', customer).then(function(response){
+								console.log(response.data[0])
+								var customer = response.data[0];
+								$scope.customer = customer;
+								$location.path('/store/' + $scope.customer._id);
+							})
+						})
+					})()
+				}
+			}
+		}				
 	}
 })
 
@@ -73,25 +91,25 @@ app.directive('storeLogin', function(){
 		restrict: 'AE',
 		templateUrl: 'app/directives/store-login.html',
 		controller: function($scope, $location, customerService){
-			$scope.toStore = function(){
-				if($scope.customer){
-					$location.path('/shop/' + $scope.customer._id)
-				} else {
-					$scope.showLogin = !$scope.showLogin;
-				}
+			// $scope.toStore = function(){
+			// 	if($scope.customer){
+			// 		$location.path('/shop/' + $scope.customer._id)
+			// 	} else {
+			// 		$scope.showLogin = !$scope.showLogin;
+			// 	}
 				
-			}
+			// }
 
-			$scope.createTempCustomer = function(){
-				var customer = 'guest' + Math.floor(Math.random() * 100000);
-				customerService.createTempCustomer(customer).then(function(response){
-					customerService.getCustomer('name', customer).then(function(response){
-						var customer = response.data[0];
-						$scope.customer = customer;
-						$location.path('/shop/' + customer._id);
-					})
-				})
-			}
+			// $scope.createTempCustomer = function(){
+			// 	var customer = 'guest' + Math.floor(Math.random() * 100000);
+			// 	customerService.createTempCustomer(customer).then(function(response){
+			// 		customerService.getCustomer('name', customer).then(function(response){
+			// 			var customer = response.data[0];
+			// 			$scope.customer = customer;
+			// 			$location.path('/shop/' + customer._id);
+			// 		})
+			// 	})
+			// }
 		}
 	}
 })
@@ -151,7 +169,7 @@ app.directive('cart', function(){
 			}
 			$scope.backToStore = function(){
 				$scope.show = !$scope.show;
-				$location.path('/shop/' + $scope.customer._id)
+				$location.path('/store/' + $scope.customer._id)
 			}
 		}
 	}

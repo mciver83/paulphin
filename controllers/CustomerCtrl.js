@@ -3,6 +3,18 @@ var Customer = require('../models/CustomerModel.js')
 module.exports = {
 
 	create: function(req, res){
+		// var newCustomer = new Customer();
+		// newCustomer.name = req.body.name;
+		// newCustomer.local.email = req.body.local.email;
+		// newCustomer.local.password = newCustomer.generateHash(req.body.local.password);
+		// newCustomer.save(function(err) {
+  //           if (err){
+  //               throw err;
+  //           } else {
+		// 		res.send(data);
+		// 	}
+  //       });
+
 		new Customer(req.body)
 		.save(function(err, data){
 			if(err){
@@ -14,7 +26,6 @@ module.exports = {
 	},
 
 	get: function(req, res){
-		console.log(req.query)
 		Customer.find(req.query)
 		.populate('cart.product')
 		.exec(function(err, data){

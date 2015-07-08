@@ -2,6 +2,16 @@ var app = angular.module('ecommerce');
 
 
 // admin and add, update and delete products
+
+
+app.controller('adminCtrl', function($scope, authService){
+	
+	$scope.auth = function(email, password){
+		authService.auth(email, password).then(function(response){
+			console.log(response)
+		})
+	}
+})
 app.controller('productsCtrl', function($scope, productService, customerService, cartService, products){
 
 	$scope.getProducts = function(){
@@ -110,7 +120,9 @@ app.controller('contactCtrl', function($scope, emailService, customer){
 app.controller('shopCtrl', function($scope, $location, productService, cartService, customerService, products, customer){
 
 	$scope.customer = customer;
-	$scope.cart = $scope.customer.cart;
+	if($scope.customer){
+		$scope.cart = $scope.customer.cart;
+	}
 
 	// var total = 0;
 	// for(var i = 0; i < $scope.cart.length; i++){
@@ -211,7 +223,7 @@ app.controller('checkoutCtrl', function($scope, $location, customer, customerSer
 		var order = {
 			customer: customer._id,
 			products: $scope.customer.cart,
-			totalCost: $scope.total,
+			total: $scope.total,
 			address: $scope.customer.address[0]
 		}
 		orderService.placeOrder(order).then(function(response){
@@ -262,24 +274,24 @@ app.controller('paymentCtrl', function($scope, order){
 		$scope.order.address.name = $scope.order.customer.name
 	}
 
-	var handler = StripeCheckout.configure({
-	    key: 'sk_test_hmNf5aQpZ0J4Lana3HtHlJDR',
-	    image: '/attachments/logo_resized.png',
-	    token: function(token) {
-	      // Use the token to create the charge with a server-side script.
-	      // You can access the token ID with `token.id`
-	      shoppingService.submitStripe(token).then(function(data){
-	      	console.log(data);
-	      	alert('Your payment has been received!\nYou will now be redirected to your receipt page.');
-	      	$location.path('/orders/' + $scope.order._id)
-	      })
-	    }
-	});
+	// var handler = StripeCheckout.configure({
+	//     key: 'sk_test_hmNf5aQpZ0J4Lana3HtHlJDR',
+	//     image: '/attachments/logo_resized.png',
+	//     token: function(token) {
+	//       // Use the token to create the charge with a server-side script.
+	//       // You can access the token ID with `token.id`
+	//       shoppingService.submitStripe(token).then(function(data){
+	//       	console.log(data);
+	//       	alert('Your payment has been received!\nYou will now be redirected to your receipt page.');
+	//       	$location.path('/orders/' + $scope.order._id)
+	//       })
+	//     }
+	// });
 	$scope.pay = function(){
 		handler.open({
 	      name: 'Naveh',
 	      description: 'Skin Care Products',
-	      amount: $scope.order.totalCost * 100
+	      amount: $scope.order.total * 100
 	    });
 	}
 })

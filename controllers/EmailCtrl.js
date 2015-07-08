@@ -1,4 +1,4 @@
-var emailService = require('../services/email-service');
+var emailService = require('../services/EmailService');
 
 
 

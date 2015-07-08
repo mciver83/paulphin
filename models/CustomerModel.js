@@ -1,11 +1,15 @@
 var mongoose = require('mongoose'),
 	Product = require('../models/ProductModel.js'),
 	Order = require('../models/OrderModel.js'),
-	address = require('../models/AddressModel.js');
+	address = require('../models/AddressModel.js'),
+	bcrypt = require('bcrypt-nodejs');
 
 var CustomerSchema = mongoose.Schema({
 	name: { type: String, required: true },
-	email: [{type: String, unique: true, required: true}],
+	local: {
+        email: { type: String },
+        password: { type: String}
+    },
 	phone: { type: String },
 	address: [address],
 	cart: [{
@@ -15,7 +19,17 @@ var CustomerSchema = mongoose.Schema({
 	}],
 	orders: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Order' }],
 	createdAt: { type: Date, default: Date.now },
-	updatedAt: { type: Date, default: Date.now }
+	updatedAt: { type: Date, default: Date.now },
+	admin: { type: Boolean, default: false }
 })
+
+CustomerSchema.methods.generateHash = function(password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+};
+
+// checking if password is valid
+CustomerSchema.methods.validPassword = function(password) {
+    return bcrypt.compareSync(password, this.local.password);
+};
 
 module.exports = mongoose.model('Customer', CustomerSchema);

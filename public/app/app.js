@@ -51,7 +51,7 @@ app.config(function($routeProvider){
 			}
 		}
 	})
-	.when('/shop/:uId', {
+	.when('/store/:uId', {
 		templateUrl: 'app/views/store.html',
 		controller: 'shopCtrl',
 		resolve: {
@@ -63,7 +63,6 @@ app.config(function($routeProvider){
 			customer: function(customerService, $route){
 				var id = '_id'
 				return customerService.getCustomer(id, $route.current.params.uId).then(function(response){
-					console.log(response);
 					return response.data[0];
 				})
 			}
@@ -76,6 +75,7 @@ app.config(function($routeProvider){
 			customer: function(customerService, $route){
 				var id = '_id'
 				return customerService.getCustomer(id, $route.current.params.uId).then(function(response){
+					console.log(1111)
 					return response.data[0];
 				})
 			}
@@ -91,6 +91,10 @@ app.config(function($routeProvider){
 				})
 			}
 		}
+	})
+	.when('/admin', {
+		templateUrl: 'app/views/admin.html',
+		controller: 'adminCtrl'
 	})
 	.when('/admin/products', {
 		templateUrl: 'app/views/products.html',

@@ -16,6 +16,22 @@ app.service('instagramService', function($http, $q){
 })
 
 
+
+
+app.service('authService', function($http){
+
+	this.auth = function(email, password){
+		return $http({
+			method: 'GET',
+			url: 'http://localhost:9003/api/admin/auth?email=' + email + '&password=' + password
+		})
+	}
+})
+
+
+
+
+
 app.service('productService', function($http, $q){
 
 
@@ -138,7 +154,7 @@ app.service('cartService', function($http, $q){
 	}
 })
 
-app.service('orderService', function($http, $q, $routParams){
+app.service('orderService', function($http, $q, $routeParams){
 
 	this.placeOrder = function(order){
 		return $http({

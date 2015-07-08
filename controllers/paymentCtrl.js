@@ -1,7 +1,7 @@
 var stripe = require('stripe')(
 	'sk_test_hmNf5aQpZ0J4Lana3HtHlJDR'
 	),
-	EmailCtrl = require('./controllers/EmailCtrl.js'),
+	EmailCtrl = require('../controllers/EmailCtrl.js'),
 	Order = require('../models/OrderModel.js');
 
 module.exports.submitStripe = function(req, res){
