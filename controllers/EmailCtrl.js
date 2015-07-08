@@ -15,7 +15,7 @@ module.exports.sendReceipt = function(data){
 			"from_name":"Paul",
 			"to":[{
 				// "email": data.customer.email[0],
-				"email": "markmciver83@gmail.com",
+				"email": data.customer.local.email,
 				"name": data.customer.name,
 				"type":"to"
 		}]

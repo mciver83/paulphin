@@ -247,7 +247,9 @@ app.controller('checkoutCtrl', function($scope, $location, customer, customerSer
 
 		var obj = {
 			name: name,
-			email: email
+			local: {
+				email: email
+			}
 		}
 		customerService.updateCustomer($scope.customer._id, obj).then(function(response){
 			customerService.getCustomer('_id', customer._id).then(function(response){

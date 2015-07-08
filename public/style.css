@@ -121,6 +121,10 @@ main {
 	align-items: center;
 }
 
+.align-end {
+	align-items: flex-end;
+}
+
 .align-start {
 	align-items: flex-start;
 }
