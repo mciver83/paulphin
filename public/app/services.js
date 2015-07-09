@@ -241,13 +241,13 @@ app.service('orderService', function($http, $q, $routeParams){
 		})
 	}
 
-	this.submitStripe = function(token){
-		return $http({
-			method: 'POST',
-			url: '/api/orders/' + $routeParams.id + '/payment',
-			data: token
-		})
-	}
+	// this.submitStripe = function(token){
+	// 	return $http({
+	// 		method: 'POST',
+	// 		url: '/api/orders/' + $routeParams.id + '/payment',
+	// 		data: token
+	// 	})
+	// }
 })
 
 app.service('emailService', function($http){

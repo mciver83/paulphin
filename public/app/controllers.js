@@ -276,26 +276,8 @@ app.controller('paymentCtrl', function($scope, order){
 	}
 
 	$scope.chargeLocation = '/charge/' + $scope.order._id;
-
-	
-
-	// Stripe Response Handler
-  //   $scope.stripeCallback = function (result) {
-  //       console.log(result);
-  //     	if (result.error) {
-  //       	window.alert('it failed! error: ' + result.error.message);
-  //     	} else {
-  //     		$http({
-  //     			method: 'POST',
-  //     			url: 'http://localhost:9003/api/charge/' + $scope.order._id
-  //     		}).then(function(response){
-  //     			console.log(response)
-  //     		}), function(error){
-  //     			console.log(error)
-  //     		}
-
-
-  // 		}
- 	// };
 })
 
+app.controller('confirmationCtrl', function($scope, order){
+	$scope.order = order
+})

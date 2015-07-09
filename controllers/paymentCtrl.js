@@ -27,9 +27,12 @@ module.exports.submitStripe = function(req, res){
 				  	order.save(function(err, saveData){
 				  		if(err){
 				  			res.send(err)
+				  		} else {
+				  			console.log(5555, saveData)
+						  	EmailCtrl.sendReceipt(saveData);
+						  	res.redirect('/#/confirmation/' + order._id)//change this ro confirmation page
+						  	// res.send(saveData);
 				  		}
-				  	EmailCtrl.sendReceipt(saveData);
-				  	res.send(saveData);
 			  		})
 				 }
 			});

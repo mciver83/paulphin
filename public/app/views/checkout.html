@@ -33,7 +33,7 @@
 		<input type="text" ng-model="customer.address[0].city" placeholder="city" required>
 		<input type="text" ng-model="customer.address[0].state" placeholder="state" required>
 		<input type="number" ng-model="customer.address[0].zip" placeholder="zip" required>
-		<button ng-click="submitShippingInfo(customer.name, customer.email, customer.address[0].name, customer.address[0].address, customer.address[0].address2, customer.address[0].city, customer.address[0].state, customer.address[0].zip)">submit and place order</button>
+		<button ng-click="submitShippingInfo(customer.name, customer.local.email, customer.address[0].name, customer.address[0].address, customer.address[0].address2, customer.address[0].city, customer.address[0].state, customer.address[0].zip)">submit and place order</button>
 	</div>
 </main>
 

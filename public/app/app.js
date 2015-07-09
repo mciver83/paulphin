@@ -93,6 +93,17 @@ app.config(function($routeProvider){
 			}
 		}
 	})
+	.when('/confirmation/:orderId', {
+		templateUrl: '/app/views/confirmation.html',
+		controller: 'confirmationCtrl',
+		resolve: {
+			order: function(orderService, $route){
+				return orderService.getOrder($route.current.params.orderId).then(function(response){
+					return response.data[0];
+				})
+			}
+		}
+	})
 	.when('/admin/products', {
 		templateUrl: 'app/views/products.html',
 		controller: 'adminCtrl',
