@@ -84,23 +84,26 @@ app.controller('homeCtrl', function($scope, customer){
 
 
 //about page
-app.controller('aboutCtrl', function($scope, instagram, customer){
+app.controller('aboutCtrl', function($scope, instagram, customer, cart){
 
 	$scope.feed = instagram;
 	$scope.customer = customer;
-	if($scope.customer){
-		$scope.cart = $scope.customer.cart;
-	}
+	// if($scope.customer){
+	// 	$scope.cart = $scope.customer.cart;
+	// } 
+
+	$scope.cart = cart
 })
 
 
 //contact page
-app.controller('contactCtrl', function($scope, emailService, customer){
+app.controller('contactCtrl', function($scope, emailService, customer, cart){
 
 	$scope.customer = customer;
-	if($scope.customer){
-		$scope.cart = $scope.customer.cart;
-	}
+	// if($scope.customer){
+	// 	$scope.cart = $scope.customer.cart;
+	// }
+	$scope.cart = cart;
 
 	$scope.sendEmail = function(fromEmail, fromName, toEmail, toName, subject, message){
 		emailService.sendEmail(fromEmail, fromName, toEmail, toName, subject, message).then(function(response){
@@ -116,53 +119,38 @@ app.controller('contactCtrl', function($scope, emailService, customer){
 
 
 //controls the shopping area and views products
-app.controller('shopCtrl', function($scope, $location, productService, cartService, customerService, products, customer){
+app.controller('shopCtrl', function($scope, $location, productService, cartService, cart, customerService, products, customer){
 
 	$scope.customer = customer;
-	if($scope.customer){
-		$scope.cart = $scope.customer.cart;
-	}
-
-	// var total = 0;
-	// for(var i = 0; i < $scope.cart.length; i++){
-	// 	$scope.cart[i].total = $scope.cart[i].quantity * $scope.cart[i].product.price;
-	// 	total += $scope.cart[i].total;
-	// 	$scope.total = total.toFixed(2);
+	// if($scope.customer){
+	// 	$scope.cart = $scope.customer.cart;
 	// }
+
+	$scope.cart = cart;
+
 
 	$scope.products = products;
 
-	// $scope.getCustomer = function(){
-	// 	customerService.getCustomer('_id', customer._id).then(function(response){
-	// 		$scope.customer = response.data[0];
-	// 		$scope.cart = $scope.customer.cart;
-	// 		$scope.total = 0;
-	// 		for(var i = 0; i < $scope.cart.length; i++){
-	// 			$scope.cart[i].total = $scope.cart[i].product.price * $scope.cart[i].quantity;
-	// 			$scope.total += Number($scope.cart[i].total);
-	// 		}
+
+	//use is session doesn't work
+	// $scope.addToCart = function(customerId, productId, price){
+	// 	cartService.addToCart(customerId, productId, price).then(function(response){
+	// 		$scope.getCustomer();
 	// 	})
 	// }
 
-	// $scope.getProducts = function(){
-	// 	productService.getProducts().then(function(response){
-	// 		$scope.products = response.data;
-	// 	})
-	// }
-
-
-	$scope.addToCart = function(customerId, productId, price){
-		cartService.addToCart(customerId, productId, price).then(function(response){
-			$scope.getCustomer();
+	$scope.addToCart = function(product){
+		var product = {
+			id: product._id,
+			title: product.title,
+			image: product.image,
+			price: product.price,
+			quantity: 1
+		}
+		cartService.addToCart(product).then(function(response){
+			$scope.cart = response.data;
 		})
 	}
-
-	
-
-	
-
-	// $('.pop-up-back').on('click', $scope.showCart())
-
 })
 
 
@@ -279,5 +267,5 @@ app.controller('paymentCtrl', function($scope, order){
 })
 
 app.controller('confirmationCtrl', function($scope, order){
-	$scope.order = order
+	$scope.order = order;
 })

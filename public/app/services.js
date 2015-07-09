@@ -107,6 +107,13 @@ app.service('productService', function($http, $q){
 		})
 	}
 
+	this.getOneProduct = function(id){
+		return $http({
+			method: 'GET',
+			url: 'http://localhost:9003/api/products?_id=' + id
+		})
+	}
+
 	// this.updateProduct = function(id, title, description, price){
 	// 	return $http({
 	// 		method: 'PUT',
@@ -175,35 +182,73 @@ app.service('customerService', function($http, $q){
 })
 
 app.service('cartService', function($http, $q){
+	// use this if sessions doesn't work
+	// this.addToCart = function(customerId, productId, price){
+	// 	return $http({
+	// 		method: 'POST',
+	// 		url: 'http://localhost:9003/api/customers/cart/' + customerId,
+	// 		data: {
+	// 			product: productId,
+	// 			price: price
+	// 		}
+	// 	})
+	// }
+	// this.updateItem = function(customerId, itemId, quantity){
+	// 	return $http({
+	// 		method: 'PUT',
+	// 		url: 'http://localhost:9003/api/customers/cart/' + customerId + '/' + itemId,
+	// 		data: {
+	// 			'cart.$.quantity': quantity
+	// 		}
+	// 	})
+	// }
 
-	this.addToCart = function(customerId, productId, price){
+	// this.removeItem = function(customerId, itemId){
+	// 	return $http({
+	// 		method: 'DELETE',
+	// 		url: 'http://localhost:9003/api/customers/cart/' + customerId + '/' + itemId
+	// 	})
+	// }
+
+
+	this.addToCart = function(data){
 		return $http({
 			method: 'POST',
-			url: 'http://localhost:9003/api/customers/cart/' + customerId,
-			data: {
-				product: productId,
-				price: price
-			}
+			url: 'http://localhost:9003/api/cart/',
+			data: data
+		})		
+
+	}
+
+	this.getCart = function(){
+		return $http({
+			method: 'GET',
+			url: 'http://localhost:9003/api/cart'
 		})
 	}
 
-
-	this.updateItem = function(customerId, itemId, quantity){
+	this.updateItem = function(data){
 		return $http({
 			method: 'PUT',
-			url: 'http://localhost:9003/api/customers/cart/' + customerId + '/' + itemId,
+			url: 'http://localhost:9003/api/cart',
+			data: data
+		})
+	}
+
+	this.removeItem = function(id){
+		console.log(11111,id)
+		return $http({
+			method: 'PUT',
+			url: 'http://localhost:9003/api/cart/remove',
 			data: {
-				'cart.$.quantity': quantity
+				id: id
 			}
 		})
 	}
 
-	this.removeItem = function(customerId, itemId){
-		return $http({
-			method: 'DELETE',
-			url: 'http://localhost:9003/api/customers/cart/' + customerId + '/' + itemId
-		})
-	}
+
+
+	
 })
 
 app.service('orderService', function($http, $q, $routeParams){

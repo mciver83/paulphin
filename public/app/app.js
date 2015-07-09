@@ -52,7 +52,24 @@ app.config(function($routeProvider){
 			}
 		}
 	})
-	.when('/store/:uId', {
+	// .when('/store/:uId', {
+	// 	templateUrl: 'app/views/store.html',
+	// 	controller: 'shopCtrl',
+	// 	resolve: {
+	// 		products: function(productService){
+	// 			return productService.getProducts().then(function(response){
+	// 				return response.data;
+	// 			})
+	// 		},
+	// 		customer: function(customerService, $route){
+	// 			var id = '_id'
+	// 			return customerService.getCustomer(id, $route.current.params.uId).then(function(response){
+	// 				return response.data[0];
+	// 			})
+	// 		}
+	// 	}
+	// })
+	.when('/store/:uId?', {
 		templateUrl: 'app/views/store.html',
 		controller: 'shopCtrl',
 		resolve: {
@@ -62,9 +79,18 @@ app.config(function($routeProvider){
 				})
 			},
 			customer: function(customerService, $route){
-				var id = '_id'
-				return customerService.getCustomer(id, $route.current.params.uId).then(function(response){
-					return response.data[0];
+				if($route.current.params.uId){
+					var id = '_id'
+					return customerService.getCustomer(id, $route.current.params.uId).then(function(response){
+						return response.data[0];
+					})
+				} 
+			},
+			cart: function(cartService){
+				return cartService.getCart().then(function(response){
+					console.log(response, 232323)
+					console.log(response.data, 44444)
+					return response.data
 				})
 			}
 		}
@@ -76,7 +102,6 @@ app.config(function($routeProvider){
 			customer: function(customerService, $route){
 				var id = '_id'
 				return customerService.getCustomer(id, $route.current.params.uId).then(function(response){
-					console.log(1111)
 					return response.data[0];
 				})
 			}

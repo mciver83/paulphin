@@ -7,18 +7,18 @@
 		<div id="cartItem"class="flex-row align-start space-around " ng-repeat="item in cart">
 			<div>
 				<p>item:</p>
-				<img class="image-thumbnail" ng-src="{{item.product.image}}"/>
+				<img class="image-thumbnail" ng-src="{{item.image}}"/>
 			</div>
 			<div>
 				<p>quantity:</p>
-				<input id="quantity" class="input-number" type=number ng-model="item.quantity" ng-change="updateItem(customer._id, item._id, item.quantity)">
+				<input id="quantity" class="input-number" type=number ng-model="item.quantity" ng-change="updateItem(item.id, item.quantity)">
 			</div>
 			<div>
 				<p>item total:</p>
 				<p>${{item.total}}</p>
 			</div>
 			<div>
-				<i class="fa fa-times" ng-click="removeItem(customer._id, item._id)"></i>
+				<i class="fa fa-times" ng-click="removeItem(item.id)"></i>
 			</div>
 		</div>
 		

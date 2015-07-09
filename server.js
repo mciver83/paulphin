@@ -12,6 +12,7 @@ var express = require('express'),
 	mongoUri = 'mongodb://localhost:27017/paulphin';
 
 
+
 //controllers
 var ProductCtrl = require('./controllers/ProductCtrl'),
 	CustomerCtrl = require('./controllers/CustomerCtrl'),
@@ -53,7 +54,6 @@ require('./admin/routes.js')(app, passport); // load our routes and pass in our 
 
 
 
-
 // store products
 app.get('/api/products', ProductCtrl.get);
 
@@ -83,11 +83,36 @@ app.put('/api/customers', CustomerCtrl.update);
 app.delete('/api/customers', CustomerCtrl.delete);
 
 			//cart
-app.post('/api/customers/cart/:customerId', CartCtrl.create);
+// app.post('/api/customers/cart/:customerId', CartCtrl.create);
 
-app.put('/api/customers/cart/:customerId/:cartItemId', CartCtrl.update);
+// app.put('/api/customers/cart/:customerId/:cartItemId', CartCtrl.update);
 
-app.delete('/api/customers/cart/:customerId/:cartItemId', CartCtrl.delete);
+// app.delete('/api/customers/cart/:customerId/:cartItemId', CartCtrl.delete);
+
+
+//testing cart on session
+
+function cart(req, res, next){
+	if(!req.session.cart){
+		req.session.cart = [];
+		next()
+	}
+	next()
+}
+
+app.post('/api/cart/', cart, CartCtrl.addProduct);
+
+app.get('/api/cart/', cart, CartCtrl.getCart);
+
+app.put('/api/cart/remove', cart, CartCtrl.deleteItem);
+
+app.put('/api/cart/', cart, CartCtrl.updateItem);
+
+
+
+// app.put('/api/cart/', CartCtrl.update);
+
+// app.delete('/api/cart/', CartCtrl.delete);
 
 			//shippind address
 app.post('/api/customers/address/:customerId', AddressCtrl.create);

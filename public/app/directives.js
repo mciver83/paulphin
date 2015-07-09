@@ -6,11 +6,13 @@ app.directive('mainHeader', function(){
 		templateUrl: 'app/directives/header.html',
 		transclude: true,
 		link: function(scope, element, attrs){
-			element.find('#cart').hide();
-			if(scope.customer){
-				element.find('#store').hide();
-				element.find('#cart').show();
-			}
+			scope.$watch('cart', function(){
+				element.find('#cart').hide();
+				if(scope.cart.length > 0){
+					element.find('#store').hide();
+					element.find('#cart').show();
+				}
+			})
 		},
 		controller: function($scope, $location, customerService){
 			$scope.toPath = function(location){
@@ -52,7 +54,7 @@ app.directive('product', function(){
 				element.find('.itemInCart').hide();
 				element.find('i').show();
 				for(var i = 0; i < scope.cart.length; i++){
-					if(scope.product._id === scope.cart[i].product._id){
+					if(scope.product._id === scope.cart[i].id){
 						element.find('i').hide()
 						element.find('.itemInCart').show();
 					}
@@ -118,59 +120,77 @@ app.directive('cart', function(){
 	return {
 		restrict: 'AE',
 		templateUrl: 'app/directives/cart.html',
-		// link: function(scope, element, attrs){
-		// 	element.find('.pop-up-back').on('click', function(){
-		// 		scope.show = !scope.show;
-		// 	})
-		// },
-		controller: function($scope, cartService, $location, customerService){
-			if($scope.customer){
-				$scope.cart = $scope.customer.cart;
+		link: function(scope, element, attrs){
+			scope.$watch('cart', function(){
 				var total = 0;
-				for(var i = 0; i < $scope.cart.length; i++){
-					$scope.cart[i].total = $scope.cart[i].quantity * $scope.cart[i].product.price;
-					total += $scope.cart[i].total;
-					$scope.total = total.toFixed(2);
+				for(var i = 0; i < scope.cart.length; i++){
+					scope.cart[i].total = scope.cart[i].quantity * scope.cart[i].price;
+					total += scope.cart[i].total;
+					scope.total = total.toFixed(2);
 				}
-			}
+			})
+		},
+		controller: function($scope, cartService, $location, customerService){
 
-			$scope.getCustomer = function(){
-				customerService.getCustomer('_id', $scope.customer._id).then(function(response){
-					$scope.customer = response.data[0];
-					$scope.cart = $scope.customer.cart;
-					$scope.total = 0;
-					for(var i = 0; i < $scope.cart.length; i++){
-						$scope.cart[i].total = $scope.cart[i].product.price * $scope.cart[i].quantity;
-						$scope.total += Number($scope.cart[i].total);
-					}
+			
+			
+			// if($scope.customer){
+			// 	$scope.cart = $scope.customer.cart;
+			// 	var total = 0;
+			// 	for(var i = 0; i < $scope.cart.length; i++){
+			// 		$scope.cart[i].total = $scope.cart[i].quantity * $scope.cart[i].product.price;
+			// 		total += $scope.cart[i].total;
+			// 		$scope.total = total.toFixed(2);
+			// 	}
+			// }
+
+			// $scope.getCustomer = function(){
+			// 	customerService.getCustomer('_id', $scope.customer._id).then(function(response){
+			// 		$scope.customer = response.data[0];
+			// 		$scope.cart = $scope.customer.cart;
+			// 		$scope.total = 0;
+			// 		for(var i = 0; i < $scope.cart.length; i++){
+			// 			$scope.cart[i].total = $scope.cart[i].product.price * $scope.cart[i].quantity;
+			// 			$scope.total += Number($scope.cart[i].total);
+			// 		}
+			// 	})
+			// }
+
+			// $scope.removeItem = function(customerId, itemId){
+			// 	if(confirm('remove item from cart?')){
+			// 		cartService.removeItem(customerId, itemId).then(function(response){
+			// 			$scope.getCustomer();
+			// 		})	
+			// 	}
+			// }
+
+			$scope.updateItem = function(id, quantity){
+				var data = {
+					id: id,
+					quantity: quantity
+				}
+				cartService.updateItem(data).then(function(response){
+					$scope.cart = response.data
 				})
 			}
 
-			$scope.removeItem = function(customerId, itemId){
-				if(confirm('remove item from cart?')){
-					cartService.removeItem(customerId, itemId).then(function(response){
-						$scope.getCustomer();
-					})	
-				}
-			}
-
-			$scope.updateItem = function(customerId, itemId, quantity){
-				cartService.updateItem(customerId, itemId, quantity).then(function(response){
-					$scope.getCustomer();
+			$scope.removeItem = function(id){
+				cartService.removeItem(id).then(function(response){
+					$scope.cart = response.data
 				})
 			}
 
-			$scope.checkout = function(){
-				$location.path('/checkout/' + $scope.customer._id);
-			}
+			// $scope.checkout = function(){
+			// 	$location.path('/checkout/' + $scope.customer._id);
+			// }
 
 			$scope.showCart = function(){
 				$scope.show = !$scope.show;
 			}
-			$scope.backToStore = function(){
-				$scope.show = !$scope.show;
-				$location.path('/store/' + $scope.customer._id)
-			}
+			// $scope.backToStore = function(){
+			// 	$scope.show = !$scope.show;
+			// 	$location.path('/store/' + $scope.customer._id)
+			// }
 		}
 	}
 })
