@@ -7,7 +7,6 @@ var stripe = require('stripe')(
 module.exports.submitStripe = function(req, res){
 	var stripeToken = req.body.stripeToken;
 	Order.findById(req.params.orderId)
-	.populate('customer')
 	.populate('products.product')
 	.exec(function(err, order){
 		if(err){
@@ -17,7 +16,7 @@ module.exports.submitStripe = function(req, res){
 				amount: order.total * 100,
 				currency: "usd",
 				card: stripeToken,
-				description: order.customer._id + ' paying for order ' + order._id
+				description: order.customer.name + ' paying for order ' + order._id
 			}, function(err, data) {
 				if(err){
 			  	    res.send(err);

@@ -2,10 +2,10 @@ var app = angular.module('ecommerce');
 
 
 // admin and add, update and delete products
-app.controller('adminCtrl', function($scope, authService){
+// app.controller('adminCtrl', function($scope, authService){
 	
 	
-})
+// })
 
 
 
@@ -72,11 +72,11 @@ app.controller('orderCtrl', function($scope, orders, adminService){
 
 
 //controls the home page of website
-app.controller('homeCtrl', function($scope, customer){
-	$scope.customer = customer;
-	if($scope.customer){
-		$scope.cart = $scope.customer.cart;
-	}
+app.controller('homeCtrl', function($scope){
+	// $scope.customer = customer;
+	// if($scope.customer){
+	// 	$scope.cart = $scope.customer.cart;
+	// }
 
 })
 
@@ -84,26 +84,25 @@ app.controller('homeCtrl', function($scope, customer){
 
 
 //about page
-app.controller('aboutCtrl', function($scope, instagram, customer, cart){
+app.controller('aboutCtrl', function($scope, instagram){
 
 	$scope.feed = instagram;
-	$scope.customer = customer;
+	// $scope.customer = customer;
 	// if($scope.customer){
 	// 	$scope.cart = $scope.customer.cart;
 	// } 
 
-	$scope.cart = cart
 })
 
 
 //contact page
-app.controller('contactCtrl', function($scope, emailService, customer, cart){
+app.controller('contactCtrl', function($scope, emailService){
 
-	$scope.customer = customer;
+	// $scope.customer = customer;
 	// if($scope.customer){
 	// 	$scope.cart = $scope.customer.cart;
 	// }
-	$scope.cart = cart;
+
 
 	$scope.sendEmail = function(fromEmail, fromName, toEmail, toName, subject, message){
 		emailService.sendEmail(fromEmail, fromName, toEmail, toName, subject, message).then(function(response){
@@ -119,9 +118,9 @@ app.controller('contactCtrl', function($scope, emailService, customer, cart){
 
 
 //controls the shopping area and views products
-app.controller('shopCtrl', function($scope, $location, productService, cartService, cart, customerService, products, customer){
+app.controller('shopCtrl', function($scope, $location, productService, cartService, cart, customerService, products){
 
-	$scope.customer = customer;
+	// $scope.customer = customer;
 	// if($scope.customer){
 	// 	$scope.cart = $scope.customer.cart;
 	// }
@@ -156,34 +155,41 @@ app.controller('shopCtrl', function($scope, $location, productService, cartServi
 
 
 // controls the ordering process
-app.controller('checkoutCtrl', function($scope, $location, customer, customerService, cartService, orderService){
+app.controller('checkoutCtrl', function($scope, $location, customerService, cartService, orderService, cart){
 
-	$scope.customer = customer;
-	$scope.cart = $scope.customer.cart;
-
-	var name = $scope.customer.name;
-	if(name.includes('guest', 0)){
-		$scope.customer.name = '';
-	}
+	// $scope.customer = customer;
+	$scope.cart = cart;
 
 	var total = 0;
 	for(var i = 0; i < $scope.cart.length; i++){
-		$scope.cart[i].total = $scope.cart[i].quantity * $scope.cart[i].product.price;
+		$scope.cart[i].total = $scope.cart[i].quantity * $scope.cart[i].price;
 		total += $scope.cart[i].total;
 		$scope.total = total.toFixed(2);
 	}
 
-	$scope.getCustomer = function(){
-		customerService.getCustomer('_id', customer._id).then(function(response){
-			$scope.customer = response.data[0];
-			$scope.cart = $scope.customer.cart;
-			$scope.total = 0;
-			for(var i = 0; i < $scope.cart.length; i++){
-				$scope.cart[i].total = $scope.cart[i].product.price * $scope.cart[i].quantity;
-				$scope.total += Number($scope.cart[i].total);
-			}
-		})
-	}
+	// var name = $scope.customer.name;
+	// if(name.includes('guest', 0)){
+	// 	$scope.customer.name = '';
+	// }
+
+	// var total = 0;
+	// for(var i = 0; i < $scope.cart.length; i++){
+	// 	$scope.cart[i].total = $scope.cart[i].quantity * $scope.cart[i].product.price;
+	// 	total += $scope.cart[i].total;
+	// 	$scope.total = total.toFixed(2);
+	// }
+
+	// $scope.getCustomer = function(){
+	// 	customerService.getCustomer('_id', customer._id).then(function(response){
+	// 		$scope.customer = response.data[0];
+	// 		$scope.cart = $scope.customer.cart;
+	// 		$scope.total = 0;
+	// 		for(var i = 0; i < $scope.cart.length; i++){
+	// 			$scope.cart[i].total = $scope.cart[i].product.price * $scope.cart[i].quantity;
+	// 			$scope.total += Number($scope.cart[i].total);
+	// 		}
+	// 	})
+	// }
 
 	// $scope.removeItem = function(customerId, itemId, quantity){
 	// 	confirm('remove item from cart?');
@@ -199,19 +205,15 @@ app.controller('checkoutCtrl', function($scope, $location, customer, customerSer
 	// }
 
 	$scope.backToShop = function(){
-		$location.path('/shop/' + customer._id);
+		$location.path('/shop/');
 	}
 
-	$scope.showAddressForm = function(){
-		$scope.show = true;
-	}
-
-	$scope.placeOrder = function(){
+	$scope.placeOrder = function(customer, address, products){
 		var order = {
-			customer: customer._id,
-			products: $scope.customer.cart,
+			customer: customer,
+			products: products,
 			total: $scope.total,
-			address: $scope.customer.address[0]
+			address: address
 		}
 		orderService.placeOrder(order).then(function(response){
 			$location.path('/payment/' + response.data._id);
@@ -221,6 +223,11 @@ app.controller('checkoutCtrl', function($scope, $location, customer, customerSer
 	}
 
 	$scope.submitShippingInfo = function(name, email, shipTo, address, address2, city, state, zip){
+		var customer = {
+			name: name,
+			email: email
+		}
+
 		var address = {
 			name: shipTo,
 			address: address,
@@ -228,28 +235,20 @@ app.controller('checkoutCtrl', function($scope, $location, customer, customerSer
 			city: city,
 			state: state,
 			zip: zip
-		};
-		customerService.addAddress($scope.customer._id, address).then(function(response){
-			alert('shipping address added')
-		});
-
-		var obj = {
-			name: name,
-			local: {
-				email: email
-			}
 		}
-		customerService.updateCustomer($scope.customer._id, obj).then(function(response){
-			customerService.getCustomer('_id', customer._id).then(function(response){
-				$scope.customer = response.data[0];
-				$scope.cart = $scope.customer.cart;
-				$scope.total = 0;
-				for(var i = 0; i < $scope.cart.length; i++){
-					$scope.total += Number($scope.cart[i].product.price * $scope.cart[i].quantity);
-				}
-			})
-			$scope.placeOrder();
-		})
+
+		var products = [];
+		for(var i = 0; i < $scope.cart.length; i++){
+			var product = {
+				product: $scope.cart[i].id,
+				price: $scope.cart[i].price,
+				quantity: $scope.cart[i].quantity
+			}
+			products.push(product);
+		}
+
+
+		$scope.placeOrder(customer, address, products);
 	}
 
 	

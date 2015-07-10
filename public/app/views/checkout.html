@@ -6,9 +6,9 @@
 
 		<div class="flex-row content-center"> 
 			<div class="flex-row item" ng-repeat="item in cart">
-				<image class="image-thumbnail" ng-src="{{item.product.image}}"/>
+				<image class="image-thumbnail" ng-src="{{item.image}}"/>
 				<div class="flex-column content-center align-start">
-					<p class="flex1_5 border-bottom"><stong>title:</strong> {{item.product.title}}</p>
+					<p class="flex1_5 border-bottom"><stong>title:</strong> {{item.title}}</p>
 					<p class="flex1"><strong>quatity:</strong> {{item.quantity}}</p>
 					<p class="flex1"><strong>price:</strong> ${{item.total}}</p>
 				</div>
@@ -23,17 +23,17 @@
 
 	<div class="flex-column align-items-center width50">
 		<h1>contact information:</h1>
-		<input type="text" ng-model="customer.name" placeholder="name" required>
-		<input type="text" ng-model="customer.local.email" placeholder="email" required>
+		<input type="text" ng-model="order.name" placeholder="name" required>
+		<input type="text" ng-model="order.email" placeholder="email" required>
 		<!-- <input type="text" ng-model="customer.phone" placeholder="phone (optional)" required> -->
 		<h1>ship order to:</h1>
-		<input type="text" ng-model="customer.address[0].name" placeholder="name (if different than above)">
-		<input type="text" ng-model="customer.address[0].address" placeholder="address" required>
-		<input type="text" ng-model="customer.address[0].address2" placeholder="address 2">
-		<input type="text" ng-model="customer.address[0].city" placeholder="city" required>
-		<input type="text" ng-model="customer.address[0].state" placeholder="state" required>
-		<input type="number" ng-model="customer.address[0].zip" placeholder="zip" required>
-		<button ng-click="submitShippingInfo(customer.name, customer.local.email, customer.address[0].name, customer.address[0].address, customer.address[0].address2, customer.address[0].city, customer.address[0].state, customer.address[0].zip)">submit and place order</button>
+		<input type="text" ng-model="order.address.name" placeholder="name (if different than above)">
+		<input type="text" ng-model="order.address.address" placeholder="address" required>
+		<input type="text" ng-model="order.address.address2" placeholder="address 2">
+		<input type="text" ng-model="order.address.city" placeholder="city" required>
+		<input type="text" ng-model="order.address.state" placeholder="state" required>
+		<input type="number" ng-model="order.address.zip" placeholder="zip" required>
+		<button ng-click="submitShippingInfo(order.name, order.email, order.address.name, order.address.address, order.address.address2, order.address.city, order.address.state, order.address.zip)">submit and place order</button>
 	</div>
 </main>
 

@@ -11,6 +11,9 @@ app.directive('mainHeader', function(){
 				if(scope.cart.length > 0){
 					element.find('#store').hide();
 					element.find('#cart').show();
+				} else {
+					element.find('#store').show();
+					element.find('#cart').hide();
 				}
 			})
 		},
@@ -180,17 +183,17 @@ app.directive('cart', function(){
 				})
 			}
 
-			// $scope.checkout = function(){
-			// 	$location.path('/checkout/' + $scope.customer._id);
-			// }
+			$scope.checkout = function(){
+				$location.path('/checkout/');
+			}
 
 			$scope.showCart = function(){
 				$scope.show = !$scope.show;
 			}
-			// $scope.backToStore = function(){
-			// 	$scope.show = !$scope.show;
-			// 	$location.path('/store/' + $scope.customer._id)
-			// }
+			$scope.backToStore = function(){
+				$scope.show = !$scope.show;
+				$location.path('/store/')
+			}
 		}
 	}
 })

@@ -4,7 +4,10 @@ var mongoose = require('mongoose'),
 	address = require('../models/AddressModel.js');
 
 var OrderSchema = new mongoose.Schema({
-	customer: {type: mongoose.Schema.Types.ObjectId, ref: 'Customer', required: true },
+	customer: {
+		name: { type: String, required: true },
+		email: { type: String, required: true }
+	},
 	products: [{
 		product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
 		price: { type: Number, min: 1, max: 100000, required: true },

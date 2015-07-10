@@ -10,14 +10,14 @@ module.exports = {
 				console.log(err);
 				res.status(500).send(err);
 			} else {
-				console.log(data)
-				Customer.findByIdAndUpdate(data.customer, 
-					{ $push: { 'orders': data._id }},
-					{ safe: true, upsert: true}, function(err){
-						if(err){
-							res.error(500).send(err)
-						}
-					});
+				// if(data.customer)
+				// Customer.findByIdAndUpdate(data.customer, 
+				// 	{ $push: { 'orders': data._id }},
+				// 	{ safe: true, upsert: true}, function(err){
+				// 		if(err){
+				// 			res.error(500).send(err)
+				// 		}
+				// 	});
 				res.send(data);
 
 			}
@@ -26,7 +26,6 @@ module.exports = {
 
 	get: function(req, res){
 		Order.find(req.query)
-		.populate('customer')
 		.populate('products.product')
 		.exec(function(err, data){
 			if(err){

@@ -280,7 +280,6 @@ app.service('orderService', function($http, $q, $routeParams){
 			method: 'PUT',
 			url: 'http://localhost:9003/api/orders/?_id=' + id,
 			data: {
-				'payment.status': paymentStatus,
 				status: orderStatus
 			}
 		})
