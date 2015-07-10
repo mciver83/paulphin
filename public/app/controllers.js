@@ -21,18 +21,20 @@ app.controller('adminCtrl', function($scope, adminService, customerService, cart
 
 	$scope.products = products;
 
-	$scope.addProduct = function(title, price, image, description){
-		adminService.addProduct(title, price, image, description).then(function(response){
+	$scope.addProduct = function(title, price, image, description, type){
+		adminService.addProduct(title, price, image, description, type).then(function(response){
 			$scope.newProduct = '';
-			$scope.productPrice = '';
+			$scope.productPrice = 20;
 			$scope.productDescription = '';
+			$scope.productImage = 'app/images/';
+			$scope.productType = '';
 			$scope.getProducts();
 		})
 	}
 
-	$scope.updateProduct = function(id, title, description, price){
+	$scope.updateProduct = function(id, title, description, price, type){
 		if(confirm("Are you sure you want to update this products info?")){
-			adminService.updateProduct(id, title, description, price).then(function(response){
+			adminService.updateProduct(id, title, description, price, type).then(function(response){
 				alert('This product has been updated.')
 				$scope.getProducts();
 			})
@@ -46,6 +48,8 @@ app.controller('adminCtrl', function($scope, adminService, customerService, cart
 			})
 		}
 	}
+
+	$scope.typeOptions = ['print', 'product'];
 
 })
 
@@ -129,6 +133,10 @@ app.controller('shopCtrl', function($scope, $location, productService, cartServi
 
 
 	$scope.products = products;
+
+	$scope.itemType = function(type){
+		$scope.type = type;
+	}
 
 
 	//use is session doesn't work

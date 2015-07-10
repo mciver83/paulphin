@@ -13,7 +13,8 @@
 		<div><p>image:</p><img class="image-thumbnail" ng-src="{{product.image}}"/></div>
 		<div><p>description:</p><input ng-model="product.description"></input> </div>
 		<div><p>price:</p><input id="number" type="number" ng-model="product.price"></input> </div>
-		<div><button ng-click="updateProduct(product._id, product.title, product.description, product.price)">update</button>
+		<div><p>type:</p><select ng-model="product.type" ng-options="option for option in typeOptions"></select> </div>
+		<div><button ng-click="updateProduct(product._id, product.title, product.description, product.price, product.type)">update</button>
 		<button ng-click="removeProduct(product._id)">delete</button></div>
 	</div>
 
@@ -26,7 +27,8 @@
 		<input class="input-number" type="number" ng-model="productPrice" placeholder="price"></input>
 		<input type="text" ng-model="productImage" placeholder="image url"/>
 		<textarea ng-model="productDescription" placeholder="decription: max 100 char"></textarea>
-		<button ng-click="addProduct(newProduct, productPrice, productImage, productDescription)">submit</button>
+		<select ng-model="productType" ng-options="option for option in typeOptions"></select>
+		<button ng-click="addProduct(newProduct, productPrice, productImage, productDescription, productType)">submit</button>
 	</div>
 	
 </main>

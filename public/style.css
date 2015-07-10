@@ -191,6 +191,9 @@ main {
 }
 
 .pop-up-back {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	margin: 0;
 	width: 100%;
 	height: 100%;
@@ -202,16 +205,21 @@ main {
 }
 
 .pop-up {
+	position: relative;
 	padding: 10px;
-	width: 50%;
-	min-height: 400px;
-	max-height: 70%;
-	position: fixed;
-	top: 25%;
-	left: 25%;
+	max-width: 50%;
+	min-width: 0;
+	/*min-height: 400px;*/
+	max-height: 90%;
+	max-width: 100%;
+	/*position: fixed;*/
+	/*top: 5%;
+	left: 15%;*/
 	box-shadow: 0px 0px 40px 10px rgba(0,0,0,0.7);
 	background: white;
+	border: 10px solid lightblue;
 	z-index: 10;
+	overflow: scroll;
 }
 
 #product .pop-up {
@@ -220,6 +228,10 @@ main {
 }
 
 .pop-up .product-image {
+	min-width: 100%;
+	max-width: 100%;
+	height: 100%;
+
 }
 
 #closeCart {

@@ -151,10 +151,10 @@ function isLoggedIn(req, res, next) {
     res.redirect('/admin/login');
 }
 
-function isAdmin(req, res, next) {
+function isAdmin(req, res, done) {
 	console.log(111111, req.user)
     if(req.user && req.user.admin){
-        next();
+        done();
     } else {
         res.status(403).send('you isnt an admin')
     }

@@ -20,7 +20,7 @@ app.service('instagramService', function($http, $q){
 
 app.service('adminService', function($http){
 
-	this.addProduct = function(title, price, image, description){
+	this.addProduct = function(title, price, image, description, type){
 		return $http({
 			method: 'POST',
 			url: 'http://localhost:9003/admin/products',
@@ -29,6 +29,7 @@ app.service('adminService', function($http){
 				price: price,
 				image: image,
 				description: description,
+				type: type
 			}
 		})
 	}
@@ -40,7 +41,7 @@ app.service('adminService', function($http){
 		})
 	}
 
-	this.updateProduct = function(id, title, description, price){
+	this.updateProduct = function(id, title, description, price, type){
 		return $http({
 			method: 'PUT',
 			url: 'http://localhost:9003/admin/products?id=' + id,
@@ -48,7 +49,8 @@ app.service('adminService', function($http){
 
 				title: title,
 				description: description,
-				price: price
+				price: price,
+				type: type
 			}
 		})
 	}

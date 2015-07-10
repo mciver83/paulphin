@@ -2,10 +2,13 @@
 
 <main>
 	
+<!-- <input type="text" ng-model="type"/> -->
 
+<a ng-click="itemType('print')">prints</a> <a ng-click="itemType('product')">products</a>
 	<div class="flex-row wrap">
-		<div ng-repeat="product in products">
-			<product></product>
+		
+		<div ng-repeat="product in products | filter: type">
+			<product type="product"></product>
 		</div>
 	</div>
 
