@@ -57,7 +57,7 @@ app.directive('product', function(){
 				element.find('.itemInCart').hide();
 				element.find('i').show();
 				for(var i = 0; i < scope.cart.length; i++){
-					if(scope.product._id === scope.cart[i].id){
+					if(scope.product._id === scope.cart[i].item.id){
 						element.find('i').hide()
 						element.find('.itemInCart').show();
 					}
@@ -86,10 +86,7 @@ app.directive('item', function(){
 app.directive('photo', function(){
 	return {
 		restrict: 'E',
-		templateUrl: 'app/directives/buildImage.html',
-		link: function(scope, element, attrs){
-			
-		}
+		templateUrl: 'app/directives/buildImage.html'
 	}
 })
 
@@ -148,7 +145,7 @@ app.directive('cart', function(){
 			scope.$watch('cart', function(){
 				var total = 0;
 				for(var i = 0; i < scope.cart.length; i++){
-					scope.cart[i].total = scope.cart[i].quantity * scope.cart[i].price;
+					scope.cart[i].total = scope.cart[i].quantity * scope.cart[i].item.price;
 					total += scope.cart[i].total;
 					scope.total = total.toFixed(2);
 				}

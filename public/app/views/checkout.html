@@ -6,9 +6,10 @@
 
 		<div class="flex-row content-center"> 
 			<div class="flex-row item" ng-repeat="item in cart">
-				<image class="image-thumbnail" ng-src="{{item.image}}"/>
+				<image class="image-cart" ng-src="{{item.item.imageUrl}}"/>
+				<image class="image-cart" ng-src="{{item.photo.imageUrl}}"/>
 				<div class="flex-column content-center align-start">
-					<p class="flex1_5 border-bottom"><stong>title:</strong> {{item.title}}</p>
+					<p class="flex1_5 border-bottom"><stong>title:</strong> {{item.item.title}}</p>
 					<p class="flex1"><strong>quatity:</strong> {{item.quantity}}</p>
 					<p class="flex1"><strong>price:</strong> ${{item.total}}</p>
 				</div>

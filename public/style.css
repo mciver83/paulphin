@@ -148,7 +148,7 @@ main {
 }
 
 #cartItem {
-	width: 60%;
+	width: 100%;
 	margin: auto;
 	border-bottom: 1px solid gray;
 	flex-shrink: 2;
@@ -182,6 +182,14 @@ main {
 }
 
 .image-thumbnail {
+	max-height: 190px;
+	max-width: 190px;
+	min-height: 190px;
+	min-width: 190px;
+	padding: 5px;
+}
+
+.image-small {
 	max-height: 100px;
 	max-width: 100px;
 	min-height: 100px;

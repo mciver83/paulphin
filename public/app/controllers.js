@@ -192,22 +192,20 @@ app.controller('shopCtrl', function($scope, $location, productService, cartServi
 	$scope.print = 'print';
 	$scope.item = 'product';
 
-	$scope.buildItem = '';
-	$scope.buildImage = '';
+	$scope.item = 'app/images/build-item.png';
+	$scope.imageUrl = 'app/images/build-image.png';
+
+
+
 
 	$scope.buildItem = function(item){
-		$scope.item = item;
-		$scope.buildItem = $scope.item.image;
+		$scope.product = item;
+		$scope.item = item.image;
 	}
 
 	$scope.buildImage = function(image){
-		$scope.image = image;
-		$scope.buildImage = $scope.image.imageUrl;
-	}
-
-	$scope.buildClear = function(item, image){
-		item = '';
-		image = '';
+		$scope.photo = image;
+		$scope.imageUrl = image.imageUrl;
 	}
 
 
@@ -218,15 +216,36 @@ app.controller('shopCtrl', function($scope, $location, productService, cartServi
 	// 	})
 	// }
 
-	$scope.addToCart = function(product){
-		var product = {
-			id: product._id,
-			title: product.title,
-			image: product.image,
-			price: product.price,
-			quantity: 1
+	$scope.addToCart = function(item, photo){
+		console.log(item, photo)
+		if(photo){
+			var product = {
+				item: {
+					id: item._id,
+					title: item.title,
+					imageUrl: item.image,
+					price: item.price,
+				},
+				photo: {
+					id: photo._id,
+					imageUrl: photo.imageUrl
+				}, 
+				quantity: 1
+			}
+		} else {
+			var product = {
+				item: {
+					id: item._id,
+					title: item.title,
+					imageUrl: item.image,
+					price: item.price,
+				}, 
+				quantity: 1
+			}
 		}
 		cartService.addToCart(product).then(function(response){
+			$scope.imageUrl = 'app/images/build-image.png';
+			$scope.item = 'app/images/build-item.png';
 			$scope.cart = response.data;
 		})
 	}
@@ -239,6 +258,7 @@ app.controller('checkoutCtrl', function($scope, $location, customerService, cart
 
 	// $scope.customer = customer;
 	$scope.cart = cart;
+	console.log(cart)
 
 	var total = 0;
 	for(var i = 0; i < $scope.cart.length; i++){
@@ -246,43 +266,6 @@ app.controller('checkoutCtrl', function($scope, $location, customerService, cart
 		total += $scope.cart[i].total;
 		$scope.total = total.toFixed(2);
 	}
-
-	// var name = $scope.customer.name;
-	// if(name.includes('guest', 0)){
-	// 	$scope.customer.name = '';
-	// }
-
-	// var total = 0;
-	// for(var i = 0; i < $scope.cart.length; i++){
-	// 	$scope.cart[i].total = $scope.cart[i].quantity * $scope.cart[i].product.price;
-	// 	total += $scope.cart[i].total;
-	// 	$scope.total = total.toFixed(2);
-	// }
-
-	// $scope.getCustomer = function(){
-	// 	customerService.getCustomer('_id', customer._id).then(function(response){
-	// 		$scope.customer = response.data[0];
-	// 		$scope.cart = $scope.customer.cart;
-	// 		$scope.total = 0;
-	// 		for(var i = 0; i < $scope.cart.length; i++){
-	// 			$scope.cart[i].total = $scope.cart[i].product.price * $scope.cart[i].quantity;
-	// 			$scope.total += Number($scope.cart[i].total);
-	// 		}
-	// 	})
-	// }
-
-	// $scope.removeItem = function(customerId, itemId, quantity){
-	// 	confirm('remove item from cart?');
-	// 	cartService.removeItem(customerId, itemId).then(function(response){
-	// 		$scope.getCustomer();
-	// 	})
-	// }
-
-	// $scope.updateItem = function(customerId, itemId, quantity){
-	// 	cartService.updateItem(customerId, itemId, quantity).then(function(response){
-	// 		$scope.getCustomer();
-	// 	})
-	// }
 
 	$scope.backToShop = function(){
 		$location.path('/shop/');
@@ -319,10 +302,19 @@ app.controller('checkoutCtrl', function($scope, $location, customerService, cart
 
 		var products = [];
 		for(var i = 0; i < $scope.cart.length; i++){
-			var product = {
-				product: $scope.cart[i].id,
-				price: $scope.cart[i].price,
-				quantity: $scope.cart[i].quantity
+			if($scope.cart[i].photo){
+				var product = {
+					product: $scope.cart[i].item.id,
+					photo: $scope.cart[i].photo.id,
+					price: $scope.cart[i].item.price,
+					quantity: $scope.cart[i].quantity
+				}
+			} else {
+				product = {
+					product: $scope.cart[i].item.id,
+					price: $scope.cart[i].item.price,
+					quantity: $scope.cart[i].quantity
+				}
 			}
 			products.push(product);
 		}

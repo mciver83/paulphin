@@ -7,7 +7,11 @@
 		<div id="cartItem"class="flex-row align-start space-around " ng-repeat="item in cart">
 			<div>
 				<p>item:</p>
-				<img class="image-cart" ng-src="{{item.image}}"/>
+				<img class="image-cart" ng-src="{{item.item.imageUrl}}"/>
+			</div>
+			<div>
+				<p>photo:</p>
+				<img class="image-cart" ng-src="{{item.photo.imageUrl}}"/>
 			</div>
 			<div>
 				<p>quantity:</p>

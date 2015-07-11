@@ -31,7 +31,10 @@
 			<header><h2>items</h2></header>
 			<div id="item" class="flex-column content-start">
 				<div class="item" ng-repeat="product in buildProducts">
-					<item></item>
+					<div class="flex-column">
+						<i ng-click="buildItem(product)" class="fa fa-plus center"></i><img class="image-small" ng-src="{{product.image}}"/>
+						<p>{{product.title}}</p>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -41,7 +44,10 @@
 			<header><h2>images</h2></header>
 			<div class="flex-row wrap">	
 				<div ng-repeat="photo in photos">
-					<photo></photo>
+					<div class="flex-column">
+						<i ng-click="buildImage(photo)"class="fa fa-plus center"></i>
+						<div pop-up><img id="image" class="image-small" ng-src="{{photo.imageUrl}}"/></div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -50,13 +56,12 @@
 
 		<div id="built-product" class="flex-column space-between align-items-center flex1">
 			<header><h2>Build My Item</h2></header>
-			<img id="chosen-item" ng-src="{{buildItem}}" alt="choose item" class="image-thumbnail border-color item">
+			<img id="chosen-item" ng-src="{{item}}" alt="choose item" class="image-thumbnail border-color item">
 			</img>
 
-			<img id="chosen-image" ng-src="{{buildImage}}" alt="choose image" class="image-thumbnail border-color item">
+			<img id="chosen-image" ng-src="{{imageUrl}}" alt="choose image" class="image-thumbnail border-color item">
 			</img>
-			<button ng-click="buildClear(buildItem, buildImage)">clear</button>
-			<button ng-click="addToCart()"><i class="fa fa-cart-plus"></i> add</button>
+			<button ng-click="addToCart(product, photo)"><i class="fa fa-cart-plus"></i> add</button>
 
 		</div>
 

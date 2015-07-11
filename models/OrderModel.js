@@ -1,5 +1,5 @@
 var mongoose = require('mongoose'),
-	Customer = require('../models/CustomerModel.js'),
+	Photo = require('../models/PhotoModel.js'),
 	Product = require('../models/ProductModel.js'),
 	address = require('../models/AddressModel.js');
 
@@ -10,6 +10,7 @@ var OrderSchema = new mongoose.Schema({
 	},
 	products: [{
 		product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
+		photo: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
 		price: { type: Number, min: 1, max: 100000, required: true },
 		quantity: { type: Number, required: true, min: 1, max: 99 }
 	}],
