@@ -9,7 +9,7 @@ var express = require('express'),
 	flash = require('connect-flash'),
 	morgan = require('morgan'),
 	AWS = require('aws-sdk'),
-	 fs = require('fs'),
+	fs = require('fs'),
 	multer = require('multer'),
 	cookieParser = require('cookie-parser'),
 	mongoUri = 'mongodb://localhost:27017/paulphin';
@@ -45,7 +45,8 @@ function uploadToS3(file, destFileName, callback) {
             ACL: 'public-read', 
             Body: fs.createReadStream(file.path), 
             Key: destFileName.toString(),
-            ContentType: 'application/octet-stream' // force download if it's accessed as a top location
+            contentType: 'image/png'
+            // ContentType: 'application/octet-stream' // force download if it's accessed as a top location
         })
         // http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3/ManagedUpload.html#httpUploadProgress-event
         // .on('httpUploadProgress', function(evt) { console.log(evt); })
@@ -54,7 +55,7 @@ function uploadToS3(file, destFileName, callback) {
 }
 
 app.post('/upload', multer({limits: {fileSize:10*1024*1024}}), function (req, res){
-	console.log(req.body, req.files)
+	console.log(44444,req.body, req.files)
  
     if (!req.files || !req.files.file1) {
         return res.status(403).send('expect 1 file upload named file1').end();
