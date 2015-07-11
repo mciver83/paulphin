@@ -1,4 +1,6 @@
 .DS_store
 public/app/images
 node_modules
-config/
+config
+config/aws-config.json
+
