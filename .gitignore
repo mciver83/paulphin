@@ -1,6 +1,6 @@
 .DS_store
 public/app/images
 node_modules
-config
+configuration
 
 
