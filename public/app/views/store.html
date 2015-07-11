@@ -1,9 +1,11 @@
 <main-header></main-header>
 
+
+
 <main class="flex-column align-items-center">
 	
 
-<header class="width50">
+<header class="width140 background-color">
 	<h1 class="item">Paulphin Store</h1>
 </header>
 
@@ -31,8 +33,8 @@
 			<header><h2>items</h2></header>
 			<div id="item" class="flex-column content-start">
 				<div class="item" ng-repeat="product in buildProducts">
-					<div class="flex-column">
-						<i ng-click="buildItem(product)" class="fa fa-plus center"></i><img class="image-small" ng-src="{{product.image}}"/>
+					<div class="flex-column align-items-center">
+						<img ng-click="buildItem(product)" class="image-small" ng-src="{{product.image}}"/>
 						<p>{{product.title}}</p>
 					</div>
 				</div>
@@ -43,8 +45,8 @@
 		<div class="flex-column align-items-center flex2">	
 			<header><h2>images</h2></header>
 			<div class="flex-row wrap">	
-				<div ng-repeat="photo in photos">
-					<div class="flex-column">
+				<div class="border-color" ng-repeat="photo in photos">
+					<div class="flex-column align-items-center">
 						<i ng-click="buildImage(photo)"class="fa fa-plus center"></i>
 						<div pop-up><img id="image" class="image-small" ng-src="{{photo.imageUrl}}"/></div>
 					</div>

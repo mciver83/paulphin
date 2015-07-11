@@ -64,7 +64,13 @@ app.service('adminService', function($http){
 		})
 	}
 
-	this.addPhoto = function(title, imageUrl, description, type, auth){
+	this.addPhoto = function(title, imageSrc, description, type, auth){
+		// return $http({
+		// 	method: 'POST',
+		// 	url: 'http://localhost:9003/upload',
+		// 	data: {
+		// 		imageSrc
+		// })
 		return $http({
 			method: 'POST',
 			url: 'http://localhost:9003/admin/photos',

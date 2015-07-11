@@ -1,5 +1,24 @@
 var app = angular.module('ecommerce');
 
+
+app.directive("ngFileSelect",function(){
+
+  return {
+    link: function($scope,el){
+      
+      el.bind("change", function(e){
+      
+        $scope.file = (e.srcElement || e.target).files[0];
+        $scope.getFile();
+      })
+      
+    }
+    
+  }
+})
+
+
+
 app.directive('mainHeader', function(){
 	return {
 		restrict: 'E',

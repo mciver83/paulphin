@@ -2,20 +2,29 @@ var app = angular.module('ecommerce');
 
 
 // admin and add, update and delete products
-// app.controller('adminCtrl', function($scope, authService){
-	
-	
-// })
-
-
-
-
-app.controller('adminCtrl', function($scope, adminService, customerService, cartService, products, photos){
+app.controller('adminCtrl', function($scope, adminService, customerService, cartService, products, photos, fileReader){
 	
 
 	$scope.products = products;
 	$scope.photos = photos;
 	$scope.typeOptions = ['favorite', 'featured', 'product'];
+
+
+	console.log(fileReader)
+    $scope.getFile = function () {
+        $scope.progress = 0;
+        fileReader.readAsDataUrl($scope.file, $scope)
+                      .then(function(result) {
+                          $scope.imageSrc = result;
+                      });
+    };
+ 
+    $scope.$on("fileProgress", function(e, progress) {
+        $scope.progress = progress.loaded / progress.total;
+    });
+
+
+
 
 	$scope.getProducts = function(){
 		adminService.getProducts().then(function(response){
@@ -62,11 +71,11 @@ app.controller('adminCtrl', function($scope, adminService, customerService, cart
 
 	
 
-	$scope.addPhoto = function(title, imageUrl, description, type, auth){
+	$scope.addPhoto = function(title, imageSrc, description, type, auth){
 		adminService.addPhoto(title, imageUrl, description, type, auth).then(function(response){
 			$scope.imageTitle = '';
 			$scope.imageDescription = '';
-			$scope.imageUrl = 'app/images/';
+			$scope.imageSrc = '';
 			$scope.imageType = '';
 			$scope.imageAuth = 'store';
 			$scope.getPhotos();
@@ -114,6 +123,15 @@ app.controller('orderCtrl', function($scope, orders, adminService){
 
 
 
+
+//---------------------------------------------------//
+
+
+
+
+
+
+
 //controls the home page of website
 app.controller('homeCtrl', function($scope){
 	// $scope.customer = customer;
@@ -122,6 +140,12 @@ app.controller('homeCtrl', function($scope){
 	// }
 
 })
+
+
+
+
+
+//---------------------------------------------------//
 
 
 
@@ -136,6 +160,13 @@ app.controller('aboutCtrl', function($scope, instagram){
 	// } 
 
 })
+
+
+
+
+
+//---------------------------------------------------//
+
 
 
 //contact page
@@ -156,6 +187,17 @@ app.controller('contactCtrl', function($scope, emailService){
 		})
 	}
 })
+
+
+
+
+
+
+
+
+//---------------------------------------------------//
+
+
 
 
 
@@ -209,13 +251,6 @@ app.controller('shopCtrl', function($scope, $location, productService, cartServi
 	}
 
 
-	//use is session doesn't work
-	// $scope.addToCart = function(customerId, productId, price){
-	// 	cartService.addToCart(customerId, productId, price).then(function(response){
-	// 		$scope.getCustomer();
-	// 	})
-	// }
-
 	$scope.addToCart = function(item, photo){
 		console.log(item, photo)
 		if(photo){
@@ -250,6 +285,15 @@ app.controller('shopCtrl', function($scope, $location, productService, cartServi
 		})
 	}
 })
+
+
+
+
+
+
+//---------------------------------------------------//
+
+
 
 
 
@@ -322,10 +366,21 @@ app.controller('checkoutCtrl', function($scope, $location, customerService, cart
 
 		$scope.placeOrder(customer, address, products);
 	}
-
-	
-	
 })
+
+
+
+
+
+
+
+
+//---------------------------------------------------//
+
+
+
+
+
 
 app.controller('paymentCtrl', function($scope, order){
 	console.log(order);

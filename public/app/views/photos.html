@@ -11,7 +11,7 @@
 	<div class="flex-row" ng-repeat="photo in photos | filter: filter">
 		<div><p>id:</p><input readonly="true" ng-model="photo._id"/></div>
 		<div><p>title:</p><input type="text" ng-model="photo.title"></input></div>
-		<div><p>imageUrl:</p><img class="image-thumbnail" ng-src="{{photo.imageUrl}}"/></div>
+		<div><p>imageUrl:</p><img class="image-small" ng-src="{{photo.imageUrl}}"/></div>
 		<div><p>description:</p><input ng-model="photo.description"></input> </div>
 		<div><p>type:</p><input ng-model="photo.type"></input> </div>
 		<div><p>auth:</p><input ng-model="photo.auth"></input> </div>
@@ -25,11 +25,22 @@
 	<h2> new image </h2>
 	<div class="flex-column" ng-show="true">
 		<input type="text" ng-model="photoTitle" placeholder="title"></input>
-		<input type="text" ng-model="imageUrl" placeholder="image url"/>
+
+		<div class="flex-row">
+			<form action="/upload" method="post" enctype="multipart/form-data">
+	        	<input type="file" name="file1" ng-file-select="onFileSelect($files)" >
+	        	<input type="submit"/>
+	   		</form>
+	   		<b>Preview:</b><br />
+	   		<i ng-hide="imageSrc">No image choosen</i>
+	   		<img class="image-small" ng-src="{{imageSrc}}" /><br/>
+	   	</div>
+
+		<!-- <input type="text" ng-model="imageUrl" placeholder="image url"/> -->
 		<textarea ng-model="photoDescription" placeholder="decription: max 100 char"></textarea>
 		<input ng-model="photoType" placeholder="type"></input>
 		<input ng-model="photoAuth" placeholder="auth"></input>
-		<button ng-click="addPhoto(photoTitle, imageUrl, photoDescription, photoType, photoAuth)">submit</button>
+		<button ng-click="addPhoto(photoTitle, imageSrc, photoDescription, photoType, photoAuth)">submit</button>
 	</div>
 	
 </main>

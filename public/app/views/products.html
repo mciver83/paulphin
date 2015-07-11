@@ -11,7 +11,7 @@
 	<div class="flex-row" ng-repeat="product in products | filter: filter">
 		<div><p>id:</p><input readonly="true" ng-model="product._id"/></div>
 		<div><p>title:</p><input type="text" ng-model="product.title"></input></div>
-		<div><p>image:</p><img class="image-thumbnail" ng-src="{{product.image}}"/></div>
+		<div><p>image:</p><img class="image-small" ng-src="{{product.image}}"/></div>
 		<div><p>description:</p><input ng-model="product.description"></input> </div>
 		<div><p>price:</p><input id="number" type="number" ng-model="product.price"></input> </div>
 		<div><p>type:</p><select ng-model="product.type" ng-options="option for option in typeOptions"></select> </div>
@@ -26,10 +26,21 @@
 	<div class="flex-column" ng-show="true">
 		<input type="text" ng-model="productTitle" placeholder="title"></input>
 		<input class="input-number" type="number" ng-model="productPrice" placeholder="price"></input>
-		<input type="text" ng-model="productImage" placeholder="image url"/>
+
+
+		<div class="flex-row">
+			<form>
+	        	<input type="file" ng-file-select="onFileSelect($files)" >
+	   		</form>
+	   		<b>Preview:</b><br />
+	   		<i ng-hide="imageSrc">No image choosen</i>
+	   		<img class="image-small" ng-src="{{imageSrc}}" /><br/>
+	   	</div>
+
+		<!-- <input type="text" ng-model="productImage" placeholder="image url"/> -->
 		<textarea ng-model="productDescription" placeholder="decription: max 100 char"></textarea>
 		<select ng-model="productType" ng-options="option for option in typeOptions"></select>
-		<button ng-click="addProduct(productTitle, productPrice, productImage, productDescription, productType)">submit</button>
+		<button ng-click="addProduct(productTitle, productPrice, imageSrc, productDescription, productType)">submit</button>
 	</div>
 	
 </main>
