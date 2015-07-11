@@ -4,7 +4,7 @@ var app = angular.module('ecommerce', ['ngRoute'])
 app.config(function($routeProvider){
 	$routeProvider
 	.when('/home/:uId?', {
-		templateUrl: 'app/views/main.html',
+		templateUrl: 'app/views/home.html',
 		controller: 'homeCtrl'
 		// resolve: {
 		// 	customer: function(customerService, $route){
@@ -79,6 +79,11 @@ app.config(function($routeProvider){
 					return response.data;
 				})
 			},
+			photos: function(photoService){
+				return photoService.getPhotos().then(function(response){
+					return response.data;
+				})
+			},
 			// customer: function(customerService, $route){
 			// 	if($route.current.params.uId){
 			// 		var id = '_id'
@@ -145,6 +150,27 @@ app.config(function($routeProvider){
 		resolve: {
 			products: function(adminService){
 				return adminService.getProducts().then(function(response){
+					return response.data;
+				})
+			},
+			photos: function(adminService){
+				return adminService.getPhotos().then(function(response){
+					return response.data;
+				})
+			}
+		}
+	})
+	.when('/admin/photos', {
+		templateUrl: 'app/views/photos.html',
+		controller: 'adminCtrl',
+		resolve: {
+			products: function(adminService){
+				return adminService.getProducts().then(function(response){
+					return response.data;
+				})
+			},
+			photos: function(adminService){
+				return adminService.getPhotos().then(function(response){
 					return response.data;
 				})
 			}

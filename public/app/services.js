@@ -18,6 +18,8 @@ app.service('instagramService', function($http, $q){
 
 
 
+//---------------------------------------------------//
+
 app.service('adminService', function($http){
 
 	this.addProduct = function(title, price, image, description, type){
@@ -62,6 +64,48 @@ app.service('adminService', function($http){
 		})
 	}
 
+	this.addPhoto = function(title, imageUrl, description, type, auth){
+		return $http({
+			method: 'POST',
+			url: 'http://localhost:9003/admin/photos',
+			data: {
+				title: title,
+				imageUrl: imageUrl,
+				description: description,
+				type: type,
+				auth: auth
+			}
+		})
+	}
+
+	this.getPhotos = function(){
+		return $http({
+			method: 'GET',
+			url: 'http://localhost:9003/admin/photos'
+		})
+	}
+
+	this.updatePhoto = function(id, title, description, price, type){
+		return $http({
+			method: 'PUT',
+			url: 'http://localhost:9003/admin/photos?id=' + id,
+			data: {
+
+				title: title,
+				description: description,
+				type: type,
+				auth: auth
+			}
+		})
+	}
+
+	this.removePhoto = function(id){
+		return $http({
+			method: 'DELETE',
+			url:'http://localhost:9003/admin/photos?id=' + id
+		})
+	}
+
 	this.getOrders = function(){
 		return $http({
 			method: 'GET',
@@ -84,23 +128,10 @@ app.service('adminService', function($http){
 
 
 
-
+//---------------------------------------------------//
 
 app.service('productService', function($http, $q){
 
-
-	// this.addProduct = function(title, price, image, description){
-	// 	return $http({
-	// 		method: 'POST',
-	// 		url: 'http://localhost:9003/api/products',
-	// 		data: {
-	// 			title: title,
-	// 			price: price,
-	// 			image: image,
-	// 			description: description,
-	// 		}
-	// 	})
-	// }
 
 	this.getProducts = function(){
 		return $http({
@@ -116,26 +147,37 @@ app.service('productService', function($http, $q){
 		})
 	}
 
-	// this.updateProduct = function(id, title, description, price){
-	// 	return $http({
-	// 		method: 'PUT',
-	// 		url: 'http://localhost:9003/api/products?id=' + id,
-	// 		data: {
-
-	// 			title: title,
-	// 			description: description,
-	// 			price: price
-	// 		}
-	// 	})
-	// }
-
-	// this.removeProduct = function(id){
-	// 	return $http({
-	// 		method: 'DELETE',
-	// 		url:'http://localhost:9003/api/products?id=' + id
-	// 	})
-	// }
 })
+
+
+
+
+
+//---------------------------------------------------//
+
+app.service('photoService', function($http, $q){
+
+
+	this.getPhotos = function(){
+		return $http({
+			method: 'GET',
+			url: 'http://localhost:9003/api/photos'
+		})
+	}
+
+	this.getOnePhoto = function(id){
+		return $http({
+			method: 'GET',
+			url: 'http://localhost:9003/api/photos?_id=' + id
+		})
+	}
+
+})
+
+
+
+
+//---------------------------------------------------//
 
 app.service('customerService', function($http, $q){
 
@@ -183,35 +225,12 @@ app.service('customerService', function($http, $q){
 	}
 })
 
+
+
+
+//---------------------------------------------------//
+
 app.service('cartService', function($http, $q){
-	// use this if sessions doesn't work
-	// this.addToCart = function(customerId, productId, price){
-	// 	return $http({
-	// 		method: 'POST',
-	// 		url: 'http://localhost:9003/api/customers/cart/' + customerId,
-	// 		data: {
-	// 			product: productId,
-	// 			price: price
-	// 		}
-	// 	})
-	// }
-	// this.updateItem = function(customerId, itemId, quantity){
-	// 	return $http({
-	// 		method: 'PUT',
-	// 		url: 'http://localhost:9003/api/customers/cart/' + customerId + '/' + itemId,
-	// 		data: {
-	// 			'cart.$.quantity': quantity
-	// 		}
-	// 	})
-	// }
-
-	// this.removeItem = function(customerId, itemId){
-	// 	return $http({
-	// 		method: 'DELETE',
-	// 		url: 'http://localhost:9003/api/customers/cart/' + customerId + '/' + itemId
-	// 	})
-	// }
-
 
 	this.addToCart = function(data){
 		return $http({
@@ -247,11 +266,16 @@ app.service('cartService', function($http, $q){
 			}
 		})
 	}
-
-
-
 	
 })
+
+
+
+
+
+
+//---------------------------------------------------//
+
 
 app.service('orderService', function($http, $q, $routeParams){
 
@@ -287,14 +311,14 @@ app.service('orderService', function($http, $q, $routeParams){
 		})
 	}
 
-	// this.submitStripe = function(token){
-	// 	return $http({
-	// 		method: 'POST',
-	// 		url: '/api/orders/' + $routeParams.id + '/payment',
-	// 		data: token
-	// 	})
-	// }
 })
+
+
+
+
+
+//---------------------------------------------------//
+
 
 app.service('emailService', function($http){
 

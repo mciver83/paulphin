@@ -15,6 +15,7 @@ var express = require('express'),
 
 //controllers
 var ProductCtrl = require('./controllers/ProductCtrl'),
+	PhotoCtrl = require('./controllers/PhotoCtrl'),
 	CustomerCtrl = require('./controllers/CustomerCtrl'),
 	CartCtrl = require('./controllers/CartCtrl'),
 	AddressCtrl = require('./controllers/AddressCtrl'),
@@ -54,12 +55,15 @@ require('./admin/routes.js')(app, passport); // load our routes and pass in our 
 
 
 
-// store products
+// store 
 app.get('/api/products', ProductCtrl.get);
+
+app.get('/api/photos', PhotoCtrl.get);
 
 
 
 //admin 
+		//products
 app.post('/admin/products', isAdmin, ProductCtrl.create);
 
 app.get('/admin/products', isAdmin, ProductCtrl.get);
@@ -68,6 +72,16 @@ app.put('/admin/products', isAdmin, ProductCtrl.update);
 
 app.delete('/admin/products', isAdmin, ProductCtrl.delete);
 
+		//photos
+app.post('/admin/photos', isAdmin, PhotoCtrl.create);
+
+app.get('/admin/photos', isAdmin, PhotoCtrl.get);
+
+app.put('/admin/photos', isAdmin, PhotoCtrl.update);
+
+app.delete('/admin/photos', isAdmin, PhotoCtrl.delete);
+
+		//orders
 app.get('/admin/orders', isAdmin, OrderCtrl.get);
 
 app.put('/admin/orders', isAdmin, OrderCtrl.update);

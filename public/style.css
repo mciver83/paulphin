@@ -39,11 +39,17 @@ i {
 	border-bottom: 1px solid lightblue;
 }
 
+.border-color {
+	border: 1px solid lightblue;
+}
+
 .height-full {
 	height: 100%;
 }
 
-
+.section {
+	margin-top: 50px;
+}
 
 .emailText {
 	width: 500px;
@@ -85,6 +91,10 @@ main {
 
 .flex1_5 {
 	flex: 1.5;
+}
+
+.flex2 {
+	flex: 2;
 }
 
 .space-between {
@@ -163,11 +173,19 @@ main {
 	margin: 5px;
 }
 
-.image-thumbnail {
+.image-cart {
 	max-height: 75px;
 	max-width: 75px;
 	min-height: 75px;
 	min-width: 75px;
+	padding: 5px;
+}
+
+.image-thumbnail {
+	max-height: 100px;
+	max-width: 100px;
+	min-height: 100px;
+	min-width: 100px;
 	padding: 5px;
 }
 
@@ -207,14 +225,9 @@ main {
 .pop-up {
 	position: relative;
 	padding: 10px;
-	max-width: 50%;
 	min-width: 0;
-	/*min-height: 400px;*/
 	max-height: 90%;
 	max-width: 100%;
-	/*position: fixed;*/
-	/*top: 5%;
-	left: 15%;*/
 	box-shadow: 0px 0px 40px 10px rgba(0,0,0,0.7);
 	background: white;
 	border: 10px solid lightblue;
@@ -227,11 +240,19 @@ main {
 	justify-content: center;
 }
 
+
+.pop-up #image {
+	min-width: 100%;
+	max-width: 100%;
+	min-height: 100%;
+	max-height: 100%;
+}
+
 .pop-up .product-image {
 	min-width: 100%;
 	max-width: 100%;
-	height: 100%;
-
+	min-height: 100%;
+	max-height: 100%;
 }
 
 #closeCart {

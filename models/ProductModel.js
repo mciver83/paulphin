@@ -4,9 +4,9 @@ var ProductSchema = mongoose.Schema({
 
 	title: { type: String, maxlength: 40 },
 	description: { type: String, maxlength: 100 },
-	image: {type: String },
+	image: { type: String },
 	price: { type: Number, minimum: 0, required: true, default: 20 },
-	type: { type: String, enum: ['print', 'product']},
+	type: { type: String, enum: ['favorite', 'featured', 'product']},
 	dateCreated: { type: Date, default: Date.now },
 	dateUpdated: { type: Date, default: Date.now }
 })

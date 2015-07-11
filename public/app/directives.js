@@ -72,6 +72,27 @@ app.directive('product', function(){
 	}
 })
 
+
+app.directive('item', function(){
+	return {
+		restrict: 'E',
+		templateUrl: 'app/directives/buildItem.html',
+		link: function(scope, element, attrs){
+
+		}
+	}
+})
+
+app.directive('photo', function(){
+	return {
+		restrict: 'E',
+		templateUrl: 'app/directives/buildImage.html',
+		link: function(scope, element, attrs){
+			
+		}
+	}
+})
+
 app.directive('popUp', function(){
 	return {
 		restrict: 'A',

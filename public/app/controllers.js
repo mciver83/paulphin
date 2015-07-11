@@ -10,8 +10,12 @@ var app = angular.module('ecommerce');
 
 
 
-app.controller('adminCtrl', function($scope, adminService, customerService, cartService, products){
+app.controller('adminCtrl', function($scope, adminService, customerService, cartService, products, photos){
 	
+
+	$scope.products = products;
+	$scope.photos = photos;
+	$scope.typeOptions = ['favorite', 'featured', 'product'];
 
 	$scope.getProducts = function(){
 		adminService.getProducts().then(function(response){
@@ -19,11 +23,11 @@ app.controller('adminCtrl', function($scope, adminService, customerService, cart
 		})
 	}
 
-	$scope.products = products;
+	
 
 	$scope.addProduct = function(title, price, image, description, type){
 		adminService.addProduct(title, price, image, description, type).then(function(response){
-			$scope.newProduct = '';
+			$scope.productTitle = '';
 			$scope.productPrice = 20;
 			$scope.productDescription = '';
 			$scope.productImage = 'app/images/';
@@ -49,7 +53,42 @@ app.controller('adminCtrl', function($scope, adminService, customerService, cart
 		}
 	}
 
-	$scope.typeOptions = ['print', 'product'];
+
+	$scope.getPhotos = function(){
+		adminService.getPhotos().then(function(response){
+			$scope.photos = response.data;
+		})
+	}
+
+	
+
+	$scope.addPhoto = function(title, imageUrl, description, type, auth){
+		adminService.addPhoto(title, imageUrl, description, type, auth).then(function(response){
+			$scope.imageTitle = '';
+			$scope.imageDescription = '';
+			$scope.imageUrl = 'app/images/';
+			$scope.imageType = '';
+			$scope.imageAuth = 'store';
+			$scope.getPhotos();
+		})
+	}
+
+	$scope.updatePhoto = function(id, title, imageUrl, description, type, auth){
+		if(confirm("Are you sure you want to update this image's info?")){
+			adminService.updatePhoto().then(function(response){
+				alert('This image has been updated.')
+				$scope.getImages();
+			})
+		}
+	}
+
+	$scope.removePhoto = function(id){
+		if(confirm("Are you sure you want to delete this image?")){
+			adminService.removePhoto(id).then(function(response){
+				$scope.getPhotos();
+			})
+		}
+	}
 
 })
 
@@ -122,7 +161,7 @@ app.controller('contactCtrl', function($scope, emailService){
 
 
 //controls the shopping area and views products
-app.controller('shopCtrl', function($scope, $location, productService, cartService, cart, customerService, products){
+app.controller('shopCtrl', function($scope, $location, productService, cartService, cart, customerService, products, photos){
 
 	// $scope.customer = customer;
 	// if($scope.customer){
@@ -133,9 +172,42 @@ app.controller('shopCtrl', function($scope, $location, productService, cartServi
 
 
 	$scope.products = products;
+	$scope.photos = photos;
 
-	$scope.itemType = function(type){
-		$scope.type = type;
+	$scope.favorites = [];
+	for(var i = 0; i < $scope.products.length; i++){
+		if($scope.products[i].type === 'favorite'){
+			$scope.favorites.push($scope.products[i])
+		}
+	}
+
+	$scope.buildProducts = [];
+	for(var i = 0; i < $scope.products.length; i++){
+		if($scope.products[i].type === 'product'){
+			$scope.buildProducts.push($scope.products[i])
+		}
+	}
+
+
+	$scope.print = 'print';
+	$scope.item = 'product';
+
+	$scope.buildItem = '';
+	$scope.buildImage = '';
+
+	$scope.buildItem = function(item){
+		$scope.item = item;
+		$scope.buildItem = $scope.item.image;
+	}
+
+	$scope.buildImage = function(image){
+		$scope.image = image;
+		$scope.buildImage = $scope.image.imageUrl;
+	}
+
+	$scope.buildClear = function(item, image){
+		item = '';
+		image = '';
 	}
 
 

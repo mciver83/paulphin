@@ -1,15 +1,75 @@
 <main-header></main-header>
 
-<main>
+<main class="flex-column align-items-center">
 	
-<!-- <input type="text" ng-model="type"/> -->
 
-<a ng-click="itemType('print')">prints</a> <a ng-click="itemType('product')">products</a>
+<header class="width50">
+	<h1 class="item">Paulphin Store</h1>
+</header>
+
+
+
+<div class="flex-column align-items-center section">
+	<h2>Most Popular</h2>
 	<div class="flex-row wrap">
-		
-		<div ng-repeat="product in products | filter: type">
-			<product type="product"></product>
+		<div ng-repeat="product in favorites">
+			<product></product>
 		</div>
 	</div>
+</div>
+
+
+<header class="width50 section"></header>
+
+<div class="flex-column align-items-center section">
+
+	<h2>Build Your Own</h2>
+
+	<div class="flex-row content-center align-start section">
+		
+		<div class="flex-column align-items-center flex1">
+			<header><h2>items</h2></header>
+			<div id="item" class="flex-column content-start">
+				<div class="item" ng-repeat="product in buildProducts">
+					<item></item>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="flex-column align-items-center flex2">	
+			<header><h2>images</h2></header>
+			<div class="flex-row wrap">	
+				<div ng-repeat="photo in photos">
+					<photo></photo>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div id="built-product" class="flex-column space-between align-items-center flex1">
+			<header><h2>Build My Item</h2></header>
+			<img id="chosen-item" ng-src="{{buildItem}}" alt="choose item" class="image-thumbnail border-color item">
+			</img>
+
+			<img id="chosen-image" ng-src="{{buildImage}}" alt="choose image" class="image-thumbnail border-color item">
+			</img>
+			<button ng-click="buildClear(buildItem, buildImage)">clear</button>
+			<button ng-click="addToCart()"><i class="fa fa-cart-plus"></i> add</button>
+
+		</div>
+
+
+	</div>
+</div>
+
+<!-- <a ng-click="itemType('print')">prints</a> <a ng-click="itemType('product')">products</a> -->
+	<!-- <div class="flex-row wrap">
+		
+		<div ng-show="show" ng-repeat="product in products | filter: type">
+			<product type="product"></product>
+		</div>
+	</div> -->
 
 </main>

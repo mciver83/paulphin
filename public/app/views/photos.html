@@ -1,0 +1,35 @@
+<header class="flex-row"> 
+	<div class="item"><a href="/logout"><h3>logout</h3></a></div>
+	<div class="item"><a href="#/admin/orders"><h3>orders</h3></a> </div>
+	<div class="item"><a href="#/admin/products"><h3>products</h3></a> </div>
+</header>
+
+<main class="admin">
+
+	<h2>Image list</h2>
+	<input type="text" ng-model="filter" placeholder="look up"/>
+	<div class="flex-row" ng-repeat="photo in photos | filter: filter">
+		<div><p>id:</p><input readonly="true" ng-model="photo._id"/></div>
+		<div><p>title:</p><input type="text" ng-model="photo.title"></input></div>
+		<div><p>imageUrl:</p><img class="image-thumbnail" ng-src="{{photo.imageUrl}}"/></div>
+		<div><p>description:</p><input ng-model="photo.description"></input> </div>
+		<div><p>type:</p><input ng-model="photo.type"></input> </div>
+		<div><p>auth:</p><input ng-model="photo.auth"></input> </div>
+		<div><button ng-click="updatePhoto(photo._id, photo.title, photo.description, photo.type, photo.auth)">update</button>
+		<button ng-click="removePhoto(photo._id)">delete</button></div>
+	</div>
+
+	<br/>
+	<br/>
+
+	<h2> new image </h2>
+	<div class="flex-column" ng-show="true">
+		<input type="text" ng-model="photoTitle" placeholder="title"></input>
+		<input type="text" ng-model="imageUrl" placeholder="image url"/>
+		<textarea ng-model="photoDescription" placeholder="decription: max 100 char"></textarea>
+		<input ng-model="photoType" placeholder="type"></input>
+		<input ng-model="photoAuth" placeholder="auth"></input>
+		<button ng-click="addPhoto(photoTitle, imageUrl, photoDescription, photoType, photoAuth)">submit</button>
+	</div>
+	
+</main>
