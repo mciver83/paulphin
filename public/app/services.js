@@ -64,22 +64,30 @@ app.service('adminService', function($http){
 		})
 	}
 
-	this.addPhoto = function(title, imageSrc, description, type, auth){
-		// return $http({
-		// 	method: 'POST',
-		// 	url: 'http://localhost:9003/upload',
-		// 	data: {
-		// 		imageSrc
-		// })
+
+	
+	// this.addPhoto = function(title, imageSrc, description, type, auth){
+
+	// 	return $http({
+	// 		method: 'POST',
+	// 		url: 'http://localhost:9003/admin/photos',
+	// 		data: {
+	// 			title: title,
+	// 			imageUrl: imageUrl,
+	// 			description: description,
+	// 			type: type,
+	// 			auth: auth
+	// 		}
+	// 	})
+	// }
+
+	this.addPhoto = function(imageSrc){
+		console.log(imageSrc)
 		return $http({
 			method: 'POST',
-			url: 'http://localhost:9003/admin/photos',
+			url: 'http://localhost:9003/upload',
 			data: {
-				title: title,
-				imageUrl: imageUrl,
-				description: description,
-				type: type,
-				auth: auth
+				image: imageSrc
 			}
 		})
 	}
@@ -263,7 +271,6 @@ app.service('cartService', function($http, $q){
 	}
 
 	this.removeItem = function(id){
-		console.log(11111,id)
 		return $http({
 			method: 'PUT',
 			url: 'http://localhost:9003/api/cart/remove',

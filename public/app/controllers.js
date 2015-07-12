@@ -10,7 +10,7 @@ app.controller('adminCtrl', function($scope, adminService, customerService, cart
 	$scope.typeOptions = ['favorite', 'featured', 'product'];
 
 
-	console.log(fileReader)
+	
     $scope.getFile = function () {
         $scope.progress = 0;
         fileReader.readAsDataUrl($scope.file, $scope)
@@ -71,15 +71,21 @@ app.controller('adminCtrl', function($scope, adminService, customerService, cart
 
 	
 
-	$scope.addPhoto = function(title, imageSrc, description, type, auth){
-		adminService.addPhoto(title, imageUrl, description, type, auth).then(function(response){
-			$scope.imageTitle = '';
-			$scope.imageDescription = '';
-			$scope.imageSrc = '';
-			$scope.imageType = '';
-			$scope.imageAuth = 'store';
-			$scope.getPhotos();
+	// $scope.addPhoto = function(title, imageSrc, description, type, auth){
+	$scope.addPhoto = function(imageSrc){
+
+		adminService.addPhoto(imageSrc).then(function(response){
+			console.log(response)
 		})
+
+		// adminService.addPhoto(title, imageSrc, description, type, auth).then(function(response){
+		// 	$scope.imageTitle = '';
+		// 	$scope.imageDescription = '';
+		// 	$scope.imageSrc = '';
+		// 	$scope.imageType = '';
+		// 	$scope.imageAuth = 'store';
+		// 	$scope.getPhotos();
+		// })
 	}
 
 	$scope.updatePhoto = function(id, title, imageUrl, description, type, auth){
