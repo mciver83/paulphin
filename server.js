@@ -36,7 +36,7 @@ var stripe = require("stripe")(
 
 
 
-//Amazon s3
+
 
  
 
@@ -65,41 +65,37 @@ require('./admin/routes.js')(app, passport); // load our routes and pass in our 
 
 
 
-
+//Amazon s3
 AWS.config.loadFromPath('./config/aws-config.json');
 
 var photoBucket = new AWS.S3({params: {Bucket: 'paulphin'}});
 
-function uploadToS3(file, destFileName, callback) {
+// var photoBucket = new AWS.S3();
+
+function uploadToS3(buf, file, callback) {
     photoBucket
         .upload({
+            // Bucket: 'paulphin',
             ACL: 'public-read', 
-            Body: file, 
-            Key: destFileName.toString() + '.png',
-            contentType: 'image/png'
-        })
-        .send(callback);
+            Body: buf, 
+            Key: file.name,
+            ContentType: file.type
+        }, callback)
 }
 
 app.post('/upload', function (req, res){
-
+    console.log(1111, req.body)
     var buf = new Buffer(req.body.image.replace(/^data:image\/\w+;base64,/, ""), 'base64');
-    
-    var pid = '10000' + parseInt(Math.random() * 10000000);
+    var file = req.body.file;
+    // var pid = '10000' + parseInt(Math.random() * 10000000);
  
-    uploadToS3(buf, pid, function (err, data) {
+    uploadToS3(buf, file, function (err, data) {
         if (err){
             console.error(err);
             return res.status(500).send('failed to upload to s3').end();
         } else {
-            console.log(data)
             res.send(data)
         }
-        // res.status(200)
-        //     .send('File uploaded to S3: ' 
-        //             + data.Location.replace(/</g, '&lt;') 
-        //             + '<br/><img src="' + data.Location.replace(/"/g, '&quot;') + '"/>')
-        //     .end();
     })
 })
 
@@ -219,6 +215,7 @@ function isAdmin(req, res, done) {
     if(req.user && req.user.admin){
         done();
     } else {
+        // res.status(403).redirect('/admin');
         res.status(403).send('you isnt an admin')
     }
 }	

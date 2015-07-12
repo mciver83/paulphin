@@ -6,7 +6,7 @@ var ProductSchema = mongoose.Schema({
 	description: { type: String, maxlength: 100 },
 	image: { type: String },
 	price: { type: Number, minimum: 0, required: true, default: 20 },
-	type: { type: String, enum: ['favorite', 'featured', 'product']},
+	category: { type: String, enum: ['favorite', 'featured', 'product']},
 	dateCreated: { type: Date, default: Date.now },
 	dateUpdated: { type: Date, default: Date.now }
 })

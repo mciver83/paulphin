@@ -20,6 +20,7 @@ var OrderSchema = new mongoose.Schema({
 		status: { type: String, enum: ['waiting', 'processing', 'paid'], default: 'waiting' },
 		confirmation: { type: String }
 	},
+	createdAt: { type: Date, default: Date.now },
 	status: { type: String, enum: ['processing', 'shipping', 'on hold', 'delivered'], default: 'processing'}
 });
 

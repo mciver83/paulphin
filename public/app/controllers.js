@@ -7,7 +7,7 @@ app.controller('adminCtrl', function($scope, adminService, customerService, cart
 
 	$scope.products = products;
 	$scope.photos = photos;
-	$scope.typeOptions = ['favorite', 'featured', 'product'];
+	$scope.categoryOptions = ['favorite', 'featured', 'product'];
 
 
 	
@@ -34,20 +34,24 @@ app.controller('adminCtrl', function($scope, adminService, customerService, cart
 
 	
 
-	$scope.addProduct = function(title, price, image, description, type){
-		adminService.addProduct(title, price, image, description, type).then(function(response){
-			$scope.productTitle = '';
-			$scope.productPrice = 20;
-			$scope.productDescription = '';
-			$scope.productImage = 'app/images/';
-			$scope.productType = '';
-			$scope.getProducts();
+	$scope.addProduct = function(imageSrc, file, title, price, description, category){
+		$scope.file = file;
+		adminService.uploadPhoto(imageSrc, $scope.file).then(function(response){
+			var url = response.data.Location;
+			adminService.addProduct(title, price, url, description, category).then(function(response){
+				$scope.productTitle = '';
+				$scope.productPrice = 20;
+				$scope.productDescription = '';
+				$scope.imageSrc = null;
+				$scope.productCategory = '';
+				$scope.getProducts();
+			})
 		})
 	}
 
-	$scope.updateProduct = function(id, title, description, price, type){
+	$scope.updateProduct = function(id, title, description, price, category){
 		if(confirm("Are you sure you want to update this products info?")){
-			adminService.updateProduct(id, title, description, price, type).then(function(response){
+			adminService.updateProduct(id, title, description, price, category).then(function(response){
 				alert('This product has been updated.')
 				$scope.getProducts();
 			})
@@ -71,28 +75,30 @@ app.controller('adminCtrl', function($scope, adminService, customerService, cart
 
 	
 
-	// $scope.addPhoto = function(title, imageSrc, description, type, auth){
-	$scope.addPhoto = function(imageSrc){
-
-		adminService.addPhoto(imageSrc).then(function(response){
-			console.log(response)
+	// $scope.addPhoto = function(title, imageSrc, description, category, auth){
+	$scope.addPhoto = function(imageSrc, file, title, description, category, auth){
+		$scope.file = file;
+		adminService.uploadPhoto(imageSrc, $scope.file).then(function(response){
+			var url = response.data.Location;
+			adminService.addPhoto(title, url, description, category, auth).then(function(response){
+				$scope.photoTitle = '';
+				$scope.photoDescription = '';
+				$scope.imageSrc = null;
+				$scope.photoCategory = '';
+				$scope.photoAuth = 'store';
+				$scope.getPhotos();
+			})
 		})
-
-		// adminService.addPhoto(title, imageSrc, description, type, auth).then(function(response){
-		// 	$scope.imageTitle = '';
-		// 	$scope.imageDescription = '';
-		// 	$scope.imageSrc = '';
-		// 	$scope.imageType = '';
-		// 	$scope.imageAuth = 'store';
-		// 	$scope.getPhotos();
-		// })
 	}
 
-	$scope.updatePhoto = function(id, title, imageUrl, description, type, auth){
+
+				
+
+	$scope.updatePhoto = function(id, title, description, category, auth){
 		if(confirm("Are you sure you want to update this image's info?")){
-			adminService.updatePhoto().then(function(response){
+			adminService.updatePhoto(id, title, descrition, category, auth).then(function(response){
 				alert('This image has been updated.')
-				$scope.getImages();
+				$scope.getPhotos();
 			})
 		}
 	}
@@ -224,14 +230,14 @@ app.controller('shopCtrl', function($scope, $location, productService, cartServi
 
 	$scope.favorites = [];
 	for(var i = 0; i < $scope.products.length; i++){
-		if($scope.products[i].type === 'favorite'){
+		if($scope.products[i].category === 'favorite'){
 			$scope.favorites.push($scope.products[i])
 		}
 	}
 
 	$scope.buildProducts = [];
 	for(var i = 0; i < $scope.products.length; i++){
-		if($scope.products[i].type === 'product'){
+		if($scope.products[i].category === 'product'){
 			$scope.buildProducts.push($scope.products[i])
 		}
 	}

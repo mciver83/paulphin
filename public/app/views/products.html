@@ -14,8 +14,8 @@
 		<div><p>image:</p><img class="image-small" ng-src="{{product.image}}"/></div>
 		<div><p>description:</p><input ng-model="product.description"></input> </div>
 		<div><p>price:</p><input id="number" type="number" ng-model="product.price"></input> </div>
-		<div><p>type:</p><select ng-model="product.type" ng-options="option for option in typeOptions"></select> </div>
-		<div><button ng-click="updateProduct(product._id, product.title, product.description, product.price, product.type)">update</button>
+		<div><p>category:</p><select ng-model="product.category" ng-options="option for option in categoryOptions"></select> </div>
+		<div><button ng-click="updateProduct(product._id, product.title, product.description, product.price, product.category)">update</button>
 		<button ng-click="removeProduct(product._id)">delete</button></div>
 	</div>
 
@@ -25,22 +25,21 @@
 	<h2> new product </h2>
 	<div class="flex-column" ng-show="true">
 		<input type="text" ng-model="productTitle" placeholder="title"></input>
-		<input class="input-number" type="number" ng-model="productPrice" placeholder="price"></input>
+		<input class="input-number" type="number" ng-model="productPrice" placeholder="price" required></input>
 
 
 		<div class="flex-row">
-			<form>
+			<form enctype="multipart/form-data">
 	        	<input type="file" ng-file-select="onFileSelect($files)" >
 	   		</form>
 	   		<b>Preview:</b><br />
-	   		<i ng-hide="imageSrc">No image choosen</i>
-	   		<img class="image-small" ng-src="{{imageSrc}}" /><br/>
+	   		<img ng-show="imageSrc" class="image-small" ng-src="{{imageSrc}}" /><br/>
 	   	</div>
 
 		<!-- <input type="text" ng-model="productImage" placeholder="image url"/> -->
 		<textarea ng-model="productDescription" placeholder="decription: max 100 char"></textarea>
-		<select ng-model="productType" ng-options="option for option in typeOptions"></select>
-		<button ng-click="addProduct(productTitle, productPrice, imageSrc, productDescription, productType)">submit</button>
+		<select ng-model="productCategory" ng-options="option for option in categoryOptions"></select>
+		<button ng-click="addProduct(imageSrc, file, productTitle, productPrice, productDescription, productCategory)">submit</button>
 	</div>
 	
 </main>

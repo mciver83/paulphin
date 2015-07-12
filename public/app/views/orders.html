@@ -20,6 +20,7 @@
 			</div>
 		</div>
 		<div><p>payment:</p>{{order.payment.status}} </div>
+		<div><p>order date:</p>{{order.createdAt | date: medium}} </div>
 		<div><p>status:</p><select ng-options="option for option in orderStatusOptions" ng-model="order.status"></select> </div>
 		<div><button ng-click="updateOrder(order._id, order.payment.status, order.status)">update</button>
 		</div>

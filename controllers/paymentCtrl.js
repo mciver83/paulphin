@@ -30,6 +30,7 @@ module.exports.submitStripe = function(req, res){
 				  		} else {
 				  			console.log(5555, saveData)
 						  	EmailCtrl.sendReceipt(saveData);
+						  	EmailCtrl.sendOrder(saveData);
 						  	res.redirect('/#/confirmation/' + order._id)//change this ro confirmation page
 						  	// res.send(saveData);
 				  		}

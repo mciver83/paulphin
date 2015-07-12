@@ -22,7 +22,7 @@ app.service('instagramService', function($http, $q){
 
 app.service('adminService', function($http){
 
-	this.addProduct = function(title, price, image, description, type){
+	this.addProduct = function(title, price, image, description, category){
 		return $http({
 			method: 'POST',
 			url: 'http://localhost:9003/admin/products',
@@ -31,7 +31,7 @@ app.service('adminService', function($http){
 				price: price,
 				image: image,
 				description: description,
-				type: type
+				category: category
 			}
 		})
 	}
@@ -43,7 +43,7 @@ app.service('adminService', function($http){
 		})
 	}
 
-	this.updateProduct = function(id, title, description, price, type){
+	this.updateProduct = function(id, title, description, price, category){
 		return $http({
 			method: 'PUT',
 			url: 'http://localhost:9003/admin/products?id=' + id,
@@ -52,7 +52,7 @@ app.service('adminService', function($http){
 				title: title,
 				description: description,
 				price: price,
-				type: type
+				category: category
 			}
 		})
 	}
@@ -65,32 +65,40 @@ app.service('adminService', function($http){
 	}
 
 
-	
-	// this.addPhoto = function(title, imageSrc, description, type, auth){
 
-	// 	return $http({
-	// 		method: 'POST',
-	// 		url: 'http://localhost:9003/admin/photos',
-	// 		data: {
-	// 			title: title,
-	// 			imageUrl: imageUrl,
-	// 			description: description,
-	// 			type: type,
-	// 			auth: auth
-	// 		}
-	// 	})
-	// }
 
-	this.addPhoto = function(imageSrc){
-		console.log(imageSrc)
+	this.uploadPhoto = function(imageSrc, file){
+	 
 		return $http({
 			method: 'POST',
 			url: 'http://localhost:9003/upload',
 			data: {
-				image: imageSrc
+				image: imageSrc,
+				file: {
+					name: file.name,
+					type: file.type
+				}
 			}
 		})
 	}
+
+
+	this.addPhoto = function(title, url, description, category, auth){
+
+		return $http({
+			method: 'POST',
+			url: 'http://localhost:9003/admin/photos',
+			data: {
+				title: title,
+				imageUrl: url,
+				description: description,
+				category: category,
+				auth: auth
+			}
+		})
+	}
+
+
 
 	this.getPhotos = function(){
 		return $http({
@@ -99,7 +107,7 @@ app.service('adminService', function($http){
 		})
 	}
 
-	this.updatePhoto = function(id, title, description, price, type){
+	this.updatePhoto = function(id, title, description, category, auth){
 		return $http({
 			method: 'PUT',
 			url: 'http://localhost:9003/admin/photos?id=' + id,
@@ -107,7 +115,7 @@ app.service('adminService', function($http){
 
 				title: title,
 				description: description,
-				type: type,
+				category: category,
 				auth: auth
 			}
 		})
