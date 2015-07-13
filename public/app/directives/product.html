@@ -1,10 +1,23 @@
-<div id="product" class="flex-column space-between item">
-	<div pop-up ><img class="product-image" ng-src="{{product.image}}"/></div>
-	<div>
-		<h2>{{product.title}}</h2>
+<!-- <div id="product" class="col s3">
+	<div class="center" pop-up ><img width="90" height="90" class="responsive-image" ng-src="{{product.image}}"/></div>
+	<div class="center">
+		{{product.title}}
 	</div>
-	<div><p>{{product.description}}</p></div>
-	<div><p class="price">${{product.price}}</p></div>
-	<div><i ng-click="addToCart(product)" class="fa fa-cart-plus"></i>
-	<p class="itemInCart red center">item in cart</p></div>
+	<div class="center"><p>{{product.description}}</p></div>
+	<div class="center"><p class="price">${{product.price}}</p></div>
+	<div class="center"><i ng-click="addToCart(product)" class="fa fa-cart-plus"></i>
+	<p class="itemInCart center">item in cart</p></div>
+</div> -->
+
+
+<!-- hide while working with materialize -->
+<div id="product">
+	<div class="center" pop-up ><img class="product-image" ng-src="{{product.image}}"/></div>
+	<div class="center">
+		<p>{{product.title}}</p>
+	</div>
+	<div class="center"><p>{{product.description}}</p></div>
+	<div class="center"><p class="price">${{product.price}}</p></div>
+	<div class="center"><i ng-click="addToCart(product)" class="fa fa-cart-plus"></i>
+	<p class="itemInCart red-text center">item in cart</p></div>
 </div>

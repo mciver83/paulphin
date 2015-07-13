@@ -5,6 +5,7 @@ var stripe = require('stripe')(
 	Order = require('../models/OrderModel.js');
 
 module.exports.submitStripe = function(req, res){
+	console.log(11111, req.body)
 	req.session.cart = [];
 	var stripeToken = req.body.stripeToken;
 	Order.findById(req.params.orderId)
