@@ -1,7 +1,7 @@
 <main-header></main-header>
 
 	
-<main class="flex-column align-items-center">
+<!-- <main class="flex-column align-items-center">
 	
 
 	<header class="width140 blue lighten-3 border-color">
@@ -9,7 +9,7 @@
 	</header>
 
 
-	<!-- <div class="flex-column align-items-center section"> -->
+	<div class="flex-column align-items-center section">
 
 		<div class="section">
 			<h4 class="center">Most Popular</h4>
@@ -19,18 +19,18 @@
 				</div>
 			</div>
 		</div>
-	<!-- </div> -->
+	</div>
 
 
 	
 
-	<div class="flex-column align-items-center section">
+	<div class="section center">
 
 		<h4>Build Your Own</h4>
 
 		<div class="row">
 			
-			<div class="col s3 center">
+			<div class="col s3 ">
 				<h4>items</h4>
 				<div id="item" class="flex-column content-start">
 					<div class="item" ng-repeat="product in buildProducts">
@@ -43,13 +43,13 @@
 			</div>
 
 
-			<div class="col s6 center">	
+			<div class="col s6 ">	
 				<h4>images</h4>
 				<div class="row">	
 					<div class="col s3" ng-repeat="photo in photos">
 						<div class="flex-column align-items-center">
-							<i ng-click="buildImage(photo)"class="fa fa-plus center"></i>
-							<div pop-up><img id="image" class="image-small" ng-src="{{photo.imageUrl}}"/></div>
+							<i ng-click="buildImage(photo)"class="fa fa-plus"></i>
+							<div pop-up><img id="image" class="responsive-img" ng-src="{{photo.imageUrl}}"/></div>
 						</div>
 					</div>
 				</div>
@@ -57,7 +57,7 @@
 
 
 
-			<div id="built-product" class="col s3 center">
+			<div id="built-product" class="col s3 flex-column align-items-center">
 				<h4>Build My Item</h4>
 				<img id="chosen-item" ng-src="{{item}}" alt="choose item" class="image-thumbnail border-color item">
 				</img>
@@ -72,10 +72,10 @@
 		</div>
 	</div>
 
-</main>
+</main> -->
 
 <!-- hide while working with materialize -->
-<!-- <main class="flex-column align-items-center">
+<main class="flex-column align-items-center">
 	
 
 	<header class="width140 background-color">
@@ -144,4 +144,4 @@
 		</div>
 	</div>
 
-</main> -->
+</main>
