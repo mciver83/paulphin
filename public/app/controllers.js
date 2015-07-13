@@ -119,6 +119,9 @@ app.controller('adminCtrl', function($scope, adminService, customerService, cart
 //admin orders
 app.controller('orderCtrl', function($scope, orders, adminService){
 	$scope.orders = orders;
+	$scope.showOrder = function(order){
+		order.show = !order.show
+	}
 
 	$scope.paymentStatusOptions = ['waiting', 'processing', 'paid'];
 	$scope.orderStatusOptions = ['processing', 'shipping', 'on hold', 'delivered'];
@@ -164,6 +167,8 @@ app.controller('homeCtrl', function($scope){
 
 //about page
 app.controller('aboutCtrl', function($scope, instagram){
+
+
 
 	$scope.feed = instagram;
 	// $scope.customer = customer;

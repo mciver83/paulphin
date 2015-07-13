@@ -1,9 +1,42 @@
 <main-header></main-header>
-
-<main>
 <!-- instagram feed -->
-<div class=" featured flex-row border-side">
-	<div ng-repeat="item in feed"><a href="{{item.link}}" target="blank"><img ng-src="{{item.images.standard_resolution.url}}"/></a></div>
-</div> 
 
-</main>
+	
+	<!-- <div parallax parallax-ratio="1.22" parallax-vertical-offset="100" parallax-horizontal-offset="" class="parallax photo about-main" parallax-ratio="0.8"></div> -->
+
+	<!-- <div class="parallax-container">
+    	<div parallax><img src="app/images/jessica-hat.jpg"></div>
+	</div> -->
+<main></main>
+	<div class="section white">
+	    <div class="row container">
+	      	<h2 class="header">Aloha</h2>
+	      	<div class="grey-text text-darken-3 lighten-3">
+	      		<p>Welcome to Paulphin.com.</p>
+	      		<p>I’m a passionate naturalist photographer/filmmaker who feels most at home in the ocean.  I’ve devoted my life to protecting our beautiful oceans and everything in them.  I’ve volunteered time, photos and ideas with the <a>Wild Dolphin Foundation</a>, <a>Ocean Defender Hawaii</a>, <a>Oceanic Preservation Society</a>, and <a>Cascadia Cetacean Research</a>. With goals to educate the public about the importance of ocean conservation.</p>
+	      	</div>
+	    </div>
+  	</div>
+
+  	<div class="parallax-container center">
+    	<div parallax><img src="app/images/paul-with-octopus.jpg"></div>
+  	</div>
+
+
+	<!-- <div class="white">
+		<p>Aloha and welcome to Paulphin.com.
+I’m a passionate naturalist photographer/filmmaker who feels most at home in the ocean.  I’ve devoted my life to protecting our beautiful oceans and everything in them.  I’ve volunteered time, photos and ideas with the Wild Dolphin Foundation, Ocean Defender Hawaii, Oceanic Preservation Society, and Cascadia Cetacean Research. With goals to educate the public about the importance of ocean conservation.
+Feel free to check out my channel on YouTube.
+Mahalo,
+Paulphin</p> -->
+	
+
+
+
+<!-- instagram feed -->
+	<br>
+	<h3 class="container">Instagram Feed:</h3>
+	<br>
+	<div class="featured flex-row ">
+		<div ng-repeat="item in feed"><a href="{{item.link}}" target="blank"><img class="image-thumbnail" ng-src="{{item.images.standard_resolution.url}}"/></a></div>
+	</div> 

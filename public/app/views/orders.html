@@ -1,29 +1,35 @@
 <header class="flex-row"> 
-	<div class="item"><a href="/logout"><h3>logout</h3></a></div>
-	<div class="item"><a href="#/admin/photos"><h3>photos</h3></a> </div>
-	<div class="item"><a href="#/admin/products"><h3>products</h3></a> </div>
+	<div class="item"><a href="/logout"><p>logout</p></a></div>
+	<div class="item"><a href="#/admin/photos"><p>photos</p></a> </div>
+	<div class="item"><a href="#/admin/products"><p>products</p></a> </div>
 </header>
 
 
 <main class="admin">
 
-	<h2>orders list</h2>
-	<input type="text" ng-model="filter" placeholder="look up"/>
-	<div class="flex-row space-between" ng-repeat="order in orders | filter: filter">
-		<div>id: <input readonly="true" ng-model="order._id"/></div>
-		<div class="flex-row align-end">customer: <h3>{{order.customer.name}}</h3></div>
-		<div class="flex-row"><p>ship to:</p>
-			<div class="flex-column">
-				<h3>{{order.address.name}}</h3>
-				<h3>{{order.address.address}} {{order.address.address2}}</h3>
-				<h3>{{order.address.city}}, {{order.address.state}} {{order.address.zip}}</h3>
+	<h2 class="header">orders list</h2>
+
+		<input type="text" ng-model="filter" placeholder="look up">
+	
+	<div class="row" ng-repeat="order in orders | filter: filter">
+		<div>id: <a href="" ng-click="showOrder(order)">{{order._id}}</a></div>
+		<div ng-show="order.show">
+			<div class="container">
+				<p>customer: {{order.customer.name}}</p>
+				<p>ship to:</p>
+					<div class="indent">
+						<p>{{order.address.name}}</p>
+						<p>{{order.address.address}} {{order.address.address2}}</p>
+						<p>{{order.address.city}}, {{order.address.state}} {{order.address.zip}}</p>
+					</div>
+				<p>payment: {{order.payment.status}}</p>
+				<p>order date: {{order.createdAt | date: medium}} </p>
+				<p>status:</p> <select ng-options="option for option in orderStatusOptions" ng-model="order.status"></select> 
+				<div><button ng-click="updateOrder(order._id, order.payment.status, order.status)">update</button>
+				</div>
 			</div>
 		</div>
-		<div><p>payment:</p>{{order.payment.status}} </div>
-		<div><p>order date:</p>{{order.createdAt | date: medium}} </div>
-		<div><p>status:</p><select ng-options="option for option in orderStatusOptions" ng-model="order.status"></select> </div>
-		<div><button ng-click="updateOrder(order._id, order.payment.status, order.status)">update</button>
-		</div>
+
 	</div>
 	
 </main>

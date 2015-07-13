@@ -17,6 +17,15 @@ app.directive("ngFileSelect",function(){
   }
 })
 
+// app.directive("parallax", ["$timeout", function($timeout){
+//     return {
+//         link: function(scope, element, attrs) {
+//             $timeout(function(){
+//                 element.parallax();
+//             });
+//         }
+//     };
+// }]);
 
 
 app.directive('mainHeader', function(){

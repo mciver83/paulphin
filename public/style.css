@@ -5,20 +5,19 @@
 	text-decoration: none;
 	list-style: none;
 	color: inherit;
-	font-family: Open Sans Condensed;
+	/*font-family: Open Sans Condensed;*/
 	
 }
 
 
-
-.header {
+.main-header {
 	background: white;
 	position: fixed;
 	top: 0;
 	left: 0;
-	height: 90px;
-	width: 100%;
-	border-bottom: 1px solid lightblue;
+	/*height: 90px;
+	width: 100%;*/
+	/*border-bottom: 1px solid lightblue;*/
 	padding: 0 5%;
 	font-size: 18px;
 	z-index: 1;
@@ -35,6 +34,10 @@ i {
 	margin-right: 10px;
 }
 
+.indent {
+	padding-left: 40px;
+}
+
 .material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
 
 .border-bottom {
@@ -49,9 +52,9 @@ i {
 	height: 100%;
 }
 
-.section {
+/*.section {
 	margin-top: 50px;
-}
+}*/
 
 .emailText {
 	width: 500px;
@@ -316,22 +319,33 @@ background-size: cover;
 
 .featured {
 	background: rgba(255,255,255,0.3);
-	height: 250px;
+	height: 200px;
 	width: 100%;
 	overflow: scroll;
 }
 
 .featured div {
 	min-height: 200px;
-	min-width: 300px;
+	min-width: 220px;
 	margin: 5px;
 }
 
-.featured img {
+/*.featured img {
 	height: 180px;
 	width: 280px;
-}
+}*/
 
 .video {
 	height: 400px;
 }
+
+.photo {
+  background-attachment: fixed;
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+  height: 600px;
+  position: relative;
+}
+
+
+
