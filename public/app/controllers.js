@@ -9,7 +9,9 @@ app.controller('adminCtrl', function($scope, adminService, customerService, cart
 	$scope.photos = photos;
 	$scope.categoryOptions = ['favorite', 'featured', 'product'];
 
-
+	$scope.showImageDetails = function(image){
+		image.show = !image.show
+	}
 	
     $scope.getFile = function () {
         $scope.progress = 0;
