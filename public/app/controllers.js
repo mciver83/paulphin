@@ -98,7 +98,7 @@ app.controller('adminCtrl', function($scope, adminService, customerService, cart
 
 	$scope.updatePhoto = function(id, title, description, category, auth){
 		if(confirm("Are you sure you want to update this image's info?")){
-			adminService.updatePhoto(id, title, descrition, category, auth).then(function(response){
+			adminService.updatePhoto(id, title, description, category, auth).then(function(response){
 				alert('This image has been updated.')
 				$scope.getPhotos();
 			})
@@ -271,7 +271,6 @@ app.controller('shopCtrl', function($scope, $location, productService, cartServi
 
 
 	$scope.addToCart = function(item, photo){
-		console.log(item, photo)
 		if(photo){
 			var product = {
 				item: {
@@ -331,7 +330,7 @@ app.controller('checkoutCtrl', function($scope, $location, customerService, cart
 	}
 
 	$scope.backToShop = function(){
-		$location.path('/shop/');
+		$location.path('/store/');
 	}
 
 	$scope.placeOrder = function(customer, address, products){

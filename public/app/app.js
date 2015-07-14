@@ -1,5 +1,6 @@
 
 var app = angular.module('ecommerce', ['ngRoute', 'ui.materialize'])
+// var app = angular.module('ecommerce', ['ngRoute'])
 
 app.config(function($routeProvider){
 	$routeProvider

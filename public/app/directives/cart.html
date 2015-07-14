@@ -1,35 +1,36 @@
-<div class="pop-up-back"  ng-show="show">
-	<div class="pop-up flex-column space-between">
-		<i id="closeCart" class="material-icons" ng-click="showCart()">highlight_off</i>
-		<header>
-			<h3>cart items</h3>
-		</header>
-		<div id="cartItem"class="flex-row align-start space-around " ng-repeat="item in cart">
-			<div>
-				<p>item:</p>
-				<img class="image-cart" ng-src="{{item.item.imageUrl}}"/>
+
+<div class="pop-up-back valign-wrapper"  ng-show="show">
+	<div class="pop-up center-align">
+		<i id="closeCart" class="material-icons md-dark" ng-click="showCart()">highlight_off</i>
+		<header><h4 class="black-text">cart items</h4></header>
+		<div id="cartItem">
+			<div class="row center black-text border-bottom" ng-repeat="item in cart">
+				<div class="col s2">
+					<p>item:</p>
+					<img class="image-cart" ng-src="{{item.item.imageUrl}}"/>
+				</div>
+				<p class="col s2" ng-show="item.photo.imageUrl">photo:
+					<img class="image-cart" ng-src="{{item.photo.imageUrl}}"/>
+				</p>
+				<p class="col s2">
+					quantity:
+					<input id="quantity" class="input-number" type=number ng-model="item.quantity" ng-change="updateItem(item, item.item.id, item.quantity)">
+				</p>
+				<div class="col s3">
+					<p>item total:</p>
+					<p>${{item.total}}</p>
+				</div>
+				<div class="col s1">
+					<i ng-click="removeItem(item, item.item.id)" class="material-icons">close</i>
+				</div>
 			</div>
-			<div ng-show="item.photo.imageUrl">
-				<p>photo:</p>
-				<img class="image-cart" ng-src="{{item.photo.imageUrl}}"/>
-			</div>
-			<div>
-				<p>quantity:</p>
-				<input id="quantity" class="input-number" type=number ng-model="item.quantity" ng-change="updateItem(item.id, item.quantity)">
-			</div>
-			<div>
-				<p>item total:</p>
-				<p>${{item.total}}</p>
-			</div>
-			<div>
-				<i class="fa fa-times" ng-click="removeItem(item.id)"></i>
-			</div>
-		</div>
 		
-		<div class="flex-row">
-			<strong class="item">Total cost: ${{total}}</strong>
-			<button class="item" ng-click="checkout()">place order</button>
-			<button class="item" ng-click="backToStore()">continue shopping</button>
+			<div class="flex-row">
+				<strong class="black-text">Total cost: ${{total}}</strong>
+				<button class="item black-text button" ng-click="checkout()">place order</button>
+				<button class="item black-text button" ng-click="backToStore()">continue shopping</button>
+			</div>
 		</div>
 	</div>
 </div>
+

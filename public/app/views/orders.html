@@ -9,9 +9,15 @@
 
 	<h2 class="header">orders list</h2>
 
-		<input type="text" ng-model="filter" placeholder="look up">
-	
-	<div class="row" ng-repeat="order in orders | filter: filter">
+	<div class="row">
+		<input class="col s4" type="text" ng-model="search.$" placeholder="look up"/>
+
+		<select class="col s2" ng-model="search.status" ng-options="option for option in orderStatusOptions" material-select><option value="" disabled selected>order status</option></select> 
+
+		<select class="col s2" ng-model="search.payment.status" ng-options="option for option in paymentStatusOptions" material-select><option class="gray-text" value="" selected>payment status</option></select> 
+	</div>
+
+	<div ng-repeat="order in orders | filter:search:strinct">
 		<div>id: <a href="" ng-click="showOrder(order)">{{order._id}}</a></div>
 		<div ng-show="order.show">
 			<div class="container">
@@ -24,7 +30,10 @@
 					</div>
 				<p>payment: {{order.payment.status}}</p>
 				<p>order date: {{order.createdAt | date: medium}} </p>
-				<p>status:</p> <select ng-options="option for option in orderStatusOptions" ng-model="order.status"></select> 
+				<div class="row">
+					<p class="col s1">status:</p> 
+					<select class="col s4"ng-options="option for option in orderStatusOptions" ng-model="order.status" material-select></select> 
+				</div>
 				<div><button ng-click="updateOrder(order._id, order.payment.status, order.status)">update</button>
 				</div>
 			</div>

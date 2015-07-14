@@ -126,10 +126,13 @@ app.directive('popUp', function(){
 			element.on('click', function(){
 				$(this)
 					.toggleClass('pop-up')
+
 					.siblings()
 						.toggle()
 					.parent()
 						.toggleClass('pop-up-back')
+						// .toggleClass('align-items-center')
+						// .toggleClass('content-center')
 				scope.$apply();
 			});
 
@@ -213,7 +216,8 @@ app.directive('cart', function(){
 			// 	}
 			// }
 
-			$scope.updateItem = function(id, quantity){
+			$scope.updateItem = function(item, id, quantity){
+				console.log(22222222, item, id, quantity)
 				var data = {
 					id: id,
 					quantity: quantity
@@ -223,7 +227,8 @@ app.directive('cart', function(){
 				})
 			}
 
-			$scope.removeItem = function(id){
+			$scope.removeItem = function(item, id){
+				console.log(3333333, item,444444, id)
 				cartService.removeItem(id).then(function(response){
 					$scope.cart = response.data
 				})

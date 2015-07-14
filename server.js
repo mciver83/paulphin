@@ -70,7 +70,6 @@ AWS.config.loadFromPath('./config/aws-config.json');
 
 var photoBucket = new AWS.S3({params: {Bucket: 'paulphin'}});
 
-// var photoBucket = new AWS.S3();
 
 function uploadToS3(buf, file, callback) {
     photoBucket
