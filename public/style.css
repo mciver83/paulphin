@@ -9,18 +9,42 @@
 	
 }
 
+html, body {
+	margin: 0;
+	padding: 0;
+	top:0;
+}
+
+
+ng-view {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
 
 .main-header {
 	background: white;
 	position: fixed;
 	top: 0;
 	left: 0;
-	/*height: 90px;
-	width: 100%;*/
-	/*border-bottom: 1px solid lightblue;*/
 	padding: 0 5%;
 	font-size: 18px;
 	z-index: 1;
+}
+
+#store-wrap {
+	margin: 0;
+	padding: 0;
+	height: 150%;
+	width: 100%;
+	background: url('app/images/whale.jpg') no-repeat center center fixed;
+	background-size: cover;
+	-webkit-background-size: cover;
+   	-moz-background-size: cover;
+   	-o-background-size: cover;
+   	z-index: 0;
 }
 
 
@@ -34,12 +58,40 @@ i {
 	margin-right: 10px;
 }
 
+#image {
+	position: relative;
+}
+
+#image img {
+	border-radius: 10px;
+}
+
+#enlarge-image {
+	position: absolute;
+	top: 5px;
+	left: 10px;
+
+}
+
+#add-image {
+	position: absolute;
+	top: 5px;
+	right: 0px;
+}
+
 
 .indent {
 	padding-left: 40px;
 }
 
 .material-icons.md-dark { color: rgba(0, 0, 0, 0.8); }
+
+.material-icons.md-light { color: rgba(260, 260, 260, 0.5); }
+
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
 
 .border-bottom {
 	border-bottom: 1px solid gray;
@@ -92,7 +144,7 @@ i {
 
 main {
 	margin: auto;
-	margin-top: 100px;
+	padding-top: 100px;
 	width: 80%;
 }
 

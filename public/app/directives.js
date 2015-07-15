@@ -124,15 +124,17 @@ app.directive('popUp', function(){
 		link: function(scope, element, attrs){
 
 			element.on('click', function(){
-				$(this)
-					.toggleClass('pop-up')
+				var elem = $(this).parent()
+				var popUpItem = elem.find('img')
+					popUpItem
+						.toggleClass('pop-up')
 
-					.siblings()
-						.toggle()
-					.parent()
-						.toggleClass('pop-up-back')
-						// .toggleClass('align-items-center')
-						// .toggleClass('content-center')
+						.siblings()
+							.toggle()
+						.parent()
+							.toggleClass('pop-up-back')
+							// .toggleClass('align-items-center')
+							// .toggleClass('content-center')
 				scope.$apply();
 			});
 

@@ -1,78 +1,84 @@
 <main-header></main-header>
 
-	
-<main class="flex-column align-items-center">
-	
+<div id="store-wrap">	
+	<main class="flex-column align-items-center">
+		
 
-	<header class="width140 blue lighten-3 border-color">
-		<h2 class="item">Paulphin Store</h1>
-	</header>
-
-
-	<div class="flex-column align-items-center section">
-
-		<div class="section">
-			<h4 class="center">Most Popular</h4>
-			<div class="row section">
-				<div class="col s4" ng-repeat="product in favorites">
-					<product></product>
-				</div>
-			</div>
-		</div>
-	</div>
+		<header>
+			<h2 class="item">Paulphin Store</h1>
+		</header>
 
 
-	
+		<div class="flex-column align-items-center section">
 
-	<div class="section center">
-
-		<h4>Build Your Own</h4>
-
-		<div class="row">
-			
-			<div class="col s3 ">
-				<h4>items</h4>
-				<div id="item" class="flex-column content-start">
-					<div class="item" ng-repeat="product in buildProducts">
-						<div class="flex-column align-items-center">
-							<img ng-click="buildItem(product)" class="image-small" ng-src="{{product.image}}"/>
-							<p>{{product.title}}</p>
-						</div>
+			<div class="section">
+				<h4 class="center">Most Popular</h4>
+				<div class="row section">
+					<div class="col s4" ng-repeat="product in favorites">
+						<product></product>
 					</div>
 				</div>
 			</div>
+		</div>
 
 
-			<div class="col s6 ">	
-				<h4>images</h4>
-				<div class="row">	
-					<div class="col s3" ng-repeat="photo in photos">
-						<div class="flex-column align-items-center">
-							<i ng-click="buildImage(photo)"class="fa fa-plus"></i>
-							<div pop-up><img id="image" class="image-thumbnail" ng-src="{{photo.imageUrl}}"/></div>
+		
+
+		<div class="section center">
+
+			<h4>Build Your Own</h4>
+
+			<div class="row">
+				
+				<div class="col s3 ">
+					<h4>items</h4>
+					<div id="item" class="flex-column content-start">
+						<div class="item" ng-repeat="product in buildProducts">
+							<div class="flex-column align-items-center">
+								<img ng-click="buildItem(product)" class="image-small" ng-src="{{product.image}}"/>
+								<p>{{product.title}}</p>
+							</div>
 						</div>
 					</div>
 				</div>
+
+
+				<div class="col s6 ">	
+					<h4>images</h4>
+					<div class="row">	
+						<div class="col s3" ng-repeat="photo in photos">
+							<div class="flex-column align-items-center">
+								<div id="image">
+									<div>
+										<i pop-up  id="enlarge-image" class="material-icons md-light md-36">photo_size_select_large</i>
+										<i id="add-image" class="material-icons md-light md-36" ng-click="buildImage(photo)">add_circle_outline</i>
+										<img pop-up id="pop-up" class="image-thumbnail" ng-src="{{photo.imageUrl}}"/>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+				<div id="built-product" class="col s3 flex-column align-items-center">
+					<h4>Build My Item</h4>
+					<img id="chosen-item" ng-src="{{item}}" alt="choose item" class="image-thumbnail border-color item">
+					</img>
+
+					<img id="chosen-image" ng-src="{{imageUrl}}" alt="choose image" class="image-thumbnail border-color item">
+					</img>
+					<button ng-click="addToCart(product, photo)"><i class="material-icons">add_shopping_cart</i> add</button>
+
+				</div>
+
+
 			</div>
-
-
-
-			<div id="built-product" class="col s3 flex-column align-items-center">
-				<h4>Build My Item</h4>
-				<img id="chosen-item" ng-src="{{item}}" alt="choose item" class="image-thumbnail border-color item">
-				</img>
-
-				<img id="chosen-image" ng-src="{{imageUrl}}" alt="choose image" class="image-thumbnail border-color item">
-				</img>
-				<button ng-click="addToCart(product, photo)"><i class="material-icons">add_shopping_cart</i> add</button>
-
-			</div>
-
-
 		</div>
-	</div>
 
-</main>
+	</main>
+</div>
 
 <!-- hide while working with materialize -->
 <!-- <main class="flex-column align-items-center">
