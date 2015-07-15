@@ -39,7 +39,7 @@ ng-view {
 	padding: 0;
 	height: 150%;
 	width: 100%;
-	background: url('app/images/whale.jpg') no-repeat center center fixed;
+	background: url('app/images/IMG_7718-WM.jpg') no-repeat center center fixed;
 	background-size: cover;
 	-webkit-background-size: cover;
    	-moz-background-size: cover;
@@ -58,12 +58,20 @@ i {
 	margin-right: 10px;
 }
 
+.box {
+   margin-bottom: 40px;
+   padding: 30px 40px;
+   /*background: #fff;*/
+   background: rgba(255,255,255,0.67);
+   border-radius: 4px;
+}
+
 #image {
 	position: relative;
 }
 
 #image img {
-	border-radius: 10px;
+	border-radius: 4px;
 }
 
 #enlarge-image {
@@ -116,6 +124,11 @@ i {
 
 .width50 {
 	width: 50%;
+	margin: auto;
+}
+
+.width100 {
+	width: 100%;
 	margin: auto;
 }
 
@@ -254,10 +267,10 @@ main {
 }
 
 .image-thumbnail {
-	max-height: 190px;
-	max-width: 190px;
-	min-height: 190px;
-	min-width: 190px;
+	max-height: 130px;
+	max-width: 130px;
+	min-height: 130px;
+	min-width: 130px;
 	padding: 5px;
 }
 
