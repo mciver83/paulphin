@@ -1,4 +1,4 @@
-<main-header></main-header>
+<main-header class="trans-dark"></main-header>
 
 <div id="store-wrap">	
 	<main class="flex-column align-items-center">
@@ -8,25 +8,25 @@
 			<h2 class="item">Paulphin Store</h1>
 		</header> -->
 
-	<div class="box">	
-		<div class="flex-column align-items-center section">
-			<div class="section">
+	<div class="width100 blue-text trans-dark">	
+		<div class="flex-column align-items-center container">
+			
 				<h4 class="center">Most Popular</h4>
-				<div class="row section">
-					<div class="col s4" ng-repeat="product in favorites">
+				<div class="width100 flex-row space-around">
+					<div class="item" ng-repeat="product in favorites">
 						<product class="item"></product>
 					</div>
 				</div>
-			</div>
+		
 		</div>
 	</div>
 
 
 		
-	<div class="box">
-		<div class="section center width100">
+	<div class="width100 blue-text">
+		<div class="center trans-dark">
 
-			<h4>Build Your Own</h4>
+			<h2>Build Your Own</h2>
 
 			<div class="row">
 				<div class="col s3 ">
@@ -42,7 +42,7 @@
 				</div>
 
 
-				<div class="col s6 ">	
+				<div class="col s6">	
 					<h4>images</h4>
 					<div class="row">	
 						<div class="col s3" ng-repeat="photo in photos">
@@ -68,7 +68,11 @@
 
 					<img id="chosen-image" ng-src="{{imageUrl}}" alt="choose image" class="image-thumbnail border-color item">
 					</img>
-					<button ng-click="addToCart(product, photo)"><i class="material-icons">add_shopping_cart</i> add</button>
+					<!-- <button ng-click="addToCart(product, photo)"><i class="material-icons">add_shopping_cart</i> add</button> -->
+
+					<div class="input-field col s4">
+				        <a class="waves-effect waves-light btn" ng-click="addToCart(product, photo)" message="item added to cart" duration="1000" toast='click'><i class="material-icons">add_shopping_cart</i> add</a>
+				    </div>
 				</div>
 
 

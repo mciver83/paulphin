@@ -11,24 +11,25 @@
 
 	<div class="row">
 		<div ng-repeat="photo in photos | filter: filter">
-			<a href="" pop-up ng-click="showImageDetails(photo)"><img class="col s3 image-thumbnail" ng-src="{{photo.imageUrl}}"/></a>
-			<div class="white-text indent" ng-show="photo.show">
-				<p>id:</p><input class="black-text" readonly="true" ng-model="photo._id"></input>
-				<br />
-				<br />
 
-				<p>title:</p><input  type="text" ng-model="photo.title"/>
-
-				<p>imageUrl:</p><img class="image-small" ng-src="{{photo.imageUrl}}"/>
-				<p>description:</p><input  type="text" ng-model="photo.description"></input>
-				<br />
-				<br />
-				<p>category:</p><input  type="text" ng-model="photo.category"></input> 
-				<br />
-				<br />
-				<p>auth:</p><input  type="text" ng-model="photo.auth"></input> 
-				<button class="black-text" ng-click="updatePhoto(photo._id, photo.title, photo.description, photo.category, photo.auth)">update</button>
-				<button class="black-text" ng-click="removePhoto(photo._id)">delete</button>
+			<!-- <a href=""  ng-click="showImageDetails(photo)"><img pop-up class="col s3 image-thumbnail" ng-src="{{photo.imageUrl}}"/></a> -->
+			<div ng-click="photo.show=!photo.show" pop-up>
+				<img class="col s3 image-thumbnail" ng-src="{{photo.imageUrl}}"/>
+				<span class="white-text indent" ng-show="photo.show">
+					<p>id:</p><input class="black-text" readonly="true" ng-model="photo._id"></input>
+					<br />
+					<br />
+					<p>title:</p><input  type="text" ng-model="photo.title"/>
+					<p>description:</p><input  type="text" ng-model="photo.description"></input>
+					<br />
+					<br />
+					<p>category:</p><input  type="text" ng-model="photo.category"></input> 
+					<br />
+					<br />
+					<p>auth:</p><input  type="text" ng-model="photo.auth"></input> 
+					<button class="black-text" ng-click="updatePhoto(photo._id, photo.title, photo.description, photo.category, photo.auth)">update</button>
+					<button class="black-text" ng-click="removePhoto(photo._id)">delete</button>
+				</span>
 			</div>
 		</div>
 	</div>
@@ -36,8 +37,9 @@
 	<br/>
 	<br/>
 
-	<h4> new photo </h4>
-	<div class="flex-column" ng-show="true">
+	
+	<div class="width50" ng-show="true">
+		<h4> new photo </h4>
 		<input type="text" ng-model="photoTitle" placeholder="title"></input>
 
 		<div class="flex-row">
@@ -49,9 +51,9 @@
 	   	</div>
 
 		<!-- <input type="text" ng-model="imageUrl" placeholder="image url"/> -->
-		<textarea ng-model="photoDescription" placeholder="decription: max 100 char"></textarea>
-		<input ng-model="photoCategory" placeholder="type"></input>
-		<input ng-model="photoAuth" placeholder="auth" required></input>
+		<input type="text" ng-model="photoDescription"  placeholder="decription: max 100 char"></input>
+		<input type="text" ng-model="photoCategory" placeholder="type"></input>
+		<input type="text" ng-model="photoAuth" placeholder="auth (i.e. store, excursion)" required></input>
 		<!-- <button ng-click="addPhoto(imageSrc, file)">submit</button> -->
 		<button ng-click="addPhoto(imageSrc, file, photoTitle, photoDescription, photoCategory, photoAuth)">submit</button>
 	</div>

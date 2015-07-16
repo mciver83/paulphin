@@ -1,11 +1,11 @@
 * {
-	box-sizing: border-box;
+	/*box-sizing: border-box;*/
 	padding: 0;
 	margin:0;
 	text-decoration: none;
 	list-style: none;
 	color: inherit;
-	/*font-family: Open Sans Condensed;*/
+	font-family: Alegreya Sans SC;
 	
 }
 
@@ -16,20 +16,13 @@ html, body {
 }
 
 
-ng-view {
-	height: 100%;
+main-header {
+	/*background: rgba(0,0,0,0.6);*/
 	width: 100%;
-	margin: 0;
-	padding: 0;
-}
-
-
-.main-header {
-	background: white;
 	position: fixed;
 	top: 0;
 	left: 0;
-	padding: 0 5%;
+	padding: 15px 30px;
 	font-size: 18px;
 	z-index: 1;
 }
@@ -39,12 +32,16 @@ ng-view {
 	padding: 0;
 	height: 150%;
 	width: 100%;
-	background: url('app/images/IMG_7718-WM.jpg') no-repeat center center fixed;
+	background: url('app/images/IMG_0324-2.jpg') no-repeat center center fixed;
 	background-size: cover;
 	-webkit-background-size: cover;
    	-moz-background-size: cover;
    	-o-background-size: cover;
    	z-index: 0;
+}
+
+.trans-dark {
+	background: rgba(0,0,0,0.8);
 }
 
 
@@ -59,7 +56,7 @@ i {
 }
 
 .box {
-   margin-bottom: 40px;
+   margin: 40px;
    padding: 30px 40px;
    /*background: #fff;*/
    background: rgba(255,255,255,0.67);
@@ -147,6 +144,7 @@ i {
 }
 
 #logo {
+	flex: 1.5;
 	-webkit-flex: 1.5;
 }
 
@@ -157,7 +155,7 @@ i {
 
 main {
 	margin: auto;
-	padding-top: 100px;
+	padding-top: 150px;
 	width: 80%;
 }
 
@@ -204,6 +202,9 @@ main {
 	-webkit-flex-wrap: wrap;
 }
 
+.padding {
+	padding: 1%;
+}
 .padding40 {
 	padding: 40px;
 }
@@ -280,6 +281,12 @@ main {
 	min-height: 100px;
 	min-width: 100px;
 	padding: 5px;
+}
+
+
+.height500 {
+	max-height: 500px;
+	min-height: 500px;
 }
 
 .product-image {
@@ -369,17 +376,28 @@ button {
 	font: icon;
 }
 
+.width33 {
+	width: 26%;
+}
+
+.width66 {
+	width: 66%;
+}
+
 
 video#bgvid {
 position: fixed;
 top: 50%;
 left: 50%;
-width: 100%;
+width: 120%;
 z-index: -1;
 -webkit-transform: translateX(-50%) translateY(-50%);
 transform: translateX(-50%) translateY(-50%);
 background: url(app/images/partners.jpg);
 background-size: cover;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
 
 }
 
@@ -402,7 +420,7 @@ background-size: cover;
 }*/
 
 .video {
-	height: 400px;
+	height: 600px;
 }
 
 .photo {
@@ -411,6 +429,42 @@ background-size: cover;
   background-repeat: no-repeat;
   height: 600px;
   position: relative;
+}
+
+@media (max-width: 1130px){
+	video#bgvid {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		width: 200%;
+		z-index: -1;
+		-webkit-transform: translateX(-50%) translateY(-50%);
+		transform: translateX(-50%) translateY(-50%);
+		background: url(app/images/partners.jpg);
+		background-size: cover;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+
+		}
+}
+
+@media (max-width: 680px){
+	video#bgvid {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		width: 350%;
+		z-index: -1;
+		-webkit-transform: translateX(-50%) translateY(-50%);
+		transform: translateX(-50%) translateY(-50%);
+		background: url(app/images/partners.jpg);
+		background-size: cover;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+
+		}
 }
 
 
