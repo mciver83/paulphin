@@ -16,9 +16,12 @@ html, body {
 	height: 100%;
 }
 
+#wrapper {
+	min-height: 100%;
+	position: relative;
+}
 
 main-header {
-	/*background: rgba(0,0,0,0.6);*/
 	width: 100%;
 	position: fixed;
 	top: 0;
@@ -28,12 +31,43 @@ main-header {
 	z-index: 2;
 }
 
+.header {
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	padding: 15px 30px;
+	font-size: 18px;
+	z-index: 2;
+}
+
+main {
+	margin: auto;
+	padding-top: 150px;
+	padding-bottom: 200px;
+	/*width: 80%;*/
+}
+
+footer {
+	width: 100%;
+	height: 200px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+
+.page-fill {
+	min-height: 900px;
+	max-height: 100%;
+}
+
 #store-wrap {
 	margin: 0;
 	padding: 0;
 	height: 100%;
 	width: 100%;
-	background: url('app/images/IMG_0324-2.jpg') no-repeat center center fixed;
+	background: url('app/images/IMG_0324-2.jpg') center center fixed;
 	background-size: cover;
 	-webkit-background-size: cover;
    	-moz-background-size: cover;
@@ -46,7 +80,7 @@ main-header {
 	padding: 0;
 	height: 100%;
 	width: 100%;
-	background: url('app/images/lilikoi.jpg') no-repeat center center fixed;
+	background: url('app/images/lilikoi.jpg');
 	background-size: cover;
 	-webkit-background-size: cover;
    	-moz-background-size: cover;
@@ -54,6 +88,31 @@ main-header {
    	z-index: -1;
 }
 
+#checkout-wrap {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+	background: url('app/images/IMG_0346.jpg');
+	background-size: cover;
+	-webkit-background-size: cover;
+   	-moz-background-size: cover;
+   	-o-background-size: cover;
+   	z-index: -1;
+}
+
+#payment-wrap {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+	background: url('app/images/IMG_0346.jpg');
+	background-size: cover;
+	-webkit-background-size: cover;
+   	-moz-background-size: cover;
+   	-o-background-size: cover;
+   	z-index: -1;
+}
 .trans-dark {
 	background: rgba(0,0,0,0.8);
 }
@@ -146,6 +205,11 @@ header {
 	margin: auto;
 }
 
+.width80 {
+	width: 80%;
+	margin: auto;
+}
+
 .width100 {
 	width: 100%;
 	margin: auto;
@@ -175,11 +239,6 @@ header {
 	height: 90px;
 }
 
-main {
-	margin: auto;
-	padding-top: 150px;
-	width: 80%;
-}
 
 .flex-row {
 	display: -webkit-flex;

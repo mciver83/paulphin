@@ -5,13 +5,13 @@
 	</div>
 	<div id="navbar" class="blue-text text-lighten-4 flex-row space-around align-items-center">
 		<p id="cart">
-			<a href="" ng-click="showCart()">{{cart.length}}<i class="material-icons">shopping_cart</i>my cart</a><cart></cart>
+			<a href="" ng-hide="!cart.length" ng-click="showCart()">{{cart.length}}<i class="material-icons">shopping_cart</i>my cart</a><cart></cart>
 		</p>
 		<div id="store">
-			<p><a href="" ng-click="toPath('store')">store</a></p>
+			<p><a href="#/store" ng-hide="cart.length" >store</a></p>
 		</div>
-		<p><a href="" ng-click="toPath('about')">about</a></p>
-		<p><a href="" ng-click="toPath('contact')">contact</a></p>
+		<p><a href="#/about">about</a></p>
+		<p><a href="#/contact">contact</a></p>
 	</div>
 </div>
 
