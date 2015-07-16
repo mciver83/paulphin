@@ -128,11 +128,11 @@ app.directive('popUp', function(){
 				var popUpItem = elem.find('img')
 					popUpItem
 						.toggleClass('pop-up')
-
 						.siblings()
 							.toggle()
 						.parent()
-							.toggleClass('pop-up-back')
+							.toggleClass('pop-up-back')	
+						
 							// .toggleClass('align-items-center')
 							// .toggleClass('content-center')
 				scope.$apply();

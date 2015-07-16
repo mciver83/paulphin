@@ -10,7 +10,7 @@
 
 	<div class="width100 blue-text trans-light">	
 		<div class="flex-column align-items-center container">
-			
+				<br />
 				<h4 class="center">Popular Items</h4>
 				<div class="width100 flex-row space-around">
 					<div class="item black-text" ng-repeat="product in favorites">
@@ -20,17 +20,21 @@
 		
 		</div>
 	</div>
+	<br />
+	<br />
 
 
 		
-	<div class="width100 blue-text">
+	<div class="width100 blue-text section">
 		<div class="center trans-light">
-
+			<br />
 			<h2>Build Your Own</h2>
 
 			<div class="row">
 				<div class="col s3 ">
-					<h4>items</h4>
+					<h3>Step<h1>1</h1></h3>
+					<h5>choose a product</h5>
+					<br>
 					<div id="item" class="flex-column content-start">
 						<div class="item black-text" ng-repeat="product in buildProducts">
 							<div class="flex-column align-items-center">
@@ -43,11 +47,14 @@
 
 
 				<div class="col s6">	
-					<h4>images</h4>
+					<h3>Step<h1>2</h1></h3>
+					<h5>choose an image</h5>
+					<br>
+					<br>
 					<div class="row">	
 						<div class="col s3" ng-repeat="photo in photos">
 							<div class="flex-column align-items-center">
-								<div id="image">
+								<div class="image">
 									<div>
 										<i pop-up  id="enlarge-image" class="material-icons md-light md-36">photo_size_select_large</i>
 										<i id="add-image" class="material-icons md-light md-36" ng-click="buildImage(photo)">add_circle_outline</i>
@@ -61,18 +68,22 @@
 
 
 
-				<div id="built-product" class="col s3 flex-column align-items-center">
-					<h4>Build My Item</h4>
-					<img id="chosen-item" ng-src="{{item}}" alt="choose item" class="image-thumbnail border-color item">
-					</img>
+				<div id="built-product" class="col s3">
+					<h3>Step<h1>3</h1></h3>
+					<h5>add item to cart</h5>
+					<br>
+					<div class="flex-column align-items-center">
+						<img id="chosen-item" ng-src="{{item}}" alt="product preview" class="image-thumbnail border-color item">
+						</img>
 
-					<img id="chosen-image" ng-src="{{imageUrl}}" alt="choose image" class="image-thumbnail border-color item">
-					</img>
-					<!-- <button ng-click="addToCart(product, photo)"><i class="material-icons">add_shopping_cart</i> add</button> -->
+						<img id="chosen-image" ng-src="{{imageUrl}}" alt="image preview" class="image-thumbnail border-color item">
+						</img>
+						<!-- <button ng-click="addToCart(product, photo)"><i class="material-icons">add_shopping_cart</i> add</button> -->
 
-					<div class="input-field col s4">
-				        <a class="waves-effect waves-light btn" ng-click="addToCart(product, photo)"><i class="material-icons">add_shopping_cart</i> add</a>
-				    </div>
+						<div class="input-field col s4">
+					        <a class="waves-effect waves-light btn" ng-click="addToCart(product, photo)"><i class="material-icons">add_shopping_cart</i> add</a>
+					    </div>
+					</div>
 				</div>
 
 

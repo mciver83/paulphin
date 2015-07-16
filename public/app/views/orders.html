@@ -5,7 +5,7 @@
 </header>
 
 
-<main class="admin">
+<main class="admin padding40">
 
 	<h2 class="header">orders list</h2>
 
@@ -18,7 +18,7 @@
 	</div>
 
 	<div ng-repeat="order in orders | filter:search:strinct">
-		<div>id: <a href="" ng-click="showOrder(order)">{{order._id}}</a></div>
+		<div>id: <a class="blue-text darken-2" href="" ng-click="showOrder(order)">{{order._id}}</a></div>
 		<div ng-show="order.show">
 			<div class="container">
 				<p>customer: {{order.customer.name}}</p>
@@ -27,9 +27,14 @@
 						<p>{{order.address.name}}</p>
 						<p>{{order.address.address}} {{order.address.address2}}</p>
 						<p>{{order.address.city}}, {{order.address.state}} {{order.address.zip}}</p>
-					</div>
+					</div>	
 				<p>payment: {{order.payment.status}}</p>
 				<p>order date: {{order.createdAt | date: medium}} </p>
+				<p>order:
+					<div ng-repeat="product in order.products">
+						<p>product: {{product.product.title}}</p>
+						<p class="indent" ng-show="product.photo">image: <img class="image-small" ng-src="{{product.photo.imageUrl}}"/></p>
+					</div>
 				<div class="row">
 					<p class="col s1">status:</p> 
 					<select class="col s4"ng-options="option for option in orderStatusOptions" ng-model="order.status" material-select></select> 

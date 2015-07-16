@@ -253,8 +253,8 @@ app.controller('shopCtrl', function($scope, $location, productService, cartServi
 	$scope.print = 'print';
 	$scope.item = 'product';
 
-	$scope.item = 'app/images/build-item.png';
-	$scope.imageUrl = 'app/images/build-image.png';
+	$scope.item = '';
+	$scope.imageUrl = '';
 
 
 
@@ -272,7 +272,7 @@ app.controller('shopCtrl', function($scope, $location, productService, cartServi
 
 	$scope.addToCart = function(item, photo){
 		if(!item){
-			Materialize.toast('not added to cart', 1000)
+			Materialize.toast('nothing added to cart', 1000)
 		}
 		if(photo){
 			var product = {
@@ -300,8 +300,8 @@ app.controller('shopCtrl', function($scope, $location, productService, cartServi
 			}
 		}
 		cartService.addToCart(product).then(function(response){
-			$scope.imageUrl = 'app/images/build-image.png';
-			$scope.item = 'app/images/build-item.png';
+			$scope.imageUrl = '';
+			$scope.item = '';
 			$scope.cart = response.data;
 			Materialize.toast('item added to cart', 1000);
 		})
