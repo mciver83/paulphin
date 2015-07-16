@@ -271,6 +271,9 @@ app.controller('shopCtrl', function($scope, $location, productService, cartServi
 
 
 	$scope.addToCart = function(item, photo){
+		if(!item){
+			Materialize.toast('not added to cart', 1000)
+		}
 		if(photo){
 			var product = {
 				item: {
@@ -300,6 +303,7 @@ app.controller('shopCtrl', function($scope, $location, productService, cartServi
 			$scope.imageUrl = 'app/images/build-image.png';
 			$scope.item = 'app/images/build-item.png';
 			$scope.cart = response.data;
+			Materialize.toast('item added to cart', 1000);
 		})
 	}
 })

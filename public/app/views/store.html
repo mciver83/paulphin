@@ -13,7 +13,7 @@
 			
 				<h4 class="center">Popular Items</h4>
 				<div class="width100 flex-row space-around">
-					<div class="item" ng-repeat="product in favorites">
+					<div class="item black-text" ng-repeat="product in favorites">
 						<product class="item"></product>
 					</div>
 				</div>
@@ -32,7 +32,7 @@
 				<div class="col s3 ">
 					<h4>items</h4>
 					<div id="item" class="flex-column content-start">
-						<div class="item" ng-repeat="product in buildProducts">
+						<div class="item black-text" ng-repeat="product in buildProducts">
 							<div class="flex-column align-items-center">
 								<img ng-click="buildItem(product)" class="image-small" ng-src="{{product.image}}"/>
 								<p>{{product.title}}</p>
@@ -71,7 +71,7 @@
 					<!-- <button ng-click="addToCart(product, photo)"><i class="material-icons">add_shopping_cart</i> add</button> -->
 
 					<div class="input-field col s4">
-				        <a class="waves-effect waves-light btn" ng-click="addToCart(product, photo)" message="item added to cart" duration="1000" toast='click'><i class="material-icons">add_shopping_cart</i> add</a>
+				        <a class="waves-effect waves-light btn" ng-click="addToCart(product, photo)"><i class="material-icons">add_shopping_cart</i> add</a>
 				    </div>
 				</div>
 
