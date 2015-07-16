@@ -44,6 +44,10 @@ main-header {
 	background: rgba(0,0,0,0.8);
 }
 
+.trans-light {
+	background: rgba(250,250,250,0.93);
+}
+
 
 header {
 	border-bottom: 1px solid gray;
