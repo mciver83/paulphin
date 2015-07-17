@@ -17,52 +17,61 @@ app.directive("ngFileSelect",function(){
   }
 })
 
+// app.directive("parallax", ["$timeout", function($timeout){
+//     return {
+//         link: function(scope, element, attrs) {
+//             $timeout(function(){
+//                 element.parallax();
+//             });
+//         }
+//     };
+// }]);
 
 
 app.directive('mainHeader', function(){
 	return {
 		restrict: 'E',
-		templateUrl: 'app/directives/header.html',
-		transclude: true,
-		link: function(scope, element, attrs){
-			scope.$watch('cart', function(){
-				element.find('#cart').hide();
-				if(scope.cart.length > 0){
-					element.find('#store').hide();
-					element.find('#cart').show();
-				} else {
-					element.find('#store').show();
-					element.find('#cart').hide();
-				}
-			})
-		},
-		controller: function($scope, $location, customerService){
-			$scope.toPath = function(location){
-				if($scope.customer){
-					$location.path('/' + location + '/' + $scope.customer._id)
-				} else {
-					$location.path('/' + location + '/')
-				}
-			}
-			$scope.toStore = function(){
-				if($scope.customer){
-					$location.path('/shop/' + $scope.customer._id)
-				} else {
-					($scope.createTempCustomer = function(){
-						// var customer = "Paul Johnson"
-						var customer = 'guest' + Math.floor(Math.random() * 100000);
-						customerService.createTempCustomer(customer).then(function(response){
-							customerService.getCustomer('name', customer).then(function(response){
-								console.log(response.data[0])
-								var customer = response.data[0];
-								$scope.customer = customer;
-								$location.path('/store/' + $scope.customer._id);
-							})
-						})
-					})()
-				}
-			}
-		}				
+		templateUrl: 'app/directives/header.html'
+		// transclude: true,
+		// link: function(scope, element, attrs){
+		// 	scope.$watch('cart', function(){
+		// 		element.find('#cart').hide();
+		// 		if(scope.cart && scope.cart.length > 0){
+		// 			element.find('#store').hide();
+		// 			element.find('#cart').show();
+		// 		} else {
+		// 			element.find('#store').show();
+		// 			element.find('#cart').hide();
+		// 		}
+		// 	})
+		// },
+		// controller: function($scope, $location, customerService){
+		// 	$scope.toPath = function(location){
+		// 		if($scope.customer){
+		// 			$location.path('/' + location + '/' + $scope.customer._id)
+		// 		} else {
+		// 			$location.path('/' + location + '/')
+		// 		}
+		// 	}
+		// 	$scope.toStore = function(){
+		// 		if($scope.customer){
+		// 			$location.path('/shop/' + $scope.customer._id)
+		// 		} else {
+		// 			($scope.createTempCustomer = function(){
+		// 				// var customer = "Paul Johnson"
+		// 				var customer = 'guest' + Math.floor(Math.random() * 100000);
+		// 				customerService.createTempCustomer(customer).then(function(response){
+		// 					customerService.getCustomer('name', customer).then(function(response){
+		// 						console.log(response.data[0])
+		// 						var customer = response.data[0];
+		// 						$scope.customer = customer;
+		// 						$location.path('/store/' + $scope.customer._id);
+		// 					})
+		// 				})
+		// 			})()
+		// 		}
+		// 	}
+		// }				
 	}
 })
 
@@ -115,12 +124,17 @@ app.directive('popUp', function(){
 		link: function(scope, element, attrs){
 
 			element.on('click', function(){
-				$(this)
-					.toggleClass('pop-up')
-					.siblings()
-						.toggle()
-					.parent()
-						.toggleClass('pop-up-back')
+				var elem = $(this).parent()
+				var popUpItem = elem.find('img')
+					popUpItem
+						.toggleClass('pop-up')
+						.siblings()
+							.toggle()
+						.parent()
+							.toggleClass('pop-up-back')	
+						
+							// .toggleClass('align-items-center')
+							// .toggleClass('content-center')
 				scope.$apply();
 			});
 
@@ -158,17 +172,19 @@ app.directive('storeLogin', function(){
 
 app.directive('cart', function(){
 	return {
-		restrict: 'AE',
+		restrict: 'E',
 		templateUrl: 'app/directives/cart.html',
 		link: function(scope, element, attrs){
-			scope.$watch('cart', function(){
-				var total = 0;
-				for(var i = 0; i < scope.cart.length; i++){
-					scope.cart[i].total = scope.cart[i].quantity * scope.cart[i].item.price;
-					total += scope.cart[i].total;
-					scope.total = total.toFixed(2);
-				}
-			})
+			if(scope.cart){
+				scope.$watch('cart', function(){
+					var total = 0;
+					for(var i = 0; i < scope.cart.length; i++){
+						scope.cart[i].total = scope.cart[i].quantity * scope.cart[i].item.price;
+						total += scope.cart[i].total;
+						scope.total = total.toFixed(2);
+					}
+				})
+			}
 		},
 		controller: function($scope, cartService, $location, customerService){
 
@@ -204,7 +220,8 @@ app.directive('cart', function(){
 			// 	}
 			// }
 
-			$scope.updateItem = function(id, quantity){
+			$scope.updateItem = function(item, id, quantity){
+				console.log(22222222, item, id, quantity)
 				var data = {
 					id: id,
 					quantity: quantity
@@ -214,7 +231,8 @@ app.directive('cart', function(){
 				})
 			}
 
-			$scope.removeItem = function(id){
+			$scope.removeItem = function(item, id){
+				console.log(3333333, item,444444, id)
 				cartService.removeItem(id).then(function(response){
 					$scope.cart = response.data
 				})

@@ -1,11 +1,21 @@
-<main-header></main-header>
+<main-header class="black"></main-header>
 
+<div id="contact-wrap">
+    <main class="valign-wrapper">
+        <div class="trans-light width50 center-align padding40">
+        	<h4>Contact me</h4>
+            <form class="flex-column align-items-center content-center width50" name="mail"> 
+                <input type="text" ng-model="fromName" placeholder="name">
+                <input type="text" ng-model="fromEmail" placeholder="email">
+                <br />
+                <br />
+                <br />
+                <br />
+                <i class="material-icons prefix">mode_edit</i>
+                <textarea id="message" class="materialize-textarea black-text" ng-model="message" placeholder="type message here"></textarea>
+                <button  ng-click="sendEmail(fromEmail, fromName, 'markmciver83@gmail.com', 'Paul', 'inquiry from website', message)">send message</button>
+            </form>
+        </div>
 
-<main>
-  <form class="flex-column align-items-center content-center" name="mail"> 
-    <input type="text" ng-model="fromName" placeholder="name">
-    <input type="text" ng-model="fromEmail" placeholder="email">
-    <textarea class="emailText" ng-model="message" placeholder="type message here"></textarea> 
-    <button  ng-click="sendEmail(fromEmail, fromName, 'markmciver83@gmail.com', 'Paul', 'inquiry from website', message)">send message</button>
-  </form>
-</main>
+    </main>
+</div>

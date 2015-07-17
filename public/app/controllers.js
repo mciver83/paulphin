@@ -9,7 +9,9 @@ app.controller('adminCtrl', function($scope, adminService, customerService, cart
 	$scope.photos = photos;
 	$scope.categoryOptions = ['favorite', 'featured', 'product'];
 
-
+	$scope.showImageDetails = function(image){
+		image.show = !image.show
+	}
 	
     $scope.getFile = function () {
         $scope.progress = 0;
@@ -96,7 +98,7 @@ app.controller('adminCtrl', function($scope, adminService, customerService, cart
 
 	$scope.updatePhoto = function(id, title, description, category, auth){
 		if(confirm("Are you sure you want to update this image's info?")){
-			adminService.updatePhoto(id, title, descrition, category, auth).then(function(response){
+			adminService.updatePhoto(id, title, description, category, auth).then(function(response){
 				alert('This image has been updated.')
 				$scope.getPhotos();
 			})
@@ -119,6 +121,9 @@ app.controller('adminCtrl', function($scope, adminService, customerService, cart
 //admin orders
 app.controller('orderCtrl', function($scope, orders, adminService){
 	$scope.orders = orders;
+	$scope.showOrder = function(order){
+		order.show = !order.show
+	}
 
 	$scope.paymentStatusOptions = ['waiting', 'processing', 'paid'];
 	$scope.orderStatusOptions = ['processing', 'shipping', 'on hold', 'delivered'];
@@ -165,7 +170,10 @@ app.controller('homeCtrl', function($scope){
 //about page
 app.controller('aboutCtrl', function($scope, instagram){
 
+
+
 	$scope.feed = instagram;
+	console.log(instagram)
 	// $scope.customer = customer;
 	// if($scope.customer){
 	// 	$scope.cart = $scope.customer.cart;
@@ -246,8 +254,8 @@ app.controller('shopCtrl', function($scope, $location, productService, cartServi
 	$scope.print = 'print';
 	$scope.item = 'product';
 
-	$scope.item = 'app/images/build-item.png';
-	$scope.imageUrl = 'app/images/build-image.png';
+	$scope.item = '';
+	$scope.imageUrl = '';
 
 
 
@@ -264,7 +272,9 @@ app.controller('shopCtrl', function($scope, $location, productService, cartServi
 
 
 	$scope.addToCart = function(item, photo){
-		console.log(item, photo)
+		if(!item){
+			Materialize.toast('nothing added to cart', 1000)
+		}
 		if(photo){
 			var product = {
 				item: {
@@ -291,9 +301,10 @@ app.controller('shopCtrl', function($scope, $location, productService, cartServi
 			}
 		}
 		cartService.addToCart(product).then(function(response){
-			$scope.imageUrl = 'app/images/build-image.png';
-			$scope.item = 'app/images/build-item.png';
+			$scope.imageUrl = '';
+			$scope.item = '';
 			$scope.cart = response.data;
+			Materialize.toast('item added to cart', 1000);
 		})
 	}
 })
@@ -324,7 +335,7 @@ app.controller('checkoutCtrl', function($scope, $location, customerService, cart
 	}
 
 	$scope.backToShop = function(){
-		$location.path('/shop/');
+		$location.path('/store/');
 	}
 
 	$scope.placeOrder = function(customer, address, products){

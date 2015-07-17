@@ -1,29 +1,49 @@
-<header class="flex-row"> 
-	<div class="item"><a href="/logout"><h3>logout</h3></a></div>
-	<div class="item"><a href="#/admin/photos"><h3>photos</h3></a> </div>
-	<div class="item"><a href="#/admin/products"><h3>products</h3></a> </div>
+<header class="header flex-row black blue-text"> 
+	<div class="item"><a href="/logout"><p>logout</p></a></div>
+	<div class="item"><a href="#/admin/photos"><p>photos</p></a> </div>
+	<div class="item"><a href="#/admin/products"><p>products</p></a> </div>
 </header>
 
 
-<main class="admin">
+<main class="width80">
 
-	<h2>orders list</h2>
-	<input type="text" ng-model="filter" placeholder="look up"/>
-	<div class="flex-row space-between" ng-repeat="order in orders | filter: filter">
-		<div>id: <input readonly="true" ng-model="order._id"/></div>
-		<div class="flex-row align-end">customer: <h3>{{order.customer.name}}</h3></div>
-		<div class="flex-row"><p>ship to:</p>
-			<div class="flex-column">
-				<h3>{{order.address.name}}</h3>
-				<h3>{{order.address.address}} {{order.address.address2}}</h3>
-				<h3>{{order.address.city}}, {{order.address.state}} {{order.address.zip}}</h3>
+	<h2 class="indent">orders list</h2>
+
+	<div class="row width80">
+		<input class="col s4" type="text" ng-model="search.$" placeholder="look up"/>
+
+		<select class="col s2 browser-default" ng-model="search.status" ng-options="option for option in orderStatusOptions"><option value="" disabled selected>order status</option></select> 
+
+		<select class="col s2 browser-default" ng-model="search.payment.status" ng-options="option for option in paymentStatusOptions"><option class="gray-text" value="" disabled selected>payment status</option></select> 
+	</div>
+
+	<div ng-repeat="order in orders | filter:search:strinct">
+		<div>id: <a class="blue-text darken-2" href="" ng-click="showOrder(order)">{{order._id}}</a></div>
+		<div ng-show="order.show">
+			<div class="container">
+				<p>customer: {{order.customer.name}}</p>
+				<p>ship to:</p>
+					<div class="indent">
+						<p>{{order.address.name}}</p>
+						<p>{{order.address.address}} {{order.address.address2}}</p>
+						<p>{{order.address.city}}, {{order.address.state}} {{order.address.zip}}</p>
+					</div>	
+				<p>payment: {{order.payment.status}}</p>
+				<p>order date: {{order.createdAt | date: medium}} </p>
+				<p>order:
+					<div ng-repeat="product in order.products">
+						<p>product: {{product.product.title}}</p>
+						<p class="indent" ng-show="product.photo">image: <img class="image-small" ng-src="{{product.photo.imageUrl}}"/></p>
+					</div>
+				<div class="row">
+					<p class="col s1">status:</p> 
+					<select class="col s4"ng-options="option for option in orderStatusOptions" ng-model="order.status" material-select></select> 
+				</div>
+				<div><button ng-click="updateOrder(order._id, order.payment.status, order.status)">update</button>
+				</div>
 			</div>
 		</div>
-		<div><p>payment:</p>{{order.payment.status}} </div>
-		<div><p>order date:</p>{{order.createdAt | date: medium}} </div>
-		<div><p>status:</p><select ng-options="option for option in orderStatusOptions" ng-model="order.status"></select> </div>
-		<div><button ng-click="updateOrder(order._id, order.payment.status, order.status)">update</button>
-		</div>
+
 	</div>
 	
 </main>

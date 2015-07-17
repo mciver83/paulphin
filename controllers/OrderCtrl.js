@@ -27,6 +27,7 @@ module.exports = {
 	get: function(req, res){
 		Order.find(req.query)
 		.populate('products.product')
+		.populate('products.photo')
 		.exec(function(err, data){
 			if(err){
 				res.error(500).send(err);

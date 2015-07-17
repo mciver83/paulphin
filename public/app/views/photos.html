@@ -1,29 +1,44 @@
-<header class="flex-row"> 
-	<div class="item"><a href="/logout"><h3>logout</h3></a></div>
-	<div class="item"><a href="#/admin/orders"><h3>orders</h3></a> </div>
-	<div class="item"><a href="#/admin/products"><h3>products</h3></a> </div>
+<header class="header flex-row black blue-text"> 
+	<div class="item"><a href="/logout"><p>logout</p></a></div>
+	<div class="item"><a href="#/admin/orders"><p>orders</p></a> </div>
+	<div class="item"><a href="#/admin/products"><p>products</p></a> </div>
 </header>
 
-<main class="admin">
+<main class="width80">
 
-	<h2>Photos list</h2>
-	<input type="text" ng-model="filter" placeholder="look up"/>
-	<div class="flex-row" ng-repeat="photo in photos | filter: filter">
-		<div><p>id:</p><input readonly="true" ng-model="photo._id"/></div>
-		<div><p>title:</p><input type="text" ng-model="photo.title"></input></div>
-		<div><p>imageUrl:</p><img class="image-small" ng-src="{{photo.imageUrl}}"/></div>
-		<div><p>description:</p><input ng-model="photo.description"></input> </div>
-		<div><p>category:</p><input ng-model="photo.category"></input> </div>
-		<div><p>auth:</p><input ng-model="photo.auth"></input> </div>
-		<div><button ng-click="updatePhoto(photo._id, photo.title, photo.description, photo.category, photo.auth)">update</button>
-		<button ng-click="removePhoto(photo._id)">delete</button></div>
+	<h2 class="indent">Photos list</h2>
+	<div class="width50"><input type="text" ng-model="filter" placeholder="look up"/></div>
+
+	<div class="flex-row wrap content-center">
+		<div ng-repeat="photo in photos | filter: filter">
+			<!-- <a href=""  ng-click="showImageDetails(photo)"><img pop-up class="col s3 image-thumbnail" ng-src="{{photo.imageUrl}}"/></a> -->
+			<div ng-click="photo.show=!photo.show" pop-up>
+				<img class="image-thumbnail" ng-src="{{photo.imageUrl}}"/>
+				<span class="white-text indent" ng-show="photo.show">
+					<p>id:</p><input class="black-text" readonly="true" ng-model="photo._id"></input>
+					<br />
+					<br />
+					<p>title:</p><input  type="text" ng-model="photo.title"/>
+					<p>description:</p><input  type="text" ng-model="photo.description"></input>
+					<br />
+					<br />
+					<p>category:</p><input  type="text" ng-model="photo.category"></input> 
+					<br />
+					<br />
+					<p>auth:</p><input  type="text" ng-model="photo.auth"></input> 
+					<button class="black-text" ng-click="updatePhoto(photo._id, photo.title, photo.description, photo.category, photo.auth)">update</button>
+					<button class="black-text" ng-click="removePhoto(photo._id)">delete</button>
+				</span>
+			</div>
+		</div>
 	</div>
 
 	<br/>
 	<br/>
 
-	<h2> new photo </h2>
-	<div class="flex-column" ng-show="true">
+	
+	<div class="width50">
+		<h4> new photo </h4>
 		<input type="text" ng-model="photoTitle" placeholder="title"></input>
 
 		<div class="flex-row">
@@ -35,9 +50,9 @@
 	   	</div>
 
 		<!-- <input type="text" ng-model="imageUrl" placeholder="image url"/> -->
-		<textarea ng-model="photoDescription" placeholder="decription: max 100 char"></textarea>
-		<input ng-model="photoCategory" placeholder="type"></input>
-		<input ng-model="photoAuth" placeholder="auth" required></input>
+		<input type="text" ng-model="photoDescription"  placeholder="decription: max 100 char"></input>
+		<input type="text" ng-model="photoCategory" placeholder="type"></input>
+		<input type="text" ng-model="photoAuth" placeholder="auth (i.e. store, excursion)" required></input>
 		<!-- <button ng-click="addPhoto(imageSrc, file)">submit</button> -->
 		<button ng-click="addPhoto(imageSrc, file, photoTitle, photoDescription, photoCategory, photoAuth)">submit</button>
 	</div>

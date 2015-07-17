@@ -1,32 +1,72 @@
 <!DOCTYPE html>
 <html ng-app="ecommerce">
 <head>
-	<link rel="stylesheet" href="style.css">
-<!-- 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
+
+
+  <link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="materialize-style.css">
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css"> -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"> -->
+      rel="stylesheet">
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&effect=3d|neon|fire-animation">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:300&effect=3d|neon|fire-animation">
+	
 </head>
-<body class="blue lighten-5">
-
-
+<body>
+<!-- <body class="blue lighten-5">
+ -->
+<div id="wrapper">
 	<ng-view></ng-view>
+
+  <footer class="black blue-text">
+    	<div class="container">
+      	<div class="row">
+        	<div class="col l8 s12 hide-on-med-and-down">
+          	<h5 class="blue-text">Associations</h5>
+          	<div class="col l2"><a href="http://www.divinemaui.com" target="blank"><img src="http://paulphin.com/wp-content/uploads/2013/03/1.png" align="center" class="responsive-img"></a></div>
+            <div class="col l2 hide-on-med-and-down"><a href="http://www.opsociety.org" target="blank"><img src="http://paulphin.com/wp-content/uploads/2013/03/543279_459427540751550_105494804_n.jpg" align="center" class="responsive-img"></a></div>
+            <div class="col l2 hide-on-med-and-down"><a href="http://www.wilddolphin.org/index.html" target="blank"><img src="http://www.wilddolphin.org/graphics/wdf_logo.jpg" class="responsive-img" align="center"></a></div>
+            <div class="col l5 hide-on-med-and-down"><a href="http://www.oceandefenderhawaii.com/" target="blank"><img src="http://www.oceandefenderhawaii.com/wp-content/uploads/2014/11/1ODLogo.png" align="center" class="responsive-img"></a></div>
+        	</div>
+        	<div class="col l2 offset-l2 hide-on-med-and-down">
+          	<h5 class="blue-text">Social</h5>
+          	<ul>
+            	<li><a class="blue-text text-lighten-4" href="https://www.facebook.com/PaulphinPhotography?fref=ts" targer="blank"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+            	<li><a class="blue-text text-lighten-4" href="https://instagram.com/paulphinphotography/" target="blank"><i class="fa fa-instagram fa-2x"></i></a></li>
+            	<li><a class="blue-text text-lighten-4" href="https://www.youtube.com/user/PaulphinPhotography" target="blank"><i class="fa fa-youtube-square fa-2x"></i></a></li>
+          	</ul>
+        	</div>
+          <div class="flex-column align-items-center hide-on-large-only width50">
+            <h5 class="blue-text center-align">Social</h5>
+            <ul class="flex-row content-center">
+              <li class="col s4"><a class="blue-text text-lighten-4" href="https://www.facebook.com/PaulphinPhotography?fref=ts" targer="blank"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+              <li class="col s4"><a class="blue-text text-lighten-4" href="https://instagram.com/paulphinphotography/" target="blank"><i class="fa fa-instagram fa-2x"></i></a></li>
+              <li class="col s4"><a class="blue-text text-lighten-4" href="https://www.youtube.com/user/PaulphinPhotography" target="blank"><i class="fa fa-youtube-square fa-2x"></i></a></li>
+            </ul>
+          </div>
+      	</div>
+    	</div>
+    	<div class="footer-copyright trans-dark">
+      	<div class="container">
+      	© 2015 Copyright 
+        <a class="right" href="/admin/login">...</a>
+      	</div>
+    	</div>
+  </footer>
+</div>
+
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular-route.js"></script>
-<!-- <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
-
-<script src="https://cdn.firebase.com/libs/angularfire/1.1.1/angularfire.min.js"></script> -->
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-materialize/src/angular-materialize.js"></script>
 <script type="text/javascript" src="app/app.js"></script>
 <script type="text/javascript" src="app/controllers.js"></script>
 <script type="text/javascript" src="app/services.js"></script>
 <script type="text/javascript" src="app/directives.js"></script>
 <script type="text/javascript" src="app/upload.js"></script>
-<!-- <script type="text/javascript" src="session/ng-session-spec.js"></script>
-<script type="text/javascript" src="session/ng-session.js"></script> -->
+
 </body>
 </html>

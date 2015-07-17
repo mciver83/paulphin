@@ -1,22 +1,44 @@
 <!-- hide while working with materialize -->
-<div class="flex-row space-around align-items-center header">
+<div class="flex-row space-around align-items-center">
 	<div id="logo">
-		<a href="" ng-click="toPath('home')"><img id="logo-img" src="app/images/logo.png"/></a>
+		<a class="blue-text text-darken-3 hide-on-med-and-down" href="#/"><h3>Paulphin Photography</h3></a>
+		<a class="blue-text text-darken-3 hide-on-large-only" href="#/"><h3>Paulphin</h3></a>
 	</div>
-	<div id="navbar" class="flex-row space-between align-items-center">
-		<h3 id="cart">
-			<a href="" ng-click="showCart()">{{cart.length}}<i class="fa fa-shopping-cart"></i>my cart</a><cart></cart>
-		</h3>
+	
+<!-- Dropdown Structure -->
+
+	<div id="navbar" class="blue-text text-lighten-4 flex-row space-around align-items-center hide-on-med-and-down">
+		<cart></cart>
+		<p id="cart">
+			<a href="" ng-hide="!cart.length" ng-click="showCart()">{{cart.length}}<i class="material-icons">shopping_cart</i>my cart</a>
+		</p>
 		<div id="store">
-			<h3><a href="" ng-click="toPath('store')">store</a></h3>
+			<p><a href="#/store" ng-hide="cart.length" >store</a></p>
 		</div>
-		<h3><a href="" ng-click="toPath('about')">about</a></h3>
-		<h3><a href="" ng-click="toPath('contact')">contact</a></h3>
+		<p><a href="#/about">about</a></p>
+		<p><a href="#/contact">contact</a></p>
+	</div>
+	<div id="navbar" class="blue-text text-lighten-4 flex-row space-around align-items-center hide-on-large-only">
+		<cart></cart>
+		<p id="cart">
+			<a href="" ng-hide="!cart.length" ng-click="showCart()">{{cart.length}}<i class="material-icons">shopping_cart</i>my cart</a>
+		</p>
+	</div>
+	<div class="hide-on-large-only">
+		<!-- Dropdown Trigger -->
+		<a href='javascript:void(0);' data-activates='demoDropdown' dropdown data-hover="true">
+		    <i class="material-icons medium blue-text">menu</i>
+		</a>
+		<ul id='demoDropdown' class='dropdown-content'>
+    		<li><a class="blue-text" href="#/store">store</a></li>
+		    <li><a class="blue-text" href="#/about">about</a></li>
+		    <li><a class="blue-text" href="#/contact">contact</a></li>
+		</ul>
 	</div>
 </div>
 
 <!-- <div class="navbar-fixed"> -->
-	<!-- <nav class="header">
+	<!-- <nav class="main-header white">
 		<div class="nav-wrapper white">
 
 			<a class="brand-logo blue-text text-darken-3" href="#/">Paulphin</a>

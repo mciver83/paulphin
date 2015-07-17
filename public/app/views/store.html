@@ -1,81 +1,95 @@
-<main-header></main-header>
+<main-header class="trans-dark"></main-header>
 
-	
-<!-- <main class="flex-column align-items-center">
-	
+<div id="store-wrap">	
+	<main>
+		<div class=" width80 flex-column align-items-center">
 
-	<header class="width140 blue lighten-3 border-color">
-		<h2 class="item">Paulphin Store</h1>
-	</header>
-
-
-	<div class="flex-column align-items-center section">
-
-		<div class="section">
-			<h4 class="center">Most Popular</h4>
-			<div class="row section">
-				<div class="col s4" ng-repeat="product in favorites">
-					<product></product>
+		<div class="width100 blue-text trans-light">	
+			<div class="flex-column align-items-center container">
+				<br />
+				<h4 class="center">Popular Items</h4>
+				<div class="width100 flex-row space-around">
+					<div class="item black-text" ng-repeat="product in favorites">
+						<product class="item"></product>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+		<br />
+		<br />
 
 
-	
-
-	<div class="section center">
-
-		<h4>Build Your Own</h4>
-
-		<div class="row">
 			
-			<div class="col s3 ">
-				<h4>items</h4>
-				<div id="item" class="flex-column content-start">
-					<div class="item" ng-repeat="product in buildProducts">
+		<div class="width100 section">
+
+
+			<div class="center trans-light">
+				<br />
+				<h2 class="blue-text">Build Your Own</h2>
+				<div class="row">
+					<div class="col s3 ">
+						<h3>Step<h1>1</h1></h3>
+						<h5>choose a product</h5>
+						<br>
+						<div id="item" class="flex-column content-start">
+							<div class="item black-text" ng-repeat="product in buildProducts">
+								<div class="flex-column align-items-center">
+									<img ng-click="buildItem(product)" class="image-small" ng-src="{{product.image}}"/>
+									<p>{{product.title}}</p>
+									<p>${{product.price}}</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="col s6">	
+						<h3>Step<h1>2</h1></h3>
+						<h5>choose an image</h5>
+						<br>
+						<br>
+						<div class="flex-row wrap content-center">	
+							<div ng-repeat="photo in photos">
+								<!-- <div class="flex-column align-items-center"> -->
+									<div class="image image-thumbnail">
+										<div class="flex-column align-items-center">
+											<img pop-up id="pop-up" class="image-thumbnail" ng-src="{{photo.imageUrl}}"/>
+											<i pop-up  id="enlarge-image" class="material-icons md-light md-36">photo_size_select_large</i>
+											<i id="add-image" class="material-icons md-light md-36" ng-click="buildImage(photo)">add_circle_outline</i>
+										</div>
+									</div>
+								<!-- </div> -->
+							</div>
+						</div>
+					</div>
+
+
+
+					<div id="built-product" class="col s3">
+						<h3>Step<h1>3</h1></h3>
+						<h5>add item to cart</h5>
+						<br>
 						<div class="flex-column align-items-center">
-							<img ng-click="buildItem(product)" class="image-small" ng-src="{{product.image}}"/>
-							<p>{{product.title}}</p>
+							<img id="chosen-item" ng-src="{{item}}" alt="product preview" class="image-thumbnail border-color item">
+							</img>
+
+							<img id="chosen-image" ng-src="{{imageUrl}}" alt="image preview" class="image-thumbnail border-color item">
+							</img>
+							<!-- <button ng-click="addToCart(product, photo)"><i class="material-icons">add_shopping_cart</i> add</button> -->
+
+							<div class="input-field col s4">
+						        <a class="waves-effect waves-light btn" ng-click="addToCart(product, photo)"><i class="material-icons">add_shopping_cart</i> add</a>
+						    </div>
 						</div>
 					</div>
 				</div>
 			</div>
-
-
-			<div class="col s6 ">	
-				<h4>images</h4>
-				<div class="row">	
-					<div class="col s3" ng-repeat="photo in photos">
-						<div class="flex-column align-items-center">
-							<i ng-click="buildImage(photo)"class="fa fa-plus"></i>
-							<div pop-up><img id="image" class="responsive-img" ng-src="{{photo.imageUrl}}"/></div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-
-
-			<div id="built-product" class="col s3 flex-column align-items-center">
-				<h4>Build My Item</h4>
-				<img id="chosen-item" ng-src="{{item}}" alt="choose item" class="image-thumbnail border-color item">
-				</img>
-
-				<img id="chosen-image" ng-src="{{imageUrl}}" alt="choose image" class="image-thumbnail border-color item">
-				</img>
-				<button ng-click="addToCart(product, photo)"><i class="fa fa-cart-plus"></i> add</button>
-
-			</div>
-
-
 		</div>
-	</div>
-
-</main> -->
+	</main>
+</div>
 
 <!-- hide while working with materialize -->
-<main class="flex-column align-items-center">
+<!-- <main class="flex-column align-items-center">
 	
 
 	<header class="width140 background-color">
@@ -144,4 +158,4 @@
 		</div>
 	</div>
 
-</main>
+</main> -->

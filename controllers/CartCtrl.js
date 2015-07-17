@@ -13,8 +13,9 @@ module.exports = {
 	},
 
 	updateItem: function(req, res){
+		console.log(33333, req.session.cart[0])
 		for(var i = 0; i < req.session.cart.length; i++){
-			if(req.session.cart[i].id === req.body.id){
+			if(req.session.cart[i].item.id === req.body.id){
 				req.session.cart[i].quantity = req.body.quantity;
 				break;
 			}
@@ -25,7 +26,7 @@ module.exports = {
 	deleteItem: function(req, res){
 		console.log(req.body)
 		for(var i = 0; i < req.session.cart.length; i++){
-			if(req.session.cart[i].id === req.body.id){
+			if(req.session.cart[i].item.id === req.body.id){
 				req.session.cart.splice(i, 1);
 				break;
 			}

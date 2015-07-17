@@ -1,9 +1,91 @@
-<main-header></main-header>
-
-<main>
+<main-header class="black"></main-header>
 <!-- instagram feed -->
-<div class=" featured flex-row border-side">
-	<div ng-repeat="item in feed"><a href="{{item.link}}" target="blank"><img ng-src="{{item.images.standard_resolution.url}}"/></a></div>
-</div> 
 
+	
+	<!-- <div parallax parallax-ratio="1.22" parallax-vertical-offset="100" parallax-horizontal-offset="" class="parallax photo about-main" parallax-ratio="0.8"></div> -->
+
+	<!-- <div class="parallax-container">
+    	<div parallax><img src="app/images/jessica-hat.jpg"></div>
+	</div> -->
+<main>
+	<div class="section">
+	    <div class="row container">
+	      	<h2 class="blue-text">Aloha</h2>
+	      	<div class="grey-text text-darken-3 lighten-3">
+	      		<p>Welcome to Paulphin.com!</p>
+	      	</div>
+	      	<div class="grey-text text-darken-3 lighten-3 section">
+	      		<p>I’m a passionate naturalist photographer/filmmaker who feels most at home in the ocean.  I’ve devoted my life to protecting our beautiful oceans and everything in them.  I’ve volunteered time, photos and ideas with the <a>Wild Dolphin Foundation</a>, <a>Ocean Defender Hawaii</a>, <a>Oceanic Preservation Society</a>, and <a>Cascadia Cetacean Research</a>. With goals to educate the public about the importance of ocean conservation.</p>
+	      	</div>
+	      	<div class="grey-text text-darken-3 lighten-3 section">
+	      		<p>In my <a href="/#store">store</a> you can purchase my prints and various products that have my prints on them.  You can also create your own product by picking which picture you would like on it.   I continue to update my photos and products, so check back regularly.  <em>10% of the proceeds will be donated to the <a>Oceanic Preservation Society</em></a>.
+	      	</div>
+	      	<div class="grey-text text-darken-3 lighten-3 section">
+	      		<p>I am currently accepting freelance projects.  I specialize in under-water, nature, lifestyle, weddings, and portrait photography.  If you have any questions or would like to schedule an appointment, please <a href="/#contact"> contact me</a>.
+	      	</div>
+	      	<div class="row">
+	      		<h2 class="blue-text col s3 offset-s9">Mahalo</h2>
+	      	</div>
+
+	    </div>
+  	</div>
+
+  	<div class="parallax-container center">
+    	<div parallax><img src="app/images/IMG_6512.jpg"></div>
+  	</div>
+	
+
+
+
+	<!-- instagram feed -->
+	<br>
+	<h3 class="container">Instagram Feed:</h3>
+	<br>
+	<div class="featured flex-row ">
+		<div ng-repeat="item in feed"><a href="{{item.link}}" target="blank"><img class="image-thumbnail" ng-src="{{item.images.standard_resolution.url}}"/></a></div>
+	</div> 
+
+	<!-- people -->
+	<div class="row">
+		<div class="image">
+			<i pop-up  id="enlarge-image" class="material-icons md-light md-36">photo_size_select_large</i>		
+			<img pop-up class="col s2 responsive-img" src="app/images/humans2.jpg"/>
+		</div>
+		<div class="image">
+			<div>
+				<i pop-up  id="enlarge-image" class="material-icons md-light md-36">photo_size_select_large</i>		
+				<img pop-up class="col s2 responsive-img"src="app/images/jessica-hat.jpg"/>
+			</div>
+		</div>
+		<div class="image">
+			<i pop-up  id="enlarge-image" class="material-icons md-light md-36">photo_size_select_large</i>
+			<img pop-up class="col s2 responsive-img"src="app/images/portraits.jpg"/>
+		</div>
+		<div class="image">
+			<i pop-up  id="enlarge-image" class="material-icons md-light md-36">photo_size_select_large</i>
+			<img pop-up class="col s2 responsive-img"src="app/images/portraits2.jpg"/>
+		</div>
+		<div class="image">
+			<i pop-up  id="enlarge-image" class="material-icons md-light md-36">photo_size_select_large</i>
+			<img pop-up class="col s2 responsive-img"src="app/images/pregnant2.jpg"/>
+		</div>
+		<div class="image">
+			<i pop-up  id="enlarge-image" class="material-icons md-light md-36">photo_size_select_large</i>
+			<img pop-up class="col s2 responsive-img"src="app/images/tourist-octopus.jpg"/>
+		</div>
+	</div>
+
+
+
+	<!-- companies and associations -->
+
+
+	<div id="organizations" class="row center padding40">
+
+		<div class="col s4"><a href="http://www.divinemaui.com" target="blank"><img src="http://paulphin.com/wp-content/uploads/2013/03/1.png" align="center"></a></div>
+		<div class="col s4"><a href="http://www.opsociety.org" target="blank"><img src="http://paulphin.com/wp-content/uploads/2013/03/543279_459427540751550_105494804_n.jpg" align="center"></a></div>
+		<div class="col s4"><a href="http://www.wilddolphin.org/index.html" target="blank"><img src="http://www.wilddolphin.org/graphics/wdf_logo.jpg" align="center"></a></div>
+		<div class="col s6 offset-s3"><a href="http://www.oceandefenderhawaii.com/" target="blank"><img src="http://www.oceandefenderhawaii.com/wp-content/uploads/2014/11/1ODLogo.png" align="center"></a></div>
+
+	</div>
 </main>

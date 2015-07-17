@@ -1,40 +1,48 @@
-<main-header></main-header>
+<main-header class="black"></main-header>
 
-<main>
-	<header class="">
-		<h3 class="item">cart items</h3>
-
-		<div class="flex-row content-center"> 
-			<div class="flex-row item" ng-repeat="item in cart">
-				<image class="image-cart" ng-src="{{item.item.imageUrl}}"/>
-				<image class="image-cart" ng-src="{{item.photo.imageUrl}}"/>
-				<div class="flex-column content-center align-start">
-					<p class="flex1_5 border-bottom"><stong>title:</strong> {{item.item.title}}</p>
-					<p class="flex1"><strong>quatity:</strong> {{item.quantity}}</p>
-					<p class="flex1"><strong>price:</strong> ${{item.total}}</p>
+<div id="checkout-wrap">	
+	<main>
+		<div class="section center-align trans-light width50">
+			<div class="flex-row content-center"> 
+				<div class="flex-row item" ng-repeat="item in cart">
+					<image class="image-small" ng-src="{{item.item.imageUrl}}"/>
+					<image ng-show="item.photo" class="image-small" ng-src="{{item.photo.imageUrl}}"/>
+					<div class="flex-column content-center align-start">
+						<p><strong>title:</strong> {{item.item.title}}</p>
+						<p ng-show="item.photo"><strong>image:</strong> {{item.photo.title}}</p>
+						<p><strong>quantity:</strong> {{item.quantity}}</p>
+						<p><strong>price:</strong> ${{item.total}}</p>
+					</div>
 				</div>
 			</div>
+				<h5 class="item">Total cost: ${{total}}</h5>
+				<button class="center" ng-click="backToShop()">continue shopping</button>
 		</div>
 
-			<h2 class="item">Total cost: ${{total}}</h2>
-			<button class="center" ng-click="backToShop()">continue shopping</button>
-		
+		<br>
+		<br>
 
-	</header>
 
-	<div class="flex-column align-items-center width50">
-		<h1>contact information:</h1>
-		<input type="text" ng-model="order.name" placeholder="name" required>
-		<input type="text" ng-model="order.email" placeholder="email" required>
-		<!-- <input type="text" ng-model="customer.phone" placeholder="phone (optional)" required> -->
-		<h1>ship order to:</h1>
-		<input type="text" ng-model="order.address.name" placeholder="name (if different than above)">
-		<input type="text" ng-model="order.address.address" placeholder="address" required>
-		<input type="text" ng-model="order.address.address2" placeholder="address 2">
-		<input type="text" ng-model="order.address.city" placeholder="city" required>
-		<input type="text" ng-model="order.address.state" placeholder="state" required>
-		<input type="number" ng-model="order.address.zip" placeholder="zip" required>
-		<button ng-click="submitShippingInfo(order.name, order.email, order.address.name, order.address.address, order.address.address2, order.address.city, order.address.state, order.address.zip)">submit and place order</button>
-	</div>
-</main>
+		<div class="section trans-light width50">
+			<div class="flex-column align-items-center width50 section">
+				<h4>contact information:</h4>
+				<input type="text" ng-model="order.name" placeholder="name" required>
+				<input type="text" ng-model="order.email" placeholder="email" required>
+				<!-- <input type="text" ng-model="customer.phone" placeholder="phone (optional)" required> -->
+			</div>
+			<div class="flex-column align-items-center width50 section">
+				<h4>ship order to:</h4>
+				<input type="text" ng-model="order.address.name" placeholder="name (if different than above)">
+				<input type="text" ng-model="order.address.address" placeholder="address" required>
+				<input type="text" ng-model="order.address.address2" placeholder="address 2">
+				<input type="text" ng-model="order.address.city" placeholder="city" required>
+				<input type="text" ng-model="order.address.state" placeholder="state" required>
+				<input type="number" ng-model="order.address.zip" placeholder="zip" required>
+				<button ng-click="submitShippingInfo(order.name, order.email, order.address.name, order.address.address, order.address.address2, order.address.city, order.address.state, order.address.zip)">submit and place order</button>
+			</div>
+		</div>
+		<br>
+		<br>
+	</main>
+</div>
 

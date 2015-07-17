@@ -11,13 +11,13 @@
 
 
 <!-- hide while working with materialize -->
-<div id="product">
-	<div class="center" pop-up ><img class="product-image" ng-src="{{product.image}}"/></div>
+<div id="product" class="image">
+	<img pop-up class="image-thumbnail" ng-src="{{product.image}}"/>
 	<div class="center">
 		<p>{{product.title}}</p>
 	</div>
 	<div class="center"><p>{{product.description}}</p></div>
 	<div class="center"><p class="price">${{product.price}}</p></div>
-	<div class="center"><i ng-click="addToCart(product)" class="fa fa-cart-plus"></i>
+	<div class="center"><i ng-click="addToCart(product)" class="material-icons">add_shopping_cart</i>
 	<p class="itemInCart red-text center">item in cart</p></div>
 </div>

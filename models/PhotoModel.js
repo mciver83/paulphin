@@ -11,4 +11,4 @@ var PhotoSchema = mongoose.Schema({
 })
 
 
-module.exports = mongoose.model('Print', PhotoSchema)
+module.exports = mongoose.model('Photo', PhotoSchema)

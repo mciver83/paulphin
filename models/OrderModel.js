@@ -10,7 +10,7 @@ var OrderSchema = new mongoose.Schema({
 	},
 	products: [{
 		product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
-		photo: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
+		photo: { type: mongoose.Schema.Types.ObjectId, ref: 'Photo' },
 		price: { type: Number, min: 1, max: 100000, required: true },
 		quantity: { type: Number, required: true, min: 1, max: 99 }
 	}],
