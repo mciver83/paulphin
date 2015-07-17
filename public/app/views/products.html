@@ -7,61 +7,29 @@
 <main class="width80">
 
 
-	<div class="flex-row wrap content-center">
-		<div ng-repeat="photo in photos | filter: filter">
-			<!-- <a href=""  ng-click="showImageDetails(photo)"><img pop-up class="col s3 image-thumbnail" ng-src="{{photo.imageUrl}}"/></a> -->
-			<div ng-click="photo.show=!photo.show" pop-up>
-				<img class="image-thumbnail" ng-src="{{photo.imageUrl}}"/>
-				<span class="white-text indent" ng-show="photo.show">
-					<p>id:</p><input class="black-text" readonly="true" ng-model="photo._id"></input>
-					<br />
-					<br />
-					<p>title:</p><input  type="text" ng-model="photo.title"/>
-					<p>description:</p><input  type="text" ng-model="photo.description"></input>
-					<br />
-					<br />
-					<p>category:</p><input  type="text" ng-model="photo.category"></input> 
-					<br />
-					<br />
-					<p>auth:</p><input  type="text" ng-model="photo.auth"></input> 
-					<button class="black-text" ng-click="updatePhoto(photo._id, photo.title, photo.description, photo.category, photo.auth)">update</button>
-					<button class="black-text" ng-click="removePhoto(photo._id)">delete</button>
-				</span>
-			</div>
-		</div>
-	</div>
-
-
 	<h2 class="indent">product list</h2>
 	<div class="width50" >
 		<input type="text" ng-model="filter" placeholder="look up"/>
 	</div>
-	<div ng-repeat="product in products | filter: filter">
-		<img class="image-thumbnail" ng-src="{{product.image}}"/>
-		<span class="white-text indent" ng-show="photo.show">
-			<p>id:</p><input class="black-text" readonly="true" ng-model="product._id"/>
-			<br />
-			<br />
-			<p>title:</p><input type="text" ng-model="product.title"></input>
-			<p>description:</p><input ng-model="product.description"></input>
-			<div><p>price:</p><input id="number" type="number" ng-model="product.price"></input> </div>
-			<div><p>category:</p><select ng-model="product.category" ng-options="option for option in categoryOptions"></select> </div>
-			<div><button ng-click="updateProduct(product._id, product.title, product.description, product.price, product.category)">update</button>
-			<button ng-click="removeProduct(product._id)">delete</button></div>
+	<div class="flex-row wrap content-center">
+		<div ng-repeat="product in products | filter: filter">
+			<div ng-click="photo.show=!photo.show" pop-up>
+				<img class="image-thumbnail" ng-src="{{product.image}}"/>
+				<span class="white-text indent" ng-show="photo.show">
+					<p>id:</p><input class="black-text" readonly="true" ng-model="product._id"/>
+					<br />
+					<br />
+					<p>title:</p><input type="text" ng-model="product.title"></input>
+					<p>description:</p><input type="text" ng-model="product.description"></input>
+					<p>price:</p><input id="number" type="number" ng-model="product.price"></input>
+					<p>category:</p><select class="browser-default black-text" ng-model="product.category" ng-options="option for option in categoryOptions"></select>
+					<br />
+					<button class="black-text" ng-click="updateProduct(product._id, product.title, product.description, product.price, product.category)">update</button>
+					<button class="black-text" ng-click="removeProduct(product._id)">delete</button>
+				</span>
+			</div>
+		</div>
 	</div>
-
-
-	
-	<!-- <div class="flex-row" ng-repeat="product in products | filter: filter">
-		<div><p>id:</p><input readonly="true" ng-model="product._id"/></div>
-		<div><p>title:</p><input type="text" ng-model="product.title"></input></div>
-		<div><p>image:</p><img class="image-small" ng-src="{{product.image}}"/></div>
-		<div><p>description:</p><input ng-model="product.description"></input> </div>
-		<div><p>price:</p><input id="number" type="number" ng-model="product.price"></input> </div>
-		<div><p>category:</p><select ng-model="product.category" ng-options="option for option in categoryOptions"></select> </div>
-		<div><button ng-click="updateProduct(product._id, product.title, product.description, product.price, product.category)">update</button>
-		<button ng-click="removeProduct(product._id)">delete</button></div>
-	</div> -->
 
 	<br/>
 	<br/>
