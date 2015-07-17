@@ -28,7 +28,7 @@ main-header {
 	left: 0;
 	padding: 15px 30px;
 	font-size: 18px;
-	z-index: 2;
+	z-index: 3;
 }
 
 .header {
@@ -408,6 +408,7 @@ header {
 	min-width: 600px !important;
 	max-height: 90% !important;
 	max-width: 100% !important;
+	border-radius: 3px;
 	box-shadow: 0px 0px 40px 10px rgba(0,0,0,0.7);
 	background: white;
 	/*border: 10px solid lightblue;*/
@@ -515,6 +516,17 @@ background-size: cover;
 	  right: 0;
 	  bottom: 0;
 	  z-index: -1; }
+}
+
+
+@media (max-width: 1300px){
+	img.image-thumbnail {
+		max-height: 50px;
+		max-width: 50px;
+		min-height: 50px;
+		min-width: 50px;
+		padding: 5px;
+	}
 }
 
 @media (max-width: 1130px){

@@ -172,7 +172,7 @@ app.directive('storeLogin', function(){
 
 app.directive('cart', function(){
 	return {
-		restrict: 'AE',
+		restrict: 'E',
 		templateUrl: 'app/directives/cart.html',
 		link: function(scope, element, attrs){
 			if(scope.cart){

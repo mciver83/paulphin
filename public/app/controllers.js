@@ -173,6 +173,7 @@ app.controller('aboutCtrl', function($scope, instagram){
 
 
 	$scope.feed = instagram;
+	console.log(instagram)
 	// $scope.customer = customer;
 	// if($scope.customer){
 	// 	$scope.cart = $scope.customer.cart;

@@ -20,10 +20,10 @@
 
 
 			
-		<div class="width100 blue-text section">
+		<div class="width100 section">
 			<div class="center trans-light">
 				<br />
-				<h2>Build Your Own</h2>
+				<h2 class="blue-text">Build Your Own</h2>
 
 				<div class="row">
 					<div class="col s3 ">
@@ -35,6 +35,7 @@
 								<div class="flex-column align-items-center">
 									<img ng-click="buildItem(product)" class="image-small" ng-src="{{product.image}}"/>
 									<p>{{product.title}}</p>
+									<p>${{product.price}}</p>
 								</div>
 							</div>
 						</div>
