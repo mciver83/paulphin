@@ -1,20 +1,19 @@
-<header class="flex-row"> 
+<header class="header flex-row black blue-text"> 
 	<div class="item"><a href="/logout"><p>logout</p></a></div>
 	<div class="item"><a href="#/admin/orders"><p>orders</p></a> </div>
 	<div class="item"><a href="#/admin/products"><p>products</p></a> </div>
 </header>
 
-<main class="admin">
+<main class="width80">
 
-	<h2>Photos list</h2>
-	<input type="text" ng-model="filter" placeholder="look up"/>
+	<h2 class="indent">Photos list</h2>
+	<div class="width50"><input type="text" ng-model="filter" placeholder="look up"/></div>
 
-	<div class="row">
+	<div class="flex-row wrap content-center">
 		<div ng-repeat="photo in photos | filter: filter">
-
 			<!-- <a href=""  ng-click="showImageDetails(photo)"><img pop-up class="col s3 image-thumbnail" ng-src="{{photo.imageUrl}}"/></a> -->
 			<div ng-click="photo.show=!photo.show" pop-up>
-				<img class="col s3 image-thumbnail" ng-src="{{photo.imageUrl}}"/>
+				<img class="image-thumbnail" ng-src="{{photo.imageUrl}}"/>
 				<span class="white-text indent" ng-show="photo.show">
 					<p>id:</p><input class="black-text" readonly="true" ng-model="photo._id"></input>
 					<br />
@@ -38,7 +37,7 @@
 	<br/>
 
 	
-	<div class="width50" ng-show="true">
+	<div class="width50">
 		<h4> new photo </h4>
 		<input type="text" ng-model="photoTitle" placeholder="title"></input>
 

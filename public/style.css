@@ -38,7 +38,7 @@ main-header {
 	left: 0;
 	padding: 15px 30px;
 	font-size: 18px;
-	z-index: 2;
+	z-index: 3;
 }
 
 main {
@@ -132,17 +132,6 @@ header {
 	margin-bottom: 20px;
 }
 
-/*i {
-	margin-right: 10px;
-}*/
-
-.box {
-   margin: 40px;
-   padding: 30px 40px;
-   /*background: #fff;*/
-   background: rgba(255,255,255,0.67);
-   border-radius: 4px;
-}
 
 .image {
 	position: relative;
@@ -154,14 +143,14 @@ header {
 
 #enlarge-image {
 	position: absolute;
-	top: 5px;
+	top: 10px;
 	left: 10px;
 
 }
 
 #add-image {
 	position: absolute;
-	top: 5px;
+	top: 10px;
 	right: 5px;
 }
 
@@ -336,9 +325,10 @@ header {
 	margin: 20px;
 }
 
-/*.admin div {
-	margin: 5px;
-}*/
+.admin {
+	padding-bottom: 20px;
+	overflow: scroll;
+}
 
 .image-cart {
 	max-height: 50px;

@@ -1,20 +1,20 @@
-<header class="flex-row"> 
+<header class="header flex-row black blue-text"> 
 	<div class="item"><a href="/logout"><p>logout</p></a></div>
 	<div class="item"><a href="#/admin/photos"><p>photos</p></a> </div>
 	<div class="item"><a href="#/admin/products"><p>products</p></a> </div>
 </header>
 
 
-<main class="admin padding40">
+<main class="width80">
 
-	<h2 class="header">orders list</h2>
+	<h2 class="indent">orders list</h2>
 
-	<div class="row">
+	<div class="row width80">
 		<input class="col s4" type="text" ng-model="search.$" placeholder="look up"/>
 
-		<select class="col s2" ng-model="search.status" ng-options="option for option in orderStatusOptions" material-select><option value="" disabled selected>order status</option></select> 
+		<select class="col s2 browser-default" ng-model="search.status" ng-options="option for option in orderStatusOptions"><option value="" disabled selected>order status</option></select> 
 
-		<select class="col s2" ng-model="search.payment.status" ng-options="option for option in paymentStatusOptions" material-select><option class="gray-text" value="" selected>payment status</option></select> 
+		<select class="col s2 browser-default" ng-model="search.payment.status" ng-options="option for option in paymentStatusOptions"><option class="gray-text" value="" disabled selected>payment status</option></select> 
 	</div>
 
 	<div ng-repeat="order in orders | filter:search:strinct">
