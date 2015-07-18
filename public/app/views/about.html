@@ -33,6 +33,12 @@
   	<div class="parallax-container center">
     	<div parallax><img src="app/images/IMG_6512.jpg"></div>
   	</div>
+  	<!-- <div class="parallax-container center">
+    	<div parallax><img src="app/images/Me.jpg"></div>
+  	</div> -->
+  	<!-- <div class="parallax-container center">
+    	<div parallax><img src="app/images/ME_2.JPG"></div>
+  	</div> -->
 	
 
 
@@ -45,47 +51,37 @@
 		<div ng-repeat="item in feed"><a href="{{item.link}}" target="blank"><img class="image-thumbnail" ng-src="{{item.images.standard_resolution.url}}"/></a></div>
 	</div> 
 
+
 	<!-- people -->
-	<div class="row">
-		<div class="image">
-			<i pop-up  id="enlarge-image" class="material-icons md-light md-36">photo_size_select_large</i>		
+	<div id="carousel" class="flex-row content-center">
+		<ul rn-carousel rn-carousel-index="3" rn-carousel-auto-slide="3" class="carousel flex-column">
+		  	<li ng-repeat="photo in carouselPhotos" class="center">
+		  		<img class="carousel_img" ng-src="{{photo.imageUrl}}"/>
+		  	</li>
+		</ul>
+	</div>
+
+	<!-- <div class="row">
+		<div>
 			<img pop-up class="col s2 responsive-img" src="app/images/humans2.jpg"/>
 		</div>
 		<div class="image">
-			<div>
-				<i pop-up  id="enlarge-image" class="material-icons md-light md-36">photo_size_select_large</i>		
-				<img pop-up class="col s2 responsive-img"src="app/images/jessica-hat.jpg"/>
-			</div>
+			<img pop-up class="col s2 responsive-img"src="app/images/jessica-hat.jpg"/>
 		</div>
 		<div class="image">
-			<i pop-up  id="enlarge-image" class="material-icons md-light md-36">photo_size_select_large</i>
 			<img pop-up class="col s2 responsive-img"src="app/images/portraits.jpg"/>
 		</div>
 		<div class="image">
-			<i pop-up  id="enlarge-image" class="material-icons md-light md-36">photo_size_select_large</i>
 			<img pop-up class="col s2 responsive-img"src="app/images/portraits2.jpg"/>
 		</div>
 		<div class="image">
-			<i pop-up  id="enlarge-image" class="material-icons md-light md-36">photo_size_select_large</i>
 			<img pop-up class="col s2 responsive-img"src="app/images/pregnant2.jpg"/>
 		</div>
 		<div class="image">
-			<i pop-up  id="enlarge-image" class="material-icons md-light md-36">photo_size_select_large</i>
 			<img pop-up class="col s2 responsive-img"src="app/images/tourist-octopus.jpg"/>
 		</div>
-	</div>
+	</div> -->
 
 
 
-	<!-- companies and associations -->
-
-
-	<div id="organizations" class="row center padding40">
-
-		<div class="col s4"><a href="http://www.divinemaui.com" target="blank"><img src="http://paulphin.com/wp-content/uploads/2013/03/1.png" align="center"></a></div>
-		<div class="col s4"><a href="http://www.opsociety.org" target="blank"><img src="http://paulphin.com/wp-content/uploads/2013/03/543279_459427540751550_105494804_n.jpg" align="center"></a></div>
-		<div class="col s4"><a href="http://www.wilddolphin.org/index.html" target="blank"><img src="http://www.wilddolphin.org/graphics/wdf_logo.jpg" align="center"></a></div>
-		<div class="col s6 offset-s3"><a href="http://www.oceandefenderhawaii.com/" target="blank"><img src="http://www.oceandefenderhawaii.com/wp-content/uploads/2014/11/1ODLogo.png" align="center"></a></div>
-
-	</div>
 </main>

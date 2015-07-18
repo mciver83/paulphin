@@ -11,10 +11,9 @@
 
 	<div class="flex-row wrap content-center">
 		<div ng-repeat="photo in photos | filter: filter">
-			<!-- <a href=""  ng-click="showImageDetails(photo)"><img pop-up class="col s3 image-thumbnail" ng-src="{{photo.imageUrl}}"/></a> -->
-			<div ng-click="photo.show=!photo.show" pop-up>
-				<img class="image-thumbnail" ng-src="{{photo.imageUrl}}"/>
-				<span class="white-text indent" ng-show="photo.show">
+			<div>
+				<img ng-click="photo.show=!photo.show" pop-up class="image-thumbnail" ng-src="{{photo.imageUrl}}"/>
+				<div class="white-text indent" ng-show="photo.show">
 					<p>id:</p><input class="black-text" readonly="true" ng-model="photo._id"></input>
 					<br />
 					<br />
@@ -28,7 +27,7 @@
 					<p>auth:</p><input  type="text" ng-model="photo.auth"></input> 
 					<button class="black-text" ng-click="updatePhoto(photo._id, photo.title, photo.description, photo.category, photo.auth)">update</button>
 					<button class="black-text" ng-click="removePhoto(photo._id)">delete</button>
-				</span>
+				</div>
 			</div>
 		</div>
 	</div>

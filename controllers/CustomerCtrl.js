@@ -3,26 +3,27 @@ var Customer = require('../models/CustomerModel.js')
 module.exports = {
 
 	create: function(req, res){
-		// var newCustomer = new Customer();
-		// newCustomer.name = req.body.name;
-		// newCustomer.local.email = req.body.local.email;
-		// newCustomer.local.password = newCustomer.generateHash(req.body.local.password);
-		// newCustomer.save(function(err) {
-  //           if (err){
-  //               throw err;
-  //           } else {
-		// 		res.send(data);
-		// 	}
-  //       });
-
-		new Customer(req.body)
-		.save(function(err, data){
-			if(err){
-				res.status(500).send(err);
-			} else {
-				res.send(data)
+		var newCustomer = new Customer();
+		newCustomer.name = req.body.name;
+		newCustomer.local.email = req.body.local.email;
+		newCustomer.local.password = newCustomer.generateHash(req.body.local.password);
+		newCustomer.admin = req.body.admin;
+		newCustomer.save(function(err, data) {
+            if (err){
+                throw err;
+            } else {
+				res.send(data);
 			}
-		})
+        });
+
+		// new Customer(req.body)
+		// .save(function(err, data){
+		// 	if(err){
+		// 		res.status(500).send(err);
+		// 	} else {
+		// 		res.send(data)
+		// 	}
+		// })
 	},
 
 	get: function(req, res){

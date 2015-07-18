@@ -5,16 +5,70 @@
 </header>
 
 <main class="width80">
-
-
-	<h2 class="indent">product list</h2>
+	<h2 class="indent">Products</h2>
+	<br />
+	<br />
+	<h4 class="center-align">Product Options</h4>
 	<div class="width50" >
-		<input type="text" ng-model="filter" placeholder="look up"/>
+		<!-- <input type="text" ng-model="filter" placeholder="look up"/> -->
 	</div>
 	<div class="flex-row wrap content-center">
-		<div ng-repeat="product in products | filter: filter">
-			<div ng-click="photo.show=!photo.show" pop-up>
-				<img class="image-thumbnail" ng-src="{{product.image}}"/>
+		<div ng-repeat="product in productOptions | filter: filter">
+			<div>
+				<img ng-click="photo.show=!photo.show" pop-up class="image-thumbnail" ng-src="{{product.image}}"/>
+				<span class="white-text indent" ng-show="photo.show">
+					<p>id:</p><input class="black-text" readonly="true" ng-model="product._id"/>
+					<br />
+					<br />
+					<p>title:</p><input type="text" ng-model="product.title"></input>
+					<p>description:</p><input type="text" ng-model="product.description"></input>
+					<p>price:</p><input id="number" type="number" ng-model="product.price"></input>
+					<p>category:</p><select class="browser-default black-text" ng-model="product.category" ng-options="option for option in categoryOptions"></select>
+					<br />
+					<button class="black-text" ng-click="updateProduct(product._id, product.title, product.description, product.price, product.category)">update</button>
+					<button class="black-text" ng-click="removeProduct(product._id)">delete</button>
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<br/>
+	<br/>
+
+	<h4 class="center-align">Favorite Products</h4>
+	<div class="width50" >
+		<!-- <input type="text" ng-model="filter" placeholder="look up"/> -->
+	</div>
+	<div class="flex-row wrap content-center">
+		<div ng-repeat="product in favoriteProducts | filter: filter">
+			<div>
+				<img ng-click="photo.show=!photo.show" pop-up class="image-thumbnail" ng-src="{{product.image}}"/>
+				<span class="white-text indent" ng-show="photo.show">
+					<p>id:</p><input class="black-text" readonly="true" ng-model="product._id"/>
+					<br />
+					<br />
+					<p>title:</p><input type="text" ng-model="product.title"></input>
+					<p>description:</p><input type="text" ng-model="product.description"></input>
+					<p>price:</p><input id="number" type="number" ng-model="product.price"></input>
+					<p>category:</p><select class="browser-default black-text" ng-model="product.category" ng-options="option for option in categoryOptions"></select>
+					<br />
+					<button class="black-text" ng-click="updateProduct(product._id, product.title, product.description, product.price, product.category)">update</button>
+					<button class="black-text" ng-click="removeProduct(product._id)">delete</button>
+				</span>
+			</div>
+		</div>
+	</div>
+	<br />
+	<br />
+
+	<h4 class="center-align">Featured Products</h4>
+	<div class="width50" >
+		<!-- <input type="text" ng-model="filter" placeholder="look up"/> -->
+	</div>
+	<div class="flex-row wrap content-center">
+		<div ng-repeat="product in featuredProducts | filter: filter">
+			<div>
+				<img ng-click="photo.show=!photo.show" pop-up class="image-thumbnail" ng-src="{{product.image}}"/>
 				<span class="white-text indent" ng-show="photo.show">
 					<p>id:</p><input class="black-text" readonly="true" ng-model="product._id"/>
 					<br />
@@ -52,7 +106,9 @@
 
 		<!-- <input type="text" ng-model="productImage" placeholder="image url"/> -->
 		<textarea ng-model="productDescription" placeholder="decription: max 100 char"></textarea>
-		<select ng-model="productCategory" ng-options="option for option in categoryOptions"></select>
+		<select class="browser-default" ng-model="productCategory" ng-options="option for option in categoryOptions"></select>
 		<button ng-click="addProduct(imageSrc, file, productTitle, productPrice, productDescription, productCategory)">submit</button>
 	</div>
+
+	<!-- <button ng-click="createAdmin()">create admin</button> -->
 </main>

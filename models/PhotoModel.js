@@ -6,7 +6,7 @@ var PhotoSchema = mongoose.Schema({
 	description: { type: String, maxlength: 100 },
 	imageUrl: {type: String, required: true },
 	category: { type: String},
-	auth: { type: String, required: true, default: 'store' }, //maybe name this property excersion??  
+	auth: { type: String, required: true, default: 'website' }, //maybe name this property excersion??  
 	dateCreated: { type: Date, default: Date.now }
 })
 

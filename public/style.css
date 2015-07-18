@@ -46,6 +46,7 @@ main {
 	padding-top: 150px;
 	padding-bottom: 200px;
 	/*width: 80%;*/
+	font-size: 18px;
 }
 
 footer {
@@ -56,11 +57,6 @@ footer {
 	left: 0;
 }
 
-
-.page-fill {
-	min-height: 900px;
-	max-height: 100%;
-}
 
 #store-wrap {
 	margin: 0;
@@ -132,6 +128,26 @@ header {
 	margin-bottom: 20px;
 }
 
+#carousel {
+	height: 440px;
+	width: 100%;
+	background: url('app/images/me.jpg') center center no-repeat;
+	background-size: cover;
+}
+.carousel {
+	height: 100%;
+	width: 100%;
+	background: rgba(0,0,0,0.8);
+}
+
+.carousel_img {
+	max-width: 600px;
+	max-height: 400px;
+	width: auto;
+	height: auto;
+	margin-top: 20px;
+	box-shadow: 0px 0px 40px 10px rgba(0,0,0,0.7)
+}
 
 .image {
 	position: relative;
@@ -302,9 +318,9 @@ header {
 	-webkit-align-items: flex-start;
 }
 
-/*.center {
+.center {
 	align-self: center;
-}*/
+}
 
 .red {
 	color: red;
@@ -375,6 +391,10 @@ header {
 	border-width: medium;
 }
 
+cart {
+	background: white;
+}
+
 .pop-up-back {
 	display: -webkit-flex;
 	display: flex;
@@ -400,7 +420,7 @@ header {
 	max-width: 100% !important;
 	border-radius: 3px;
 	box-shadow: 0px 0px 40px 10px rgba(0,0,0,0.7);
-	background: white;
+	background: rgba(260,260,260,0.3);
 	/*border: 10px solid lightblue;*/
 	z-index: 100;
 	/*overflow: scroll;*/
@@ -461,7 +481,7 @@ width: 160%;
 z-index: -1;
 -webkit-transform: translateX(-50%) translateY(-50%);
 transform: translateX(-50%) translateY(-50%);
-background: url(app/images/partners.jpg);
+background: url(app/images/dolphin-pod6.jpg);
 background-size: cover;
 -webkit-background-size: cover;
 -moz-background-size: cover;

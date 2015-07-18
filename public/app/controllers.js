@@ -4,10 +4,37 @@ var app = angular.module('ecommerce');
 // admin and add, update and delete products
 app.controller('adminCtrl', function($scope, adminService, customerService, cartService, products, photos, fileReader){
 	
+	$scope.createAdmin = function(){
+		customerService.addCustomer(name, email, password).then(function(response){
+			console.log('user created')
+		})
+
+	}
 
 	$scope.products = products;
 	$scope.photos = photos;
 	$scope.categoryOptions = ['favorite', 'featured', 'product'];
+
+	$scope.favoriteProducts = [] 
+	for(var i = 0; i < $scope.products.length; i++){
+		if($scope.products[i].category === 'favorite'){
+			$scope.favoriteProducts.push($scope.products[i])
+		}
+	}
+
+	$scope.featuredProducts = [] 
+	for(var i = 0; i < $scope.products.length; i++){
+		if($scope.products[i].category === 'featured'){
+			$scope.featuredProducts.push($scope.products[i])
+		}
+	}
+	
+	$scope.productOptions = [] 
+	for(var i = 0; i < $scope.products.length; i++){
+		if($scope.products[i].category === 'product'){
+			$scope.productOptions.push($scope.products[i])
+		}
+	}
 
 	$scope.showImageDetails = function(image){
 		image.show = !image.show
@@ -168,17 +195,19 @@ app.controller('homeCtrl', function($scope){
 
 
 //about page
-app.controller('aboutCtrl', function($scope, instagram){
-
-
+app.controller('aboutCtrl', function($scope, instagram, photos){
 
 	$scope.feed = instagram;
-	console.log(instagram)
-	// $scope.customer = customer;
-	// if($scope.customer){
-	// 	$scope.cart = $scope.customer.cart;
-	// } 
 
+	$scope.photos = photos
+	$scope.carouselPhotos = []
+	for(var i = 0; i < $scope.photos.length; i++){
+		if($scope.photos[i].auth === 'website'){
+			$scope.carouselPhotos.push($scope.photos[i])
+		}
+	}
+
+	console.log($scope.carouselPhotos)
 })
 
 
@@ -191,11 +220,6 @@ app.controller('aboutCtrl', function($scope, instagram){
 
 //contact page
 app.controller('contactCtrl', function($scope, emailService){
-
-	// $scope.customer = customer;
-	// if($scope.customer){
-	// 	$scope.cart = $scope.customer.cart;
-	// }
 
 
 	$scope.sendEmail = function(fromEmail, fromName, toEmail, toName, subject, message){
@@ -225,10 +249,6 @@ app.controller('contactCtrl', function($scope, emailService){
 //controls the shopping area and views products
 app.controller('shopCtrl', function($scope, $location, productService, cartService, cart, customerService, products, photos){
 
-	// $scope.customer = customer;
-	// if($scope.customer){
-	// 	$scope.cart = $scope.customer.cart;
-	// }
 
 	$scope.cart = cart;
 

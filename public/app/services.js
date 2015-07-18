@@ -203,22 +203,27 @@ app.service('photoService', function($http, $q){
 
 app.service('customerService', function($http, $q){
 
-	this.createTempCustomer = function(name){
-		return $http({
-			method: 'POST',
-			url: 'http://localhost:9003/api/customers',
-			data: {
-				name: name
-			}
-		})
-	}
+	// this.createTempCustomer = function(name){
+	// 	return $http({
+	// 		method: 'POST',
+	// 		url: 'http://localhost:9003/api/customers',
+	// 		data: {
+	// 			name: name
+	// 		}
+	// 	})
+	// }
 
-	this.addCustomer = function(name){
+	this.addCustomer = function(name, email, password){
 		return $http({
 			method: 'POST', 
-			url: 'http://localhost:9003/customers',
+			url: 'http://localhost:9003/api/customers',
 			data: {
-				name: name
+				name: name,
+				local: {
+					email: email,
+					password: password
+				}, 
+				admin: true
 			}
 		})
 	}

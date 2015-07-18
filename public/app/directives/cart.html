@@ -1,6 +1,6 @@
 
 <div class="pop-up-back valign-wrapper"  ng-show="show">
-	<div class="pop-up center-align">
+	<div class="pop-up center-align white">
 		<i id="closeCart" class="small material-icons blue-text" ng-click="showCart()">highlight_off</i>
 		<header><h4 class="black-text">cart items</h4></header>
 		<div id="cartItem">
@@ -26,7 +26,7 @@
 			</div>
 		
 			<div class="flex-row">
-				<strong class="black-text">Total cost: ${{total}}</strong>
+				<h4 class="black-text">Total cost: ${{total}}</h4>
 				<button class="item black-text button" ng-click="checkout()">place order</button>
 				<button class="item black-text button" ng-click="backToStore()">continue shopping</button>
 			</div>

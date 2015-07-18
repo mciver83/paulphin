@@ -1,5 +1,5 @@
 
-var app = angular.module('ecommerce', ['ngRoute', 'ui.materialize'])
+var app = angular.module('ecommerce', ['ngRoute', 'ui.materialize', 'angular-carousel'])
 // var app = angular.module('ecommerce', ['ngRoute'])
 
 app.config(function($routeProvider){
@@ -26,6 +26,11 @@ app.config(function($routeProvider){
 			instagram: function(instagramService){
 				return instagramService.getFeed().then(function(response){
 					return response;
+				})
+			},
+			photos: function(photoService){
+				return photoService.getPhotos().then(function(response){
+					return response.data;
 				})
 			}
 			// },
