@@ -30,9 +30,16 @@ app.config(function($routeProvider){
 			},
 			photos: function(photoService){
 				return photoService.getPhotos().then(function(response){
-					return response.data;
+					var photos = []
+					for(var i = 0; i < response.data.length; i++){
+						if(response.data[i].auth === 'website'){
+							photos.push(response.data[i])
+						}
+					}
+					return photos;
 				})
 			}
+			
 			// },
 			// customer: function(customerService, $route){
 			// 	if($route.current.params.uId){
@@ -87,7 +94,13 @@ app.config(function($routeProvider){
 			},
 			photos: function(photoService){
 				return photoService.getPhotos().then(function(response){
-					return response.data;
+					var photos = []
+					for(var i = 0; i < response.data.length; i++){
+						if(response.data[i].auth === 'store'){
+							photos.push(response.data[i])
+						}
+					}
+					return photos;
 				})
 			},
 			// customer: function(customerService, $route){

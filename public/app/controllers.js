@@ -199,15 +199,8 @@ app.controller('aboutCtrl', function($scope, instagram, photos){
 
 	$scope.feed = instagram;
 
-	$scope.photos = photos
-	$scope.carouselPhotos = []
-	for(var i = 0; i < $scope.photos.length; i++){
-		if($scope.photos[i].auth === 'website'){
-			$scope.carouselPhotos.push($scope.photos[i])
-		}
-	}
-
-	console.log($scope.carouselPhotos)
+	$scope.carouselPhotos = photos
+	
 })
 
 
@@ -255,6 +248,7 @@ app.controller('shopCtrl', function($scope, $location, productService, cartServi
 
 	$scope.products = products;
 	$scope.photos = photos;
+	
 
 	$scope.favorites = [];
 	for(var i = 0; i < $scope.products.length; i++){
