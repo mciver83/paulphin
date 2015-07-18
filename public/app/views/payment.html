@@ -1,4 +1,4 @@
-<div class=" flex-row space-around align-items-center header black">
+<!-- <div class=" flex-row space-around align-items-center header black">
 	<div id="logo">
 		<a class="blue-text text-darken-3" href="#/"><h3>Paulphin Photography</h3></a>
 	</div>
@@ -12,11 +12,45 @@
 		<p><a href="#/about">about</a></p>
 		<p><a href="#/contact">contact</a></p>
 	</div>
-</div>
+</div> -->
+<main-header class="trans-dark"></main-header>
 
 <div id="payment-wrap">
 	<main class="center-align">
-		<div class="width50 padding40 trans-light">
+		<div class="width50 padding40 trans-light hide-on-med-and-down">
+			<h1>Payment</h1>
+			<h5>Order summary:</h5>
+			Products:
+			<div class="flex-row content-center">
+				<div class="flex-column item center" ng-repeat='item in order.products'>
+					<div>{{item.product.title}}</div> 
+					<div ng-show="item.photo.title">{{item.photo.title}}</div>
+					<div>Quantity: {{item.quantity}}</div>
+					<div>${{item.price * item.quantity}}</div>
+					
+				</div>
+			</div>
+			Shipping address:<br>
+			<p>{{order.address.name}}</p>
+			<p>{{order.address.address}} {{order.address.address2}}</p>
+			<p>{{order.address.city}}, {{order.address.state}} {{order.address.zip}}</p>
+			<br>
+			Total price: ${{order.total}}
+			<br>
+			<div class="section">
+				<p><em>We do not receive or store any of your card information.</em>  Your payment is securely processed through <a href="https://stripe.com/about" target="blank">Stripe</a>.</p>
+			</div>
+
+			<form action="{{chargeLocation}}" method="POST">
+			  	<script
+			    	src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+			    	data-key="pk_test_t9lgCJMAv93eanyZZBqWM3SX"
+			    	data-amount= $scope.order.total * 100,
+			    	data-name="Paulphin">
+			  	</script>
+			</form>
+		</div>
+		<div class="width80 padding40 trans-light hide-on-large-only">
 			<h1>Payment</h1>
 			<h5>Order summary:</h5>
 			Products:

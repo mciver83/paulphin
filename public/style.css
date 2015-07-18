@@ -90,7 +90,7 @@ footer {
 	padding: 0;
 	height: 100%;
 	width: 100%;
-	background: url('app/images/IMG_0346.jpg');
+	background: url('app/images/sunset2.jpg');
 	background-size: cover;
 	-webkit-background-size: cover;
    	-moz-background-size: cover;
@@ -103,7 +103,7 @@ footer {
 	padding: 0;
 	height: 100%;
 	width: 100%;
-	background: url('app/images/IMG_0346.jpg');
+	background: url('app/images/IMG_0346.jpg') center right no-repeat;
 	background-size: cover;
 	-webkit-background-size: cover;
    	-moz-background-size: cover;
