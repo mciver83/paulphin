@@ -25,7 +25,7 @@ var ProductCtrl = require('./controllers/ProductCtrl'),
 	AddressCtrl = require('./controllers/AddressCtrl'),
 	EmailCtrl = require('./controllers/EmailCtrl'),
 	OrderCtrl = require('./controllers/OrderCtrl'),
-	PaymentCtrl = require('./controllers/PaymentCtrl');	
+	PaymentCtrl = require('./controllers/PaymentCtrl.js');	
 	
 
 //stripe

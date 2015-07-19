@@ -1,6 +1,5 @@
-var stripe = require('stripe')(
-	process.env.STRIPE
-	),
+var stripe = require('../config_copy/stripe.js'),
+	// stripe = require('../config/stripe.js'),
 	EmailCtrl = require('../controllers/EmailCtrl.js'),
 	Order = require('../models/OrderModel.js');
 
