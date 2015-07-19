@@ -18,7 +18,7 @@ var express = require('express'),
 
 
 //controllers
-var PaymentCtrl = require('./controllers/PaymentCtrl'),
+var PaymentCtrl = require('./controllers/PayCtrl'),
 	ProductCtrl = require('./controllers/ProductCtrl'),
 	PhotoCtrl = require('./controllers/PhotoCtrl'),
 	CustomerCtrl = require('./controllers/CustomerCtrl'),
