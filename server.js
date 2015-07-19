@@ -13,7 +13,7 @@ var express = require('express'),
 	multer = require('multer'),
 	cookieParser = require('cookie-parser'),
 	// mongoUri = 'mongodb://localhost:27017/paulphin';
-	mongoUri = 'process.env.MONGOLAB_URI';
+	mongoUri = process.env.MONGOLAB_URI;
 
 
 
