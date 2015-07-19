@@ -1,5 +1,5 @@
 var stripe = require('stripe')(
-	'sk_test_hmNf5aQpZ0J4Lana3HtHlJDR'
+	process.env.STRIPE
 	),
 	EmailCtrl = require('../controllers/EmailCtrl.js'),
 	Order = require('../models/OrderModel.js');
