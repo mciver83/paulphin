@@ -7,17 +7,6 @@ app.config(function($routeProvider){
 	.when('/home/:uId?', {
 		templateUrl: 'app/views/home.html',
 		controller: 'homeCtrl'
-		// resolve: {
-		// 	customer: function(customerService, $route){
-		// 		if($route.current.params.uId){
-		// 			var id = '_id'
-		// 			return customerService.getCustomer(id, $route.current.params.uId).then(function(response){
-		// 				console.log(response.data[0])
-		// 				return response.data[0];
-		// 			})
-		// 		} 
-		// 	}
-		// }
 	})
 	.when('/about/:uId?', {
 		templateUrl: 'app/views/about.html',
@@ -39,50 +28,12 @@ app.config(function($routeProvider){
 					return photos;
 				})
 			}
-			
-			// },
-			// customer: function(customerService, $route){
-			// 	if($route.current.params.uId){
-			// 		var id = '_id'
-			// 		return customerService.getCustomer(id, $route.current.params.uId).then(function(response){
-			// 			return response.data[0];
-			// 		})
-			// 	} 
-			// }
 		}
 	})
 	.when('/contact/:uId?', {
 		templateUrl: 'app/views/contact.html',
 		controller:  'contactCtrl'
-		// resolve: {
-		// 	customer: function(customerService, $route){
-		// 		if($route.current.params.uId){
-		// 			var id = '_id'
-		// 			return customerService.getCustomer(id, $route.current.params.uId).then(function(response){
-		// 				console.log(response.data[0])
-		// 				return response.data[0];
-		// 			})
-		// 		} 
-		// 	}
-		// }
 	})
-	// .when('/store/:uId', {
-	// 	templateUrl: 'app/views/store.html',
-	// 	controller: 'shopCtrl',
-	// 	resolve: {
-	// 		products: function(productService){
-	// 			return productService.getProducts().then(function(response){
-	// 				return response.data;
-	// 			})
-	// 		},
-	// 		customer: function(customerService, $route){
-	// 			var id = '_id'
-	// 			return customerService.getCustomer(id, $route.current.params.uId).then(function(response){
-	// 				return response.data[0];
-	// 			})
-	// 		}
-	// 	}
-	// })
 	.when('/store/:uId?', {
 		templateUrl: 'app/views/store.html',
 		controller: 'shopCtrl',
@@ -103,14 +54,6 @@ app.config(function($routeProvider){
 					return photos;
 				})
 			},
-			// customer: function(customerService, $route){
-			// 	if($route.current.params.uId){
-			// 		var id = '_id'
-			// 		return customerService.getCustomer(id, $route.current.params.uId).then(function(response){
-			// 			return response.data[0];
-			// 		})
-			// 	} 
-			// },
 			cart: function(cartService){
 				return cartService.getCart().then(function(response){
 					return response.data
@@ -122,14 +65,6 @@ app.config(function($routeProvider){
 		templateUrl: 'app/views/checkout.html',
 		controller: 'checkoutCtrl',
 		resolve: {
-			// customer: function(customerService, $route){
-			// 	if($route.current.params.uId){
-			// 		var id = '_id'
-			// 		return customerService.getCustomer(id, $route.current.params.uId).then(function(response){
-			// 			return response.data[0];
-			// 		})
-			// 	} 
-			// },
 			cart: function(cartService){
 				return cartService.getCart().then(function(response){
 					console.log(response, 232323)
@@ -200,6 +135,33 @@ app.config(function($routeProvider){
 			orders: function(adminService){
 				return adminService.getOrders().then(function(response){
 					return response.data;
+				})
+			}
+		}
+	})
+	.when('/excursion', {
+		templateUrl: 'app/views/excursion.html',
+		controller: 'excursionCtrl',
+		resolve: {
+			products: function(productService){
+				return productService.getProducts().then(function(response){
+					return response.data;
+				})
+			},
+			photos: function(photoService){
+				return photoService.getPhotos().then(function(response){
+					return response.data;
+				})
+			},
+			cart: function(cartService){
+				return cartService.getCart().then(function(response){
+					return response.data
+				})
+			},
+			user: function(authService){
+				return authService.auth().then(function(response){
+					console.log(response)
+					return response.data
 				})
 			}
 		}

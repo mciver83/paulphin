@@ -27,15 +27,8 @@ var ProductCtrl = require('./controllers/ProductCtrl'),
 	PaymentCtrl = require('./controllers/PaymentCtrl');	
 	
 
-
 //stripe
-var stripe = require("stripe")(
-  "sk_test_hmNf5aQpZ0J4Lana3HtHlJDR"
-);
-
-
-
-
+require('./config/stripe');
 
 
  
@@ -105,7 +98,16 @@ app.get('/api/products', ProductCtrl.get);
 
 app.get('/api/photos', PhotoCtrl.get);
 
+//login
+app.post('/api/login', passport.authenticate('local', {
+	failureFlash: true
+}), function(req, res){
+	res.send(req.user)
+})
 
+app.get('/api/auth', isLoggedIn, function(req, res){
+	res.send(req.user)
+})
 
 //admin 
 		//products
@@ -207,7 +209,7 @@ function isLoggedIn(req, res, next) {
     }
 
     // if they aren't redirect them to the home page
-    res.redirect('/admin/login');
+    res.send(false);
 }
 
 function isAdmin(req, res, done) {

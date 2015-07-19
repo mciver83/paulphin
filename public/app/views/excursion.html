@@ -1,0 +1,161 @@
+<!-- <main-header class="black"><main-header> -->
+
+<main>
+	<div ng-show="showLogin">
+		<div class="pop-up-back">
+			<div class="pop-up">
+				<input input-date
+					    type="text"
+					    placeholder="excursion date"
+					    name="created"
+					    id="inputCreated"
+					    ng-model="date"
+					    container="body"
+					    format="mm/dd/yyyy"
+					    months-full="{{ month }}"
+					    months-short="{{ monthShort }}"
+					    weekdays-full="{{ weekdaysFull }}"
+					    weekdays-short="{{ weekdaysShort }}"
+					    weekdays-letter="{{ weekdaysLetter }}"
+					    today="today"
+					    clear="clear"
+					    close="close"
+					    select-years="15"
+					    on-start="onStart()"
+					    on-render="onRender()"
+					    on-open="onOpen()"
+					    on-close="onClose()"
+					    on-set="onSet()"
+					    on-stop="onStop()" />
+				<input type="password" ng-model="password" placeholder="password"/>
+				<button ng-click="login(date, password)">login</button>
+			</div>	
+		</div>
+	</div>
+
+
+	<div class="width100 section">
+
+
+		<div class="center trans-light">
+			<br />
+			<h2 class="blue-text">Create Your Own</h2>
+			<div class="row">
+				<div class="col s12 hide-on-med-and-down">
+					<h3>Step<h1>1</h1></h3>
+					<h5>choose a product</h5>
+					<br>
+					<div id="item" class="flex-row content-center">
+						<div class="item black-text" ng-repeat="product in buildProducts">
+							<div class="flex-column align-items-center">
+								<img ng-click="buildItem(product)" class="image-thumbnail" ng-src="{{product.image}}"/>
+								<p>{{product.title}}</p>
+								<p>${{product.price}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col s12 hide-on-large-only hide-on-small-only">
+					<h3>Step<h1>1</h1></h3>
+					<h5>choose a product</h5>
+					<br>
+					<div id="item" class="flex-row content-center">
+						<div class="item black-text" ng-repeat="product in buildProducts">
+							<div class="flex-column align-items-center">
+								<img ng-click="buildItem(product)" class="image-small" ng-src="{{product.image}}"/>
+								<p>{{product.title}}</p>
+								<p>${{product.price}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col s12 hide-on-med-and-up">
+					<h3>Step<h1>1</h1></h3>
+					<h5>choose a product</h5>
+					<br>
+					<div id="item" class="flex-row content-center">
+						<div class="item black-text" ng-repeat="product in buildProducts">
+							<div class="flex-column align-items-center">
+								<img ng-click="buildItem(product)" class="image-cart" ng-src="{{product.image}}"/>
+								<p>{{product.title}}</p>
+								<p>${{product.price}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- <div class="col s2 hide-on-med-and-down">
+					<h3>Step<h1>1</h1></h3>
+					<h5>choose a product</h5>
+					<br>
+					<div id="item" class="flex-column content-start">
+						<div class="item black-text" ng-repeat="product in buildProducts">
+							<div class="flex-column align-items-center">
+								<img ng-click="buildItem(product)" class="image-thumbnail" ng-src="{{product.image}}"/>
+								<p>{{product.title}}</p>
+								<p>${{product.price}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col s2 hide-on-large-only">
+					<h3>Step<h1>1</h1></h3>
+					<h5>choose a product</h5>
+					<br>
+					<div id="item" class="flex-column content-start">
+						<div class="item black-text" ng-repeat="product in buildProducts">
+							<div class="flex-column align-items-center">
+								<img ng-click="buildItem(product)" class="responsive-img" ng-src="{{product.image}}"/>
+								<p>{{product.title}}</p>
+								<p>${{product.price}}</p>
+							</div>
+						</div>
+					</div>
+				</div> -->
+
+
+
+				<div class="col s9">	
+					<h3>Step<h1>2</h1></h3>
+					<h5>choose an image</h5>
+					<br>
+					<br>
+					<div class="flex-row wrap content-center">	
+						<div ng-repeat="photo in excursionPhotos">
+							<!-- <div class="flex-column align-items-center"> -->
+								<div class="image image-thumbnail">
+									<div class="flex-column align-items-center">
+										<img pop-up id="pop-up" class="image-thumbnail" ng-src="{{photo.imageUrl}}"/>
+										<i pop-up  id="enlarge-image" class="material-icons md-light md-36">photo_size_select_large</i>
+										<i id="add-image" class="material-icons md-light md-36" ng-click="buildImage(photo)">add_circle_outline</i>
+									</div>
+								</div>
+							<!-- </div> -->
+						</div>
+					</div>
+				</div>
+
+
+
+				<div id="built-product" class="col s3">
+					<h3>Step<h1>3</h1></h3>
+					<h5>add item to cart</h5>
+					<br>
+					<div class="flex-column align-items-center">
+						<img id="chosen-item" ng-src="{{item}}" alt="product preview" class="responsive-img item">
+						</img>
+
+						<img id="chosen-image" ng-src="{{imageUrl}}" alt="image preview" class="responsive-img item">
+						</img>
+						<!-- <button ng-click="addToCart(product, photo)"><i class="material-icons">add_shopping_cart</i> add</button> -->
+
+						<div class="input-field">
+					        <a class="waves-effect waves-light btn" ng-click="addToCart(product, photo)"><i class="material-icons">add_shopping_cart</i> add</a>
+					    </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+</main>

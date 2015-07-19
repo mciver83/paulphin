@@ -4,22 +4,33 @@ var mongoose = require('mongoose'),
 	address = require('../models/AddressModel.js'),
 	bcrypt = require('bcrypt-nodejs');
 
+// var CustomerSchema = mongoose.Schema({
+// 	name: { type: String, required: true },
+// 	local: {
+//         email: { type: String, required: true },
+//         password: { type: String, required: true}
+//     },
+// 	phone: { type: String },
+// 	address: [address],
+// 	cart: [{
+// 		product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
+// 		price: { type: Number, min: 0},
+// 		quantity: {  type: Number, min: 1, default: 1 }
+// 	}],
+// 	orders: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Order' }],
+// 	createdAt: { type: Date, default: Date.now },
+// 	updatedAt: { type: Date, default: Date.now },
+// 	admin: { type: Boolean, default: false }
+// })
+
 var CustomerSchema = mongoose.Schema({
 	name: { type: String, required: true },
 	local: {
-        email: { type: String },
-        password: { type: String}
+        email: { type: String, required: true },
+        password: { type: String, required: true}
     },
-	phone: { type: String },
-	address: [address],
-	cart: [{
-		product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
-		price: { type: Number, min: 0},
-		quantity: {  type: Number, min: 1, default: 1 }
-	}],
-	orders: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Order' }],
+	
 	createdAt: { type: Date, default: Date.now },
-	updatedAt: { type: Date, default: Date.now },
 	admin: { type: Boolean, default: false }
 })
 

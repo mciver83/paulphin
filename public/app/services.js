@@ -152,6 +152,44 @@ app.service('adminService', function($http){
 
 //---------------------------------------------------//
 
+
+
+
+
+
+app.service('authService', function($http){
+	
+	this.login = function(email, password){
+		return $http({
+			method: 'POST',
+			url: 'http://localhost:9003/api/login',
+			data: {
+				email: email,
+				password: password
+			}
+		})
+	}
+
+	this.auth = function(){
+		return $http({
+			method: 'GET',
+			url: 'http://localhost:9003/api/auth'
+		})
+	}
+
+})
+
+
+
+
+
+
+//---------------------------------------------------//
+
+
+
+
+
 app.service('productService', function($http, $q){
 
 
@@ -222,8 +260,7 @@ app.service('customerService', function($http, $q){
 				local: {
 					email: email,
 					password: password
-				}, 
-				admin: true
+				}
 			}
 		})
 	}

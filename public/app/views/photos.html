@@ -55,5 +55,37 @@
 		<!-- <button ng-click="addPhoto(imageSrc, file)">submit</button> -->
 		<button ng-click="addPhoto(imageSrc, file, photoTitle, photoDescription, photoCategory, photoAuth)">submit</button>
 	</div>
+
+	<br />
+	<br />
+	<div class="width50">
+		<h4> create account </h4>
+		<input input-date
+			    type="text"
+			    placeholder="excursion date"
+			    name="created"
+			    id="inputCreated"
+			    ng-model="date"
+			    container="body"
+			    format="mm/dd/yyyy"
+			    months-full="{{ month }}"
+			    months-short="{{ monthShort }}"
+			    weekdays-full="{{ weekdaysFull }}"
+			    weekdays-short="{{ weekdaysShort }}"
+			    weekdays-letter="{{ weekdaysLetter }}"
+			    today="today"
+			    clear="clear"
+			    close="close"
+			    select-years="15"
+			    on-start="onStart()"
+			    on-render="onRender()"
+			    on-open="onOpen()"
+			    on-close="onClose()"
+			    on-set="onSet()"
+			    on-stop="onStop()" />
+		<input type="password" ng-model="password" placeholder="password"/>
+		<button ng-click="createAccount(date, password)">create</button>
+	</div>
+	<br />
 	
 </main>
