@@ -1,9 +1,55 @@
 <!-- <main-header class="black"><main-header> -->
+<!-- header cause main-header directive is causing problems -->
+<div class="header black flex-row space-around align-items-center">
+	<div id="logo">
+		<h3 class="blue-text text-darken-3 hide-on-med-and-down"><a href="#/">Paulphin Photography</a></h3>
+		<a class="blue-text text-darken-3 hide-on-large-only" href="#/"><h3>Paulphin</h3></a>
+	</div>
+	
 
-<main>
-	<div ng-show="showLogin">
+
+	<div id="navbar" class="blue-text text-lighten-4 flex-row space-around align-items-center hide-on-med-and-down">
+		<cart></cart>
+		<p id="cart">
+			<a href="" ng-hide="!cart.length" ng-click="showCart()">{{cart.length}}<i class="material-icons">shopping_cart</i>my cart</a>
+		</p>
+		<div id="store">
+			<p><a href="#/store" ng-hide="cart.length" >store</a></p>
+		</div>
+		<p><a href="#/about">about</a></p>
+		<p><a href="#/contact">contact</a></p>
+		<p><a href="/logout">logout</a><p>
+	</div>
+	<div id="navbar" class="blue-text text-lighten-4 flex-row space-around align-items-center hide-on-large-only">
+		<cart></cart>
+		<p id="cart">
+			<a href="" ng-hide="!cart.length" ng-click="showCart()">{{cart.length}}<i class="material-icons">shopping_cart</i>my cart</a>
+		</p>
+	</div>
+	<div class="hide-on-large-only">
+		<!-- Dropdown Trigger -->
+		<a href='javascript:void(0);' data-activates='demoDropdown' dropdown data-hover="true">
+		    <i class="material-icons medium blue-text">menu</i>
+		</a>
+		<ul id='demoDropdown' class='dropdown-content'>
+    		<li><a class="blue-text" href="#/store">store</a></li>
+		    <li><a class="blue-text" href="#/about">about</a></li>
+		    <li><a class="blue-text" href="#/contact">contact</a></li>
+		    <li><a class="blue-text" href="/logout">logout</a><li>
+		</ul>
+	</div>
+</div>
+
+
+
+
+<!-- login pup-up if user is not logged in -->
+<div ng-show="showLogin">
 		<div class="pop-up-back">
-			<div class="pop-up">
+			<div class="pop-up white">
+				<p>to view your excursion pics, enter the date of the excursion and the password that was given to you</p>
+				<br />
+				<p class="red-text">{{errorMessage}}</p>
 				<input input-date
 					    type="text"
 					    placeholder="excursion date"
@@ -29,17 +75,37 @@
 					    on-stop="onStop()" />
 				<input type="password" ng-model="password" placeholder="password"/>
 				<button ng-click="login(date, password)">login</button>
+				<a class="blue-text item" href="#/">take me to the home page</a>
 			</div>	
 		</div>
 	</div>
 
 
-	<div class="width100 section">
+
+
+<main>
+
+	<div class="width80 section">
+		<h4>view pictures from your excursion</h4>
+		<p>You can add your picture to various products, or just order the prints!</p>  
+		<p>See below for details.</p>
+
+		<div class="flex-row wrap content-center">	
+			<div ng-repeat="photo in excursionPhotos">
+				<div class="image image-thumbnail">
+					<div class="flex-column align-items-center">
+						<img pop-up id="pop-up" class="image-thumbnail" ng-src="{{photo.imageUrl}}"/>
+						<i pop-up  id="enlarge-image" class="material-icons md-light md-36">photo_size_select_large</i>
+					</div>
+				</div>
+			</div>
+		</div>
+
 
 
 		<div class="center trans-light">
 			<br />
-			<h2 class="blue-text">Create Your Own</h2>
+			<h2 class="blue-text">Create Your Own Product</h2>
 			<div class="row">
 				<div class="col s12 hide-on-med-and-down">
 					<h3>Step<h1>1</h1></h3>
@@ -83,35 +149,7 @@
 						</div>
 					</div>
 				</div>
-				<!-- <div class="col s2 hide-on-med-and-down">
-					<h3>Step<h1>1</h1></h3>
-					<h5>choose a product</h5>
-					<br>
-					<div id="item" class="flex-column content-start">
-						<div class="item black-text" ng-repeat="product in buildProducts">
-							<div class="flex-column align-items-center">
-								<img ng-click="buildItem(product)" class="image-thumbnail" ng-src="{{product.image}}"/>
-								<p>{{product.title}}</p>
-								<p>${{product.price}}</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col s2 hide-on-large-only">
-					<h3>Step<h1>1</h1></h3>
-					<h5>choose a product</h5>
-					<br>
-					<div id="item" class="flex-column content-start">
-						<div class="item black-text" ng-repeat="product in buildProducts">
-							<div class="flex-column align-items-center">
-								<img ng-click="buildItem(product)" class="responsive-img" ng-src="{{product.image}}"/>
-								<p>{{product.title}}</p>
-								<p>${{product.price}}</p>
-							</div>
-						</div>
-					</div>
-				</div> -->
-
+				
 
 
 				<div class="col s9">	
@@ -121,7 +159,7 @@
 					<br>
 					<div class="flex-row wrap content-center">	
 						<div ng-repeat="photo in excursionPhotos">
-							<!-- <div class="flex-column align-items-center"> -->
+	
 								<div class="image image-thumbnail">
 									<div class="flex-column align-items-center">
 										<img pop-up id="pop-up" class="image-thumbnail" ng-src="{{photo.imageUrl}}"/>
@@ -129,7 +167,7 @@
 										<i id="add-image" class="material-icons md-light md-36" ng-click="buildImage(photo)">add_circle_outline</i>
 									</div>
 								</div>
-							<!-- </div> -->
+						
 						</div>
 					</div>
 				</div>
@@ -146,8 +184,7 @@
 
 						<img id="chosen-image" ng-src="{{imageUrl}}" alt="image preview" class="responsive-img item">
 						</img>
-						<!-- <button ng-click="addToCart(product, photo)"><i class="material-icons">add_shopping_cart</i> add</button> -->
-
+			
 						<div class="input-field">
 					        <a class="waves-effect waves-light btn" ng-click="addToCart(product, photo)"><i class="material-icons">add_shopping_cart</i> add</a>
 					    </div>

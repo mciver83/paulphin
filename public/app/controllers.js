@@ -376,6 +376,8 @@ app.controller('excursionCtrl', function($scope, $location, cart, cartService, a
 				}
 			}
 			
+		}, function(err){
+			$scope.errorMessage = "wrong date and/or passowrd"
 		})
 	}
 
