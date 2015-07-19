@@ -18,14 +18,15 @@ var express = require('express'),
 
 
 //controllers
-var ProductCtrl = require('./controllers/ProductCtrl'),
+var PaymentCtrl = require('./controllers/PaymentCtrl'),
+	ProductCtrl = require('./controllers/ProductCtrl'),
 	PhotoCtrl = require('./controllers/PhotoCtrl'),
 	CustomerCtrl = require('./controllers/CustomerCtrl'),
 	CartCtrl = require('./controllers/CartCtrl'),
 	AddressCtrl = require('./controllers/AddressCtrl'),
 	EmailCtrl = require('./controllers/EmailCtrl'),
-	OrderCtrl = require('./controllers/OrderCtrl'),
-	PaymentCtrl = require('./controllers/PaymentCtrl.js');	
+	OrderCtrl = require('./controllers/OrderCtrl');
+		
 	
 
 //stripe
