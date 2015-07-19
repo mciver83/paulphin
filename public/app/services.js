@@ -264,7 +264,7 @@ app.service('customerService', function($http, $q){
 					email: email,
 					password: password
 				},
-				admin: true;
+				admin: true
 			}
 		})
 	}
