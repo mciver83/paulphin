@@ -24,8 +24,8 @@ var ProductCtrl = require('./controllers/ProductCtrl'),
 	CartCtrl = require('./controllers/CartCtrl'),
 	AddressCtrl = require('./controllers/AddressCtrl'),
 	EmailCtrl = require('./controllers/EmailCtrl'),
-	OrderCtrl = require('./controllers/OrderCtrl'),
-	PaymentCtrl = require('./controllers/PaymentCtrl');	
+	OrderCtrl = require('./controllers/OrderCtrl');
+	// PaymentCtrl = require('./controllers/PaymentCtrl');	
 	
 
 //stripe
@@ -194,7 +194,7 @@ app.get('/api/orders', OrderCtrl.get);
 app.put('/api/orders', OrderCtrl.update);
 
 //payment with stripe
-app.post('/charge/:orderId', PaymentCtrl.submitStripe);
+// app.post('/charge/:orderId', PaymentCtrl.submitStripe);
 
 //emails
 app.post('/api/email/send', EmailCtrl.sendEmail);
