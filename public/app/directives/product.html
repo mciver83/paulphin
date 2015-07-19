@@ -11,11 +11,31 @@
 
 
 <!-- hide while working with materialize -->
-<div id="product" class="image">
-	<img pop-up class="responsive-img" ng-src="{{product.image}}"/>
+<div id="product" class="image hide-on-med-and-down">
+	<img pop-up class="image-thumbnail" ng-src="{{product.image}}"/>
 	<div class="center">
 		<p>{{product.title}}</p>
 	</div>
+	<div class="center"><p>{{product.description}}</p></div>
+	<div class="center"><p class="price">${{product.price}}</p></div>
+	<div class="center"><i ng-click="addToCart(product)" class="material-icons">add_shopping_cart</i>
+	<p class="itemInCart red-text center">item in cart</p></div>
+</div>
+<div id="product" class="image hide-on-large-only hide-on-small-only">
+	<img pop-up class="image-small" ng-src="{{product.image}}"/>
+	<!-- <div class="center">
+		<p>{{product.title}}</p>
+	</div> -->
+	<div class="center"><p>{{product.description}}</p></div>
+	<div class="center"><p class="price">${{product.price}}</p></div>
+	<div class="center"><i ng-click="addToCart(product)" class="material-icons">add_shopping_cart</i>
+	<p class="itemInCart red-text center">item in cart</p></div>
+</div>
+<div id="product" class="image hide-on-med-and-up">
+	<img pop-up class="image-cart" ng-src="{{product.image}}"/>
+	<!-- <div class="center">
+		<p>{{product.title}}</p>
+	</div> -->
 	<div class="center"><p>{{product.description}}</p></div>
 	<div class="center"><p class="price">${{product.price}}</p></div>
 	<div class="center"><i ng-click="addToCart(product)" class="material-icons">add_shopping_cart</i>
