@@ -134,7 +134,7 @@ header {
 #carousel {
 	height: 500px;
 	width: 100%;
-	background: url('app/images/me.jpg') center center no-repeat;
+	background: url('app/images/Me.jpg') center center no-repeat;
 	background-size: cover;
 	-webkit-background-size: cover;
    	-moz-background-size: cover;
