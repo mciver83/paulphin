@@ -1,6 +1,9 @@
 
 var app = angular.module('ecommerce');
 
+var herokuURL = 'paulphin.herokuapp.com';
+// var herokuURL = 'http://localhost:9003'
+
 
 app.service('instagramService', function($http, $q){
 	this.getFeed = function(){
@@ -25,7 +28,7 @@ app.service('adminService', function($http){
 	this.addProduct = function(title, price, image, description, category){
 		return $http({
 			method: 'POST',
-			url: 'http://localhost:9003/admin/products',
+			url: herokuURL + '/admin/products',
 			data: {
 				title: title,
 				price: price,
@@ -39,14 +42,14 @@ app.service('adminService', function($http){
 	this.getProducts = function(){
 		return $http({
 			method: 'GET',
-			url: 'http://localhost:9003/admin/products'
+			url: herokuURL + '/admin/products'
 		})
 	}
 
 	this.updateProduct = function(id, title, description, price, category){
 		return $http({
 			method: 'PUT',
-			url: 'http://localhost:9003/admin/products?id=' + id,
+			url: herokuURL + '/admin/products?id=' + id,
 			data: {
 
 				title: title,
@@ -60,7 +63,7 @@ app.service('adminService', function($http){
 	this.removeProduct = function(id){
 		return $http({
 			method: 'DELETE',
-			url:'http://localhost:9003/admin/products?id=' + id
+			url:herokuURL + '/admin/products?id=' + id
 		})
 	}
 
@@ -71,7 +74,7 @@ app.service('adminService', function($http){
 	 
 		return $http({
 			method: 'POST',
-			url: 'http://localhost:9003/upload',
+			url: herokuURL + '/upload',
 			data: {
 				image: imageSrc,
 				file: {
@@ -87,7 +90,7 @@ app.service('adminService', function($http){
 
 		return $http({
 			method: 'POST',
-			url: 'http://localhost:9003/admin/photos',
+			url: herokuURL + '/admin/photos',
 			data: {
 				title: title,
 				imageUrl: url,
@@ -103,14 +106,14 @@ app.service('adminService', function($http){
 	this.getPhotos = function(){
 		return $http({
 			method: 'GET',
-			url: 'http://localhost:9003/admin/photos'
+			url: herokuURL + '/admin/photos'
 		})
 	}
 
 	this.updatePhoto = function(id, title, description, category, auth){
 		return $http({
 			method: 'PUT',
-			url: 'http://localhost:9003/admin/photos?id=' + id,
+			url: herokuURL + '/admin/photos?id=' + id,
 			data: {
 
 				title: title,
@@ -124,21 +127,21 @@ app.service('adminService', function($http){
 	this.removePhoto = function(id){
 		return $http({
 			method: 'DELETE',
-			url:'http://localhost:9003/admin/photos?id=' + id
+			url:herokuURL + '/admin/photos?id=' + id
 		})
 	}
 
 	this.getOrders = function(){
 		return $http({
 			method: 'GET',
-			url: 'http://localhost:9003/admin/orders'
+			url: herokuURL + '/admin/orders'
 		})
 	}
 
 	this.updateOrder = function(id, paymentStatus, orderStatus){
 		return $http({
 			method: 'PUT',
-			url: 'http://localhost:9003/admin/orders/?_id=' + id,
+			url: herokuURL + '/admin/orders/?_id=' + id,
 			data: {
 				'payment.status': paymentStatus,
 				status: orderStatus
@@ -162,7 +165,7 @@ app.service('authService', function($http){
 	this.login = function(email, password){
 		return $http({
 			method: 'POST',
-			url: 'http://localhost:9003/api/login',
+			url: herokuURL + '/api/login',
 			data: {
 				email: email,
 				password: password
@@ -173,7 +176,7 @@ app.service('authService', function($http){
 	this.auth = function(){
 		return $http({
 			method: 'GET',
-			url: 'http://localhost:9003/api/auth'
+			url: herokuURL + '/api/auth'
 		})
 	}
 
@@ -196,14 +199,14 @@ app.service('productService', function($http, $q){
 	this.getProducts = function(){
 		return $http({
 			method: 'GET',
-			url: 'http://localhost:9003/api/products'
+			url: herokuURL + '/api/products'
 		})
 	}
 
 	this.getOneProduct = function(id){
 		return $http({
 			method: 'GET',
-			url: 'http://localhost:9003/api/products?_id=' + id
+			url: herokuURL + '/api/products?_id=' + id
 		})
 	}
 
@@ -221,14 +224,14 @@ app.service('photoService', function($http, $q){
 	this.getPhotos = function(){
 		return $http({
 			method: 'GET',
-			url: 'http://localhost:9003/api/photos'
+			url: herokuURL + '/api/photos'
 		})
 	}
 
 	this.getOnePhoto = function(id){
 		return $http({
 			method: 'GET',
-			url: 'http://localhost:9003/api/photos?_id=' + id
+			url: herokuURL + '/api/photos?_id=' + id
 		})
 	}
 
@@ -244,7 +247,7 @@ app.service('customerService', function($http, $q){
 	// this.createTempCustomer = function(name){
 	// 	return $http({
 	// 		method: 'POST',
-	// 		url: 'http://localhost:9003/api/customers',
+	// 		url: herokuURL + '/api/customers',
 	// 		data: {
 	// 			name: name
 	// 		}
@@ -254,7 +257,7 @@ app.service('customerService', function($http, $q){
 	this.addCustomer = function(name, email, password){
 		return $http({
 			method: 'POST', 
-			url: 'http://localhost:9003/api/customers',
+			url: herokuURL + '/api/customers',
 			data: {
 				name: name,
 				local: {
@@ -268,14 +271,14 @@ app.service('customerService', function($http, $q){
 	this.getCustomer = function(field, value){
 		return $http({
 			method: 'GET',
-			url: 'http://localhost:9003/api/customers?' + field + '=' + value
+			url: herokuURL + '/api/customers?' + field + '=' + value
 		})
 	}
 
 	this.updateCustomer = function(id, obj){
 		return $http({
 			method: 'PUT',
-			url: 'http://localhost:9003/api/customers?id=' + id,
+			url: herokuURL + '/api/customers?id=' + id,
 			data: obj
 		})
 	}
@@ -283,7 +286,7 @@ app.service('customerService', function($http, $q){
 	this.addAddress = function(customerId, address){
 		return $http({
 			method: 'POST',
-			url: 'http://localhost:9003/api/customers/address/' + customerId,
+			url: herokuURL + '/api/customers/address/' + customerId,
 			data: address
 		})
 	}
@@ -299,7 +302,7 @@ app.service('cartService', function($http, $q){
 	this.addToCart = function(data){
 		return $http({
 			method: 'POST',
-			url: 'http://localhost:9003/api/cart/',
+			url: herokuURL + '/api/cart/',
 			data: data
 		})		
 
@@ -308,14 +311,14 @@ app.service('cartService', function($http, $q){
 	this.getCart = function(){
 		return $http({
 			method: 'GET',
-			url: 'http://localhost:9003/api/cart'
+			url: herokuURL + '/api/cart'
 		})
 	}
 
 	this.updateItem = function(data){
 		return $http({
 			method: 'PUT',
-			url: 'http://localhost:9003/api/cart',
+			url: herokuURL + '/api/cart',
 			data: data
 		})
 	}
@@ -323,7 +326,7 @@ app.service('cartService', function($http, $q){
 	this.removeItem = function(id){
 		return $http({
 			method: 'PUT',
-			url: 'http://localhost:9003/api/cart/remove',
+			url: herokuURL + '/api/cart/remove',
 			data: {
 				id: id
 			}
@@ -345,7 +348,7 @@ app.service('orderService', function($http, $q, $routeParams){
 	this.placeOrder = function(order){
 		return $http({
 			method: 'POST',
-			url: 'http://localhost:9003/api/orders',
+			url: herokuURL + '/api/orders',
 			data: order
 		})
 	}
@@ -353,21 +356,21 @@ app.service('orderService', function($http, $q, $routeParams){
 	this.getOrder = function(id){
 		return $http({
 			method: 'GET',
-			url: 'http://localhost:9003/api/orders/?_id=' + id
+			url: herokuURL + '/api/orders/?_id=' + id
 		})
 	}
 
 	this.getOrders = function(){
 		return $http({
 			method: 'GET',
-			url: 'http://localhost:9003/api/orders'
+			url: herokuURL + '/api/orders'
 		})
 	}
 
 	this.updateOrder = function(id, paymentStatus, orderStatus){
 		return $http({
 			method: 'PUT',
-			url: 'http://localhost:9003/api/orders/?_id=' + id,
+			url: herokuURL + '/api/orders/?_id=' + id,
 			data: {
 				status: orderStatus
 			}

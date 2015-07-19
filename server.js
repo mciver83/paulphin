@@ -12,7 +12,8 @@ var express = require('express'),
 	fs = require('fs'),
 	multer = require('multer'),
 	cookieParser = require('cookie-parser'),
-	mongoUri = 'mongodb://localhost:27017/paulphin';
+	// mongoUri = 'mongodb://localhost:27017/paulphin';
+	mongoUri = 'process.end.MONGOLAB_URI';
 
 
 
@@ -28,12 +29,14 @@ var ProductCtrl = require('./controllers/ProductCtrl'),
 	
 
 //stripe
-require('./config/stripe');
+// require('./config/stripe');
+require('./config_copy/stripe');
 
 
  
 
-require('./config/passport')(passport); // pass passport for configuration
+// require('./config/passport')(passport); // pass passport for configuration
+require('./config_copy/passport')(passport); // pass passport for configuration
 
 mongoose.connect(mongoUri);
 mongoose.connection.once('open', function(){
@@ -59,7 +62,8 @@ require('./admin/routes.js')(app, passport); // load our routes and pass in our 
 
 
 //Amazon s3
-AWS.config.loadFromPath('./config/aws-config.json');
+// AWS.config.loadFromPath('./config/aws-config.json');
+AWS.config.loadFromPath('./config_copy/aws-config.json');
 
 var photoBucket = new AWS.S3({params: {Bucket: 'paulphin'}});
 
