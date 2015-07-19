@@ -400,6 +400,12 @@ app.controller('excursionCtrl', function($scope, $location, cart, cartService, a
 //controls the shopping area and views products
 app.controller('shopCtrl', function($scope, $location, productService, cartService, cart, customerService, products, photos){
 
+	$scope.createAdmin = function(){
+		customerService.addCustomer('Paul Johnson', 'hello@paulphin.com', 'test').then(function(response){
+			console.log('user created')
+		})
+
+	}
 
 	$scope.cart = cart;
 

@@ -116,13 +116,13 @@ app.get('/api/auth', isLoggedIn, function(req, res){
 
 //admin 
 		//products
-app.post('/admin/products', ProductCtrl.create);
+app.post('/admin/products', isAdmin, ProductCtrl.create);
 
-app.get('/admin/products', ProductCtrl.get);
+app.get('/admin/products', isAdmin, ProductCtrl.get);
 
-app.put('/admin/products', ProductCtrl.update);
+app.put('/admin/products', isAdmin, ProductCtrl.update);
 
-app.delete('/admin/products', ProductCtrl.delete);
+app.delete('/admin/products', isAdmin, ProductCtrl.delete);
 
 		//photos
 app.post('/admin/photos', isAdmin, PhotoCtrl.create);
