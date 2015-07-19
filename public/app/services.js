@@ -28,7 +28,7 @@ app.service('adminService', function($http){
 	this.addProduct = function(title, price, image, description, category){
 		return $http({
 			method: 'POST',
-			url: herokuURL + '/admin/products',
+			url: '/admin/products',
 			data: {
 				title: title,
 				price: price,
@@ -42,14 +42,14 @@ app.service('adminService', function($http){
 	this.getProducts = function(){
 		return $http({
 			method: 'GET',
-			url: herokuURL + '/admin/products'
+			url: '/admin/products'
 		})
 	}
 
 	this.updateProduct = function(id, title, description, price, category){
 		return $http({
 			method: 'PUT',
-			url: herokuURL + '/admin/products?id=' + id,
+			url: '/admin/products?id=' + id,
 			data: {
 
 				title: title,
@@ -63,7 +63,7 @@ app.service('adminService', function($http){
 	this.removeProduct = function(id){
 		return $http({
 			method: 'DELETE',
-			url:herokuURL + '/admin/products?id=' + id
+			url: '/admin/products?id=' + id
 		})
 	}
 
@@ -74,7 +74,7 @@ app.service('adminService', function($http){
 	 
 		return $http({
 			method: 'POST',
-			url: herokuURL + '/upload',
+			url: '/upload',
 			data: {
 				image: imageSrc,
 				file: {
@@ -90,7 +90,7 @@ app.service('adminService', function($http){
 
 		return $http({
 			method: 'POST',
-			url: herokuURL + '/admin/photos',
+			url: '/admin/photos',
 			data: {
 				title: title,
 				imageUrl: url,
@@ -106,14 +106,14 @@ app.service('adminService', function($http){
 	this.getPhotos = function(){
 		return $http({
 			method: 'GET',
-			url: herokuURL + '/admin/photos'
+			url: '/admin/photos'
 		})
 	}
 
 	this.updatePhoto = function(id, title, description, category, auth){
 		return $http({
 			method: 'PUT',
-			url: herokuURL + '/admin/photos?id=' + id,
+			url: '/admin/photos?id=' + id,
 			data: {
 
 				title: title,
@@ -127,21 +127,21 @@ app.service('adminService', function($http){
 	this.removePhoto = function(id){
 		return $http({
 			method: 'DELETE',
-			url:herokuURL + '/admin/photos?id=' + id
+			url:'/admin/photos?id=' + id
 		})
 	}
 
 	this.getOrders = function(){
 		return $http({
 			method: 'GET',
-			url: herokuURL + '/admin/orders'
+			url: '/admin/orders'
 		})
 	}
 
 	this.updateOrder = function(id, paymentStatus, orderStatus){
 		return $http({
 			method: 'PUT',
-			url: herokuURL + '/admin/orders/?_id=' + id,
+			url: '/admin/orders/?_id=' + id,
 			data: {
 				'payment.status': paymentStatus,
 				status: orderStatus
@@ -165,7 +165,7 @@ app.service('authService', function($http){
 	this.login = function(email, password){
 		return $http({
 			method: 'POST',
-			url: herokuURL + '/api/login',
+			url: '/api/login',
 			data: {
 				email: email,
 				password: password
@@ -176,7 +176,7 @@ app.service('authService', function($http){
 	this.auth = function(){
 		return $http({
 			method: 'GET',
-			url: herokuURL + '/api/auth'
+			url: '/api/auth'
 		})
 	}
 
@@ -199,14 +199,14 @@ app.service('productService', function($http, $q){
 	this.getProducts = function(){
 		return $http({
 			method: 'GET',
-			url: herokuURL + '/api/products'
+			url: '/api/products'
 		})
 	}
 
 	this.getOneProduct = function(id){
 		return $http({
 			method: 'GET',
-			url: herokuURL + '/api/products?_id=' + id
+			url: '/api/products?_id=' + id
 		})
 	}
 
@@ -224,14 +224,14 @@ app.service('photoService', function($http, $q){
 	this.getPhotos = function(){
 		return $http({
 			method: 'GET',
-			url: herokuURL + '/api/photos'
+			url: '/api/photos'
 		})
 	}
 
 	this.getOnePhoto = function(id){
 		return $http({
 			method: 'GET',
-			url: herokuURL + '/api/photos?_id=' + id
+			url: '/api/photos?_id=' + id
 		})
 	}
 
@@ -247,7 +247,7 @@ app.service('customerService', function($http, $q){
 	// this.createTempCustomer = function(name){
 	// 	return $http({
 	// 		method: 'POST',
-	// 		url: herokuURL + '/api/customers',
+	// 		url: '/api/customers',
 	// 		data: {
 	// 			name: name
 	// 		}
@@ -257,7 +257,7 @@ app.service('customerService', function($http, $q){
 	this.addCustomer = function(name, email, password){
 		return $http({
 			method: 'POST', 
-			url: herokuURL + '/api/customers',
+			url: '/api/customers',
 			data: {
 				name: name,
 				local: {
@@ -271,14 +271,14 @@ app.service('customerService', function($http, $q){
 	this.getCustomer = function(field, value){
 		return $http({
 			method: 'GET',
-			url: herokuURL + '/api/customers?' + field + '=' + value
+			url: '/api/customers?' + field + '=' + value
 		})
 	}
 
 	this.updateCustomer = function(id, obj){
 		return $http({
 			method: 'PUT',
-			url: herokuURL + '/api/customers?id=' + id,
+			url: '/api/customers?id=' + id,
 			data: obj
 		})
 	}
@@ -286,7 +286,7 @@ app.service('customerService', function($http, $q){
 	this.addAddress = function(customerId, address){
 		return $http({
 			method: 'POST',
-			url: herokuURL + '/api/customers/address/' + customerId,
+			url: '/api/customers/address/' + customerId,
 			data: address
 		})
 	}
@@ -302,7 +302,7 @@ app.service('cartService', function($http, $q){
 	this.addToCart = function(data){
 		return $http({
 			method: 'POST',
-			url: herokuURL + '/api/cart/',
+			url: '/api/cart/',
 			data: data
 		})		
 
@@ -311,14 +311,14 @@ app.service('cartService', function($http, $q){
 	this.getCart = function(){
 		return $http({
 			method: 'GET',
-			url: herokuURL + '/api/cart'
+			url: '/api/cart'
 		})
 	}
 
 	this.updateItem = function(data){
 		return $http({
 			method: 'PUT',
-			url: herokuURL + '/api/cart',
+			url: '/api/cart',
 			data: data
 		})
 	}
@@ -326,7 +326,7 @@ app.service('cartService', function($http, $q){
 	this.removeItem = function(id){
 		return $http({
 			method: 'PUT',
-			url: herokuURL + '/api/cart/remove',
+			url: '/api/cart/remove',
 			data: {
 				id: id
 			}
@@ -348,7 +348,7 @@ app.service('orderService', function($http, $q, $routeParams){
 	this.placeOrder = function(order){
 		return $http({
 			method: 'POST',
-			url: herokuURL + '/api/orders',
+			url: '/api/orders',
 			data: order
 		})
 	}
@@ -356,21 +356,21 @@ app.service('orderService', function($http, $q, $routeParams){
 	this.getOrder = function(id){
 		return $http({
 			method: 'GET',
-			url: herokuURL + '/api/orders/?_id=' + id
+			url: '/api/orders/?_id=' + id
 		})
 	}
 
 	this.getOrders = function(){
 		return $http({
 			method: 'GET',
-			url: herokuURL + '/api/orders'
+			url: '/api/orders'
 		})
 	}
 
 	this.updateOrder = function(id, paymentStatus, orderStatus){
 		return $http({
 			method: 'PUT',
-			url: herokuURL + '/api/orders/?_id=' + id,
+			url: '/api/orders/?_id=' + id,
 			data: {
 				status: orderStatus
 			}
