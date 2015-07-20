@@ -151,7 +151,7 @@
                 scope: {
                     inDuration: "@",
                     outDuration: "@",
-                    constrain_width: false,
+                    constrain_width: "@",
                     hover: "@",
                     alignment: "@",
                     gutter: "@",
@@ -163,7 +163,7 @@
                         element.dropdown({
                             inDuration: (angular.isDefined(scope.inDuration)) ? scope.inDuration : undefined,
                             outDuration: (angular.isDefined(scope.outDuration)) ? scope.outDuration : undefined,
-                            constrain_width: (angular.isDefined(scope.constrainWidth)) ? scope.constrain_width : undefined,
+                            constrain_width: (angular.isDefined(scope.constrainWidth)) ? scope.constrain_width : false,
                             hover: (angular.isDefined(scope.hover)) ? scope.hover : undefined,
                             alignment: (angular.isDefined(scope.alignment)) ? scope.alignment : undefined,
                             gutter: (angular.isDefined(scope.gutter)) ? scope.gutter : undefined,
