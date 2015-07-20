@@ -5,7 +5,7 @@ var app = angular.module('ecommerce');
 app.controller('adminCtrl', function($scope, adminService, customerService, cartService, products, photos, fileReader){
 	
 	$scope.createAdmin = function(){
-		customerService.addCustomer('Paul Johnson', 'hello@paulphin.com', 'test').then(function(response){
+		customerService.addCustomer('Mark McIver', 'markmciver83@gmail.com', 'test').then(function(response){
 			console.log('user created')
 		})
 
