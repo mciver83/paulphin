@@ -263,8 +263,7 @@ app.service('customerService', function($http, $q){
 				local: {
 					email: email,
 					password: password
-				},
-				admin: true
+				}
 			}
 		})
 	}
