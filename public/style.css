@@ -41,6 +41,10 @@ main-header {
 	z-index: 3;
 }
 
+#nav-mobile {
+	font-size: 24px;
+}
+
 main {
 	margin: auto;
 	padding: 200px 0 300px 0px;
