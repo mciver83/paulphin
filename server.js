@@ -64,7 +64,12 @@ require('./admin/routes.js')(app, passport); // load our routes and pass in our 
 
 //Amazon s3
 // AWS.config.loadFromPath('./config/aws-config.json');
-AWS.config.loadFromPath('./config_copy/aws-config.json');
+// AWS.config.loadFromPath('./config_copy/aws-config.json');
+AWS.config.accessKeyId = process.env.S3_KEY;
+AWS.config.secretAccessKey = process.env.S3_SECRET;
+AWS.config.region = 'us-west-2';
+
+
 
 var photoBucket = new AWS.S3({params: {Bucket: 'paulphin'}});
 
