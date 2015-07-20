@@ -453,6 +453,10 @@ cart {
 	max-height: 100%;
 }*/
 
+#cart {
+	position: relative;
+}
+
 #closeCart {
 	position: absolute;
 	top: -25px;
