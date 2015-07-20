@@ -514,7 +514,8 @@ background-size: cover;
 }*/
 
 .video {
-	height: 350px;
+	height: 60%;
+	background: url(app/images/dolphin-pod6.jpg);
 }
 
 .photo {
@@ -554,7 +555,7 @@ background-size: cover;
 		z-index: -1;
 		-webkit-transform: translateX(-50%) translateY(-50%);
 		transform: translateX(-50%) translateY(-50%);
-		background: url(app/images/partners.jpg);
+		background: url(app/images/dolphin-pod6.jpg);
 		background-size: cover;
 		-webkit-background-size: cover;
 		-moz-background-size: cover;
@@ -575,7 +576,7 @@ background-size: cover;
 		z-index: -1;
 		-webkit-transform: translateX(-50%) translateY(-50%);
 		transform: translateX(-50%) translateY(-50%);
-		background: url(app/images/partners.jpg);
+		background: url(app/images/dolphin-pod6.jpg);
 		background-size: cover;
 		-webkit-background-size: cover;
 		-moz-background-size: cover;
