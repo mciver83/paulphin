@@ -151,7 +151,7 @@
                 scope: {
                     inDuration: "@",
                     outDuration: "@",
-                    constrain_width: "@",
+                    constrain_width: false,
                     hover: "@",
                     alignment: "@",
                     gutter: "@",

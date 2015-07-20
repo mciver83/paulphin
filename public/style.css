@@ -516,11 +516,11 @@ video#bgvid {
 .video {
 	max-height: 60%;
 	min-height: 400px;
-	background: url(app/images/dolphin-pod6.jpg);
+	/*background: url(app/images/dolphin-pod6.jpg);
 	background-size: cover;
 		-webkit-background-size: cover;
 		-moz-background-size: cover;
-		-o-background-size: cover;
+		-o-background-size: cover;*/
 }
 
 .photo {
