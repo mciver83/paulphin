@@ -432,7 +432,7 @@ cart {
 	/*overflow: scroll;*/
 }
 
-/*#product .pop-up {
+.pop-up {
 	display: =webkit-flex;
 	display: flex;
 	justify-content: center;
