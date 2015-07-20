@@ -1,7 +1,9 @@
-var stripe = require('../config_copy/stripe.js'),
-	// stripe = require('../config/stripe.js'),
-	EmailCtrl = require('../controllers/EmailCtrl.js'),
+var EmailCtrl = require('../controllers/EmailCtrl.js'),
 	Order = require('../models/OrderModel.js');
+
+var stripe = require("stripe")(
+  process.env.STRIPE
+);
 
 module.exports.submitStripe = function(req, res){
 	console.log(11111, req.body)
