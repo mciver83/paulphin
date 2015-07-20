@@ -562,9 +562,8 @@ background-size: cover;
 
 		}
 
-	.video {
-		height: 300px;
-}
+
+	}
 }
 
 @media (max-width: 680px){
@@ -583,8 +582,6 @@ background-size: cover;
 		-o-background-size: cover;
 
 	}
-	.video {
-		height: 250px;
 }
 
 
