@@ -480,18 +480,18 @@ button {
 
 
 video#bgvid {
-position: fixed;
-top: 50%;
-left: 50%;
-width: 160%;
-z-index: -1;
--webkit-transform: translateX(-50%) translateY(-50%);
-transform: translateX(-50%) translateY(-50%);
-background: url(app/images/dolphin-pod6.jpg);
-background-size: cover;
--webkit-background-size: cover;
--moz-background-size: cover;
--o-background-size: cover;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: 160%;
+	z-index: -1;
+	-webkit-transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%);
+	background: url(app/images/dolphin-pod6.jpg);
+	background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
 
 }
 
@@ -514,8 +514,13 @@ background-size: cover;
 }*/
 
 .video {
-	height: 60%;
+	max-height: 60%;
+	min-height: 400px;
 	background: url(app/images/dolphin-pod6.jpg);
+	background-size: cover;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
 }
 
 .photo {
