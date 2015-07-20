@@ -6986,7 +6986,7 @@ select {
   .side-nav a {
     color: #444;
     display: block;
-    font-size: 1rem;
+    /*font-size: 1rem;*/
     height: 64px;
     line-height: 64px;
     padding: 0 15px; }
