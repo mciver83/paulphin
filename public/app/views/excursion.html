@@ -47,35 +47,37 @@
 <div ng-show="showLogin">
 		<div class="pop-up-back">
 			<div class="pop-up white flex-column align-items-center">
-				<p>to view your excursion pics, enter the date of the excursion and the password that was given to you</p>
-				<br />
-				<p class="red-text">{{errorMessage}}</p>
-				<input input-date
-					    type="text"
-					    placeholder="excursion date"
-					    name="created"
-					    id="inputCreated"
-					    ng-model="date"
-					    container="body"
-					    format="mm/dd/yyyy"
-					    months-full="{{ month }}"
-					    months-short="{{ monthShort }}"
-					    weekdays-full="{{ weekdaysFull }}"
-					    weekdays-short="{{ weekdaysShort }}"
-					    weekdays-letter="{{ weekdaysLetter }}"
-					    today="today"
-					    clear="clear"
-					    close="close"
-					    select-years="15"
-					    on-start="onStart()"
-					    on-render="onRender()"
-					    on-open="onOpen()"
-					    on-close="onClose()"
-					    on-set="onSet()"
-					    on-stop="onStop()" />
-				<input type="password" ng-model="password" placeholder="password"/>
-				<button ng-click="login(date, password)">login</button>
-				<a class="blue-text item" href="#/">take me to the home page</a>
+				<div class="width80">
+					<p>to view your excursion pics, enter the date of the excursion and the password that was given to you</p>
+					<br />
+					<p class="red-text">{{errorMessage}}</p>
+					<input input-date
+						    type="text"
+						    placeholder="excursion date"
+						    name="created"
+						    id="inputCreated"
+						    ng-model="date"
+						    container="body"
+						    format="mm/dd/yyyy"
+						    months-full="{{ month }}"
+						    months-short="{{ monthShort }}"
+						    weekdays-full="{{ weekdaysFull }}"
+						    weekdays-short="{{ weekdaysShort }}"
+						    weekdays-letter="{{ weekdaysLetter }}"
+						    today="today"
+						    clear="clear"
+						    close="close"
+						    select-years="15"
+						    on-start="onStart()"
+						    on-render="onRender()"
+						    on-open="onOpen()"
+						    on-close="onClose()"
+						    on-set="onSet()"
+						    on-stop="onStop()" />
+					<input type="password" ng-model="password" placeholder="password"/>
+					<button ng-click="login(date, password)">login</button>
+					<a class="blue-text item" href="#/">take me to the home page</a>
+				</div>
 			</div>	
 		</div>
 	</div>
