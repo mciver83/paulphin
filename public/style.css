@@ -43,7 +43,7 @@ main-header {
 
 main {
 	margin: auto;
-	padding: 100px 0 300px 0px;
+	padding: 200px 0 300px 0px;
 	/*padding-top: 150px;*/
 	/*padding-bottom: 200px;*/
 	/*width: 80%;*/
@@ -565,10 +565,6 @@ video#bgvid {
 		-webkit-background-size: cover;
 		-moz-background-size: cover;
 		-o-background-size: cover;
-
-		}
-
-
 	}
 }
 
