@@ -16,6 +16,8 @@ app.controller('adminCtrl', function($scope, adminService, customerService, cart
 			$scope.date = '';
 			$scope.password = '';
 			Materialize.toast('account created', 1000)
+		}, function(err){
+			Materialize.toast('account was not created.  Contact your administrator.', 1000)
 		})
 	}
 
@@ -82,7 +84,10 @@ app.controller('adminCtrl', function($scope, adminService, customerService, cart
 				$scope.imageSrc = null;
 				$scope.productCategory = '';
 				$scope.getProducts();
+				Materialize.toast("product added.  you may need to refresh the page", 1000)
 			})
+		}, function(err){
+			Materialize.toast('product was not added', 1000)
 		})
 	}
 
@@ -99,6 +104,9 @@ app.controller('adminCtrl', function($scope, adminService, customerService, cart
 		if(confirm("Are you sure you want to delete this product?")){
 			adminService.removeProduct(id).then(function(response){
 				$scope.getProducts();
+				Materialize.toast("product deleted", 1000)
+			}, function(err){
+				Materialize.toast("something went wrong", 1000)
 			})
 		}
 	}
@@ -107,6 +115,8 @@ app.controller('adminCtrl', function($scope, adminService, customerService, cart
 	$scope.getPhotos = function(){
 		adminService.getPhotos().then(function(response){
 			$scope.photos = response.data;
+		}, function(err){
+			Materialize.toast("couldn't retrieve photos", 1000)
 		})
 	}
 
@@ -124,6 +134,9 @@ app.controller('adminCtrl', function($scope, adminService, customerService, cart
 				$scope.photoCategory = '';
 				$scope.photoAuth = 'store';
 				$scope.getPhotos();
+				Materialize.toast("photo added", 1000)
+			}, function(err){
+				Materialize.toast("photo was not added", 1000)
 			})
 		})
 	}
@@ -134,8 +147,10 @@ app.controller('adminCtrl', function($scope, adminService, customerService, cart
 	$scope.updatePhoto = function(id, title, description, category, auth){
 		if(confirm("Are you sure you want to update this image's info?")){
 			adminService.updatePhoto(id, title, description, category, auth).then(function(response){
-				alert('This image has been updated.')
+				Materialize.toast('This image has been updated', 1000)
 				$scope.getPhotos();
+			}, function(err){
+				Materialize.toast("photo not updated", 1000)
 			})
 		}
 	}
@@ -144,6 +159,9 @@ app.controller('adminCtrl', function($scope, adminService, customerService, cart
 		if(confirm("Are you sure you want to delete this image?")){
 			adminService.removePhoto(id).then(function(response){
 				$scope.getPhotos();
+				Materialize.toast('photo deleted', 1000)
+			}, function(err){
+				Materialize.toast('photo not deleted', 1000)
 			})
 		}
 	}
@@ -196,7 +214,7 @@ app.controller('orderCtrl', function($scope, orders, adminService){
 	$scope.updateOrder = function(orderId, paymentStatus, orderStatus){
 
 		adminService.updateOrder(orderId, paymentStatus, orderStatus).then(function(response){
-			alert('order updated');
+			Materialize.toast('order updated', 1000);
 		})
 	}
 })
@@ -258,7 +276,9 @@ app.controller('contactCtrl', function($scope, emailService){
 			$scope.fromEmail = '';
 			$scope.fromName = '';
 			$scope.message = '';
-			alert('your message has been sent');
+			Materialize.toast('your message has been sent', 1000);
+		}, function(err){
+			Materialize.toast('your message could not be send', 1000)
 		})
 	}
 })
@@ -402,7 +422,7 @@ app.controller('shopCtrl', function($scope, $location, productService, cartServi
 
 	$scope.createAdmin = function(){
 		customerService.addCustomer('Paul Johnson', 'hello@paulphin.com', 'test').then(function(response){
-			console.log('user created')
+			Materialize.toast('user created', 1000)
 		})
 
 	}
@@ -526,6 +546,7 @@ app.controller('checkoutCtrl', function($scope, $location, customerService, cart
 		orderService.placeOrder(order).then(function(response){
 			$location.path('/payment/' + response.data._id);
 		}, function(err){
+			Materialize.toast('something went wrong', 1000)
 			console.log(err);
 		})
 	}
