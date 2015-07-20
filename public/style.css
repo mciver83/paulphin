@@ -535,7 +535,7 @@ background-size: cover;
 }
 
 
-@media (max-width: 1300px){
+/*@media (max-width: 1300px){
 	img.image-thumbnail {
 		max-height: 50px;
 		max-width: 50px;
@@ -543,7 +543,7 @@ background-size: cover;
 		min-width: 50px;
 		padding: 5px;
 	}
-}
+}*/
 
 @media (max-width: 1130px){
 	video#bgvid {
@@ -561,6 +561,10 @@ background-size: cover;
 		-o-background-size: cover;
 
 		}
+
+	.video {
+		height: 300px;
+}
 }
 
 @media (max-width: 680px){
@@ -578,7 +582,9 @@ background-size: cover;
 		-moz-background-size: cover;
 		-o-background-size: cover;
 
-		}
+	}
+	.video {
+		height: 250px;
 }
 
 
