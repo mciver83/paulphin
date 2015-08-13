@@ -37,7 +37,7 @@
 					</div>
 				<div class="row">
 					<p class="col s1">status:</p> 
-					<select class="col s4"ng-options="option for option in orderStatusOptions" ng-model="order.status" material-select></select> 
+					<select class="col s4" ng-options="option for option in orderStatusOptions" ng-model="order.status" material-select></select> 
 				</div>
 				<div><button ng-click="updateOrder(order._id, order.payment.status, order.status)">update</button>
 				</div>
