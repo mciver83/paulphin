@@ -271,8 +271,8 @@ app.controller('aboutCtrl', function($scope, instagram, photos){
 app.controller('contactCtrl', function($scope, emailService){
 
 
-	$scope.sendEmail = function(fromEmail, fromName, toEmail, toName, subject, message){
-		emailService.sendEmail(fromEmail, fromName, toEmail, toName, subject, message).then(function(response){
+	$scope.sendEmail = function(fromEmail, fromName, message){
+		emailService.sendEmail(fromEmail, fromName, message).then(function(response){
 			$scope.fromEmail = '';
 			$scope.fromName = '';
 			$scope.message = '';

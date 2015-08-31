@@ -388,7 +388,7 @@ app.service('orderService', function($http, $q, $routeParams){
 
 app.service('emailService', function($http){
 
-	this.sendEmail = function(fromEmail, fromName, toEmail, toName, subject, message){
+	this.sendEmail = function(fromEmail, fromName, message){
 		  return $http({
 		    method: "POST",
 		    url: "https://mandrillapp.com/api/1.0/messages/send.json",
@@ -398,12 +398,12 @@ app.service('emailService', function($http){
 		        'from_email': fromEmail,
 		        'to': [
 		          {
-		            'email': toEmail,
-		            'name': toName,
+		            'email': 'paulphin.photography@gmail.com',
+		            'name': 'Paul',
 		            'type': 'to'
 		          }
 		        ],
-		        'subject': subject,
+		        'subject': 'Inquiry From Website',
 		        'html': '<p>' + message + '</p> <p> - ' + fromName + '</p>'
 		      }
 		    }

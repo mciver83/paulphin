@@ -31,7 +31,7 @@
 						<br>
 						<div id="item" class="flex-row content-center">
 							<div class="item black-text" ng-repeat="product in buildProducts">
-								<div class="flex-column align-items-center">
+								<div class="flex-column align-items-center wrap">
 									<img ng-click="buildItem(product)" class="image-thumbnail" ng-src="{{product.image}}"/>
 									<p>{{product.title}}</p>
 									<p>${{product.price}}</p>
