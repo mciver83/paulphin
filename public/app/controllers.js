@@ -607,7 +607,6 @@ app.controller('checkoutCtrl', function($scope, $location, customerService, cart
 app.controller('paymentCtrl', function($scope, order){
 	console.log(order);
 	$scope.order = order;
-    $scope.stripePk = process.env.STRIPE_PK;
 	if(!$scope.order.address.name){
 		$scope.order.address.name = $scope.order.customer.name
 	}
