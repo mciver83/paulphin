@@ -12,7 +12,7 @@ module.exports = {
 		var email = {
 				"body":"This message is to confirm that your order has been submitted, and payment has been recieved. Your order confirmation number is " + data._id +".",
 				"subject":"Paulphin Order Confirmation Number",
-				"from_email":"hello@paulphin.com",
+				"from_email":"paulphin.photography@gmail.com",
 				"from_name":"Paul",
 				"to":[{
 					// "email": data.customer.email[0],
@@ -34,7 +34,7 @@ module.exports = {
 				"from_name":"Your Friendly Reminder Service",
 				"to":[{
 					// "email": data.customer.email[0],
-					"email": 'markmciver83@gmail.com',
+					"email": 'paulphin.photography@gmail.com',
 					"name": 'Paul',
 					"type":"to"
 			}]
