@@ -6,13 +6,18 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="carousel/angular-carousel.css"/>
 	<link rel="stylesheet" href="materialize-style.css">
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js"/> -->
-	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css"> -->
-  <!-- <link rel="stylesheet" href="https://rawgithub.com/lemming/angular-flip/master/src/flip.css" /> -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:300&effect=3d|neon|fire-animation">
+    
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular-route.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-materialize/src/angular-materialize.js"></script>
 	
 </head>
 <body>
@@ -26,8 +31,6 @@
       	<div class="row">
         	<div class="col l8 s12 hide-on-med-and-down">
           	<h5 class="blue-text">Affiliations</h5>
-          	<!-- <div class="col l2"><a href="http://www.divinemaui.com" target="blank"><img src="http://paulphin.com/wp-content/uploads/2013/03/1.png" align="center" class="responsive-img"></a></div>
-            <div class="col l2 hide-on-med-and-down"><a href="http://www.opsociety.org" target="blank"><img src="http://paulphin.com/wp-content/uploads/2013/03/543279_459427540751550_105494804_n.jpg" align="center" class="responsive-img"></a></div> -->
             <div class="col l2 hide-on-med-and-down"><a href="http://www.wilddolphin.org/index.html" target="blank"><img src="http://www.wilddolphin.org/graphics/wdf_logo.jpg" class="responsive-img" align="center"></a></div>
             <div class="col l5 hide-on-med-and-down"><a href="http://www.oceandefenderhawaii.com/" target="blank"><img src="http://www.oceandefenderhawaii.com/wp-content/uploads/2014/11/1ODLogo.png" align="center" class="responsive-img"></a></div>
         	</div>
@@ -59,14 +62,24 @@
 </div>
 
 
-<!-- <script src="https://rawgithub.com/lemming/angular-flip/master/src/angular-flip.js"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular-route.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
-<script type="text/javascript" src="bower_components/angular-materialize/src/angular-materialize.js"></script>
+
+
 <script type="text/javascript" src="app/app.js"></script>
-<script type="text/javascript" src="app/controllers.js"></script>
+    
+    
+<!--    controllers     -->
+<script type="text/javascript" src="app/controllers/aboutCtrl.js"></script>
+<script type="text/javascript" src="app/controllers/adminCtrl.js"></script>
+<script type="text/javascript" src="app/controllers/checkoutCtrl.js"></script>
+<script type="text/javascript" src="app/controllers/contactCtrl.js"></script>
+<script type="text/javascript" src="app/controllers/excursionCtrl.js"></script>
+<script type="text/javascript" src="app/controllers/orderCtrl.js"></script>
+<script type="text/javascript" src="app/controllers/paymentCtrl.js"></script>
+<script type="text/javascript" src="app/controllers/shopCtrl.js"></script>
+    
+    
+    
+    
 <script type="text/javascript" src="app/services.js"></script>
 <script type="text/javascript" src="app/directives.js"></script>
 <script type="text/javascript" src="app/upload.js"></script>
