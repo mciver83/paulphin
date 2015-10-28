@@ -1,7 +1,6 @@
 var mandrill = require('mandrill-api/mandrill'),
 	Q = require('q'),
-    MandrillKey = require('../config/mandrill');
-	mandrill_client = new mandrill.Mandrill(MandrillKey.key);
+	mandrill_client = new mandrill.Mandrill(process.env.STRIPE.MANDRILL_KEY);
 
 	module.exports.sendEmail = function(data){
 	var deferred = Q.defer();
