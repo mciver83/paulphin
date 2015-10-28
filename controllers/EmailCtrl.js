@@ -3,7 +3,14 @@ var EmailService = require('../services/EmailService');
 
 module.exports = {
 	sendEmail: function(req, res){
-		EmailService.sendEmail(req).then(function(data){
+       var email = {
+				"body": req.body.text,
+				"subject": req.body.subject,
+				"from_email": req.body.from_email,
+				"from_name": req.body.from_name,
+				"to": req.body.to
+		} 
+		EmailService.sendEmail(email).then(function(data){
 			res.send(data);
 		})
 	},
