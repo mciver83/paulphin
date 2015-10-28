@@ -5,8 +5,7 @@ var app = angular.module('ecommerce', ['ngRoute', 'ui.materialize', 'angular-car
 app.config(function($routeProvider){
 	$routeProvider
 	.when('/home/:uId?', {
-		templateUrl: 'app/views/home.html',
-		controller: 'homeCtrl'
+		templateUrl: 'app/views/home.html'
 	})
 	.when('/about/:uId?', {
 		templateUrl: 'app/views/about.html',
