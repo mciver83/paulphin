@@ -12,8 +12,8 @@ var express = require('express'),
 	fs = require('fs'),
 	multer = require('multer'),
 	cookieParser = require('cookie-parser'),
-//	 mongoUri = 'mongodb://localhost:27017/paulphin';
-	mongoUri = process.env.MONGOLAB_URI;
+	 mongoUri = 'mongodb://localhost:27017/paulphin';
+//	mongoUri = process.env.MONGOLAB_URI;
 
 
 
@@ -44,7 +44,7 @@ mongoose.connection.once('open', function(){
 	console.log('Connected to Mongo at ' + mongoUri);
 })	
 
-app.use(morgan('dev')); // log every request to the console
+//app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(cors());
 app.use(bodyParser({ limit: 10000000 }));
@@ -63,8 +63,6 @@ require('./admin/routes.js')(app, passport); // load our routes and pass in our 
 
 
 //Amazon s3
-// AWS.config.loadFromPath('./config/aws-config.json');
-// AWS.config.loadFromPath('./config_copy/aws-config.json');
 AWS.config.accessKeyId = process.env.S3_KEY;
 AWS.config.secretAccessKey = process.env.S3_SECRET;
 AWS.config.region = 'us-west-2';

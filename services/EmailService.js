@@ -3,6 +3,7 @@ var mandrill = require('mandrill-api/mandrill'),
 	mandrill_client = new mandrill.Mandrill(process.env.MANDRILL_KEY);
 
 	module.exports.sendEmail = function(data){
+        console.log(1212, process.env)
 	var deferred = Q.defer();
 	// var data = data.body; //TEMPORARY, FOR TESTING
 	var message = {

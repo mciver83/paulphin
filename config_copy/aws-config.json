@@ -1,1 +1,0 @@
-{ "accessKeyId": "process.env.S3_KEY", "secretAccessKey": "process.env.S3_SECRET", "region": "us-west-2" }
