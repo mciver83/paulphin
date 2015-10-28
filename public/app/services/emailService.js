@@ -12,12 +12,12 @@ app.service('emailService', function($http){
             url: '/api/email/send',
             data: {
                 
-                text: '<p>' + message + '</p> <p> - ' + fromName + '</p>',
+                text: message  + '-' + fromName,
                 subject: 'Inquiry From Webstie',
                 from_email: fromEmail,
                 from_name: fromName,
                 to: [{
-                    "email": 'markmciver83@gmail.com',
+                    "email": 'paulphin.photography@gmail.com',
                     "name": 'Paul',
                     "type": 'to'
                 }]

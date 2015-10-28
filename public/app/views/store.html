@@ -1,4 +1,4 @@
-<main-header class="black"></main-header>
+ <main-header class="black"></main-header>
 
 <div id="store-wrap">	
 	<main>
@@ -29,7 +29,7 @@
 						<h3>Step<h1>1</h1></h3>
 						<h5>choose a product</h5>
 						<br>
-						<div id="item" class="flex-row content-center">
+						<div id="item" class="flex-row content-center wrap">
 							<div class="item black-text" ng-repeat="product in buildProducts">
 								<div class="flex-column align-items-center wrap">
 									<img ng-click="buildItem(product)" class="image-thumbnail" ng-src="{{product.image}}"/>
@@ -43,7 +43,7 @@
 						<h3>Step<h1>1</h1></h3>
 						<h5>choose a product</h5>
 						<br>
-						<div id="item" class="flex-row content-center">
+						<div id="item" class="flex-row content-center wrap">
 							<div class="item black-text" ng-repeat="product in buildProducts">
 								<div class="flex-column align-items-center">
 									<img ng-click="buildItem(product)" class="image-small" ng-src="{{product.image}}"/>
